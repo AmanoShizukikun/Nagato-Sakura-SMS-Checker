@@ -1,5 +1,7 @@
 # Project-SMS
 
+\[ 中文 | [English](README_en.md) | [日本語](README_jp.md) \]
+
 為了解決簡訊詐騙而自製的小型簡訊分類模型
 
 
