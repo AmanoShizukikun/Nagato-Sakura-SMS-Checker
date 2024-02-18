@@ -83,6 +83,6 @@ python test.py
 
 
 ### GUI
-![t2i](assets/samples/light_mode.png)
-![t2i](assets/samples/dark_mode.png)
+![t2i](assets/samples/two_mode.png)
+
 ![t2i](assets/samples/test.png)
