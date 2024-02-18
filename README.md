@@ -1,7 +1,7 @@
 # Nagato-Sakura-SMS-Checker
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/AmanoShizukikun/Discord-Bot-Nagato-Sakura-py?style=social)](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/stargazers)
-[![GitHub last commit](https://img.shields.io/github/last-commit/AmanoShizukikun/Discord-Bot-Nagato-Sakura-py)](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/commits/main)
+[![GitHub Repo stars](https://img.shields.io/github/stars/AmanoShizukikun/Nagato-Sakura-SMS-Checker?style=social)](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/stargazers)
+[![GitHub last commit](https://img.shields.io/github/last-commit/AmanoShizukikun/Nagato-Sakura-SMS-Checker)](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/commits/main)
 
 \[ 中文 | [English](README_en.md) | [日本語](README_jp.md) \]
 
