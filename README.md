@@ -83,6 +83,13 @@ python test.py
 
 
 ### GUI
+- 先開啟GUI
+```shell
+python Nagato-Sakura-SMS-Checker-GUI.py
+```
+
+- 右下角的按鈕可以切換深色模式/淺色模式
 ![t2i](assets/samples/two_mode.png)
 
+## 實際範例
 ![t2i](assets/samples/test.png)
