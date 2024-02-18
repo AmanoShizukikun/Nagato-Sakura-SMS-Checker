@@ -5,6 +5,7 @@
 
 \[ 中文 | [English](README_en.md) | [日本語](README_jp.md) \]
 
+![t2i](assets/samples/flow_chart.png)
 ## 介紹
 Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為了解決簡訊詐騙而自製的小型簡訊分類模型，可以分類簡訊類型、判斷簡訊中的電話及網址並且測試網址的響應狀態判斷網站是否安全。
 
