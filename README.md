@@ -8,9 +8,9 @@
 ## 介紹
 Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為了解決簡訊詐騙而自製的小型簡訊分類模型，可以分類簡訊類型、判斷簡訊中的電話及網址並且測試網址的響應狀態判斷網站是否安全。
 
-## 公告
-- Project-SMS 將在 3.0.0 版本以後正式改名為 「Nagato-Sakura-SMS-Checker」，正式併入「長門櫻計畫」，因該說這個程式早已和「長門櫻」深深的連結在一起了，Project-SMS 將完全移除並從 Nagato-Sakura-SMS-Checker 1.0.0 版本重新開始
-- 目前暫時中止 Nagato-Sakura-SMS-Checker 的打包.ex 計畫，直到找到更有效率的的pytorch模型打包方法。
+## 公告重
+- Project-SMS 正式改名為 「Nagato-Sakura-SMS-Checker」，並且併入「長門櫻計畫」，Project-SMS (3.0.0以前)的舊檔案將完全移除， Nagato-Sakura-SMS-Checker 版本從 1.0.0 重新開始
+- 目前中止 Nagato-Sakura-SMS-Checker 的打包 .exe 計畫，直到找到更有效率的的 Pytorch 模型打包方法，容量實在是太大了。
 
 ## 近期變動
 ### 1.0.0（2024 年 2 月 19 日）
