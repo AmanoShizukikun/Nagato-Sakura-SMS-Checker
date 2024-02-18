@@ -5,27 +5,27 @@
     "output": "Scam SMS"
   },
   {
-    "instruction": "本週報牌漲停股已經送達，請添加賴免費領取，名額僅限前200位，不要錯過喔：https://line.me/ti/p/EFCThRPPCY",
+    "instruction": "本週報牌漲停股已經送達，請添加賴免費領取，名額僅限前200位，不要錯過喔：",
     "input": "",
     "output": "Scam SMS"
   },
   {
-    "instruction": "機構主力聯合操盤，佈局明日漲停 免費領取請添加line：https://line.me/ti/p/0FHvYnMt_s",
+    "instruction": "機構主力聯合操盤，佈局明日漲停 免費領取請添加line：",
     "input": "",
     "output": "Scam SMS"
   },
   {
-    "instruction": "週五2329成功漲停，下週一強勢飆股已選出，預計收益30趴，趕緊加賴領取：https://line.me/ti/p/aEEQ61l-SH",
+    "instruction": "週五2329成功漲停，下週一強勢飆股已選出，預計收益30趴，趕緊加賴領取：",
     "input": "",
     "output": "Scam SMS"
   },
   {
-    "instruction": "本週6164華興成功獲利40趴 下週強勢飆股已選出 趕緊加賴領取：http://line.me/ti/p/~vi8c",
+    "instruction": "本週6164華興成功獲利40趴 下週強勢飆股已選出 趕緊加賴領取：",
     "input": "",
     "output": "Scam SMS"
   },
   {
-    "instruction": "昨天推薦【4919新唐】今日漲停，明天繼續佈局強勢飆股，提前領飆股加LINE：https://line.me/ti/p/hs_8uNoTZC",
+    "instruction": "昨天推薦【4919新唐】今日漲停，明天繼續佈局強勢飆股，提前領飆股加LINE：",
     "input": "",
     "output": "Scam SMS"
   },
@@ -225,7 +225,7 @@
     "output": "Captcha SMS"
   },
   {
-    "instruction": "Telegram code: You can also tap on this link to log in:https://t.me/login/",
+    "instruction": "Telegram code: You can also tap on this link to log in:",
     "input": "",
     "output": "Captcha SMS"
   },
@@ -285,7 +285,7 @@
     "output": "Normal SMS"
   },
   {
-    "instruction": "【遠傳總經理井琪致原亞太用戶的一封信】親愛的原亞太用戶，您好！誠摯地歡迎您在112年12月15日遠傳亞太合併基準日生效後成為遠傳用戶。完整信件詳見 https://fetnet.tw/",
+    "instruction": "【遠傳總經理井琪致原亞太用戶的一封信】親愛的原亞太用戶，您好！誠摯地歡迎您在112年12月15日遠傳亞太合併基準日生效後成為遠傳用戶。完整信件詳見 ",
     "input": "",
     "output": "Normal SMS"
   },
