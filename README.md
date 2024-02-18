@@ -92,4 +92,4 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 ![t2i](assets/samples/two_mode.png)
 
 ## 實際範例
-![t2i](assets/samples/test.png)
+![t2i](assets/samples/test_01.png)
