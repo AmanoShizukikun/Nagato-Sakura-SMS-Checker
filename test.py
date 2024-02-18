@@ -105,7 +105,7 @@ def predict_SMS(text):
     predicted_class = torch.argmax(output).item()
     predicted_probs = output.squeeze().tolist()
     predicted_label = [label for label, index in label_mapping.items() if index == predicted_class][0]
-    phone_numbers = re.findall(r'\b\d{3}[-\.\s]?\d{3}[-\.\s]?\d{4}\b', text)
+    phone_numbers = re.findall(r'(\(?0\d{1,2}\)?[-\.\s]?\d{3,4}[-\.\s]?\d{3,4})', text)
     urls = re.findall(r'\b(?:https?://|www\.)\S+\b', text)
     
     print(f"'{text}'  預測概率: {predicted_probs}")
