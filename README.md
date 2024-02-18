@@ -92,11 +92,12 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 ![t2i](assets/samples/two_mode.png)
 
 ## 實際範例
+- ### 有網址的一般簡訊
 ![t2i](assets/samples/test_01.png)
-### 有網址的一般簡訊
 
+- ### 有電話的一般簡訊
 ![t2i](assets/samples/test_02.png)
-### 有電話的一般簡訊
 
+- ### 疑似網址有問題的簡訊
 ![t2i](assets/samples/test_03.png)
-### 疑似網址有問題的簡訊
+
