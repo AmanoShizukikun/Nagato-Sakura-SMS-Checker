@@ -5,16 +5,24 @@
 Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為了解決簡訊詐騙而自製的小型簡訊分類模型，可以分類簡訊類型、判斷簡訊中的電話及網址並且測試網址的響應狀態判斷網站是否安全。
 
 # 公告
-- Project-SMS 將在 3.0.0 版本以後正式改名為 「Nagato-Sakura-SMS-Checker」，正式併入「長門櫻計畫」，因該說這個程式早已和「長門櫻」深深的連結在一起了。
-- Project-SMS 將完全移除並從 Nagato-Sakura-SMS-Checker 1.0.0 版本重新開始
+- 2024 年 2 月 18 日 : Project-SMS 將在 3.0.0 版本以後正式改名為 「Nagato-Sakura-SMS-Checker」，正式併入「長門櫻計畫」，因該說這個程式早已和「長門櫻」深深的連結在一起了，Project-SMS 將完全移除並從 Nagato-Sakura-SMS-Checker 1.0.0 版本重新開始
 
 ## 近期變動
-### 1.0.0（2024 年 2 月 18 日）
+### 1.0.0（2024 年 2 月 19 日）
+![t2i](assets/preview/1.0.0.png)
 ### 重要變更
+- 正式改名為 「Nagato-Sakura-SMS-Checker」
+- 微調了訓練的資料檔
+- 重新放上了已經訓練好的模型黨
 
 ### 新增功能
+- 新增判斷簡訊中的電話並列出來
+- 新增判斷簡訊中的網址並列出來，並且可以同時測試網址的響應狀態來判斷該網址是否安全
+- 新增狀態欄，避免了狀態碼超出GUI的問題
+- 新增深色模式，現在可以在淺色模式與深色模式之間切換了
 
-
+### 已知問題
+- 畫面縮放程式的UI不會跟著縮放
 
 ## 快速開始
  **粗體** 的是強制要求的。
@@ -49,8 +57,8 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 
 ### 安裝
 ```shell
-git clone https://github.com/AmanoShizukikun/Project-SMS.git
-cd Project-SMS
+git clone https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker.git
+cd Nagato-Sakura-SMS-Checker
 ```
 
 - 修改訓練資料庫
@@ -67,7 +75,3 @@ python main.py
 ```shell
 python test.py
 ```
-
-
-### 懶人安裝
-直接運行run.bat
