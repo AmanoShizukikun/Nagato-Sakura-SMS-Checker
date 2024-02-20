@@ -91,11 +91,11 @@ def check_url_safety(url):
     try:
         response = requests.get(url)
         if response.status_code == 200:
-            print(f"網址: {url} 是安全的")
+            print(f"【安全】 {url} 是安全的")
         else:
-            print(f"網址: {url} 可能有風險 (狀態碼: {response.status_code}).")
+            print(f"【警告】 {url} 可能有風險 (狀態碼: {response.status_code}).")
     except Exception as e:
-        print(f"檢查網址時發生錯誤 {url}: {str(e)}")
+        print(f"【錯誤】 {url}: {str(e)}")
 
 # 測試模型
 def predict_SMS(text):
