@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import messagebox, scrolledtext
 import torch
 import torch.nn as nn
-import numpy as np
 import json
 from pathlib import Path
 from PIL import Image, ImageTk
@@ -10,6 +9,7 @@ import re
 import requests
 import ssl
 import socket
+import threading
 
 # 設備選擇如果有NVIDIA顯卡切換為CUDA
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -84,39 +84,59 @@ LABEL_PATH = current_directory /"models"/ "labels.txt"
 model, vocab, label_mapping = load_model(MODEL_PATH, VOCAB_PATH, CONFIG_PATH, LABEL_PATH, device)
 
 # 檢查網址安全性的函數
-def check_url_safety(url):
+def check_url_safety(url, text_widget):
     try:
         # 檢查網址協議是否為 HTTPS
         if not url.startswith("https://"):
-            return f"【警告】 {url} 使用不安全的協議"
+            result = f"【警告】 {url} 使用不安全的協議\n"
+            text_widget.insert(tk.END, result)
+            return
+
         # 檢查網址路徑是否包含可疑模式
         suspicious_patterns = ["phishing", "malware", "hack"] 
-         
         if any(pattern in url.lower() for pattern in suspicious_patterns):
-            return f"【警告】 {url} 的路徑包含可疑模式"
+            result = f"【警告】 {url} 的路徑包含可疑模式\n"
+            text_widget.insert(tk.END, result)
+            return
+
         # 建立 SSL/TLS 連線並取得證書
         context = ssl.create_default_context()
         context.check_hostname = False
         with context.wrap_socket(socket.socket(), server_hostname=url) as s:
             hostname = url.split('/')[2]  
+            s.settimeout(5) 
             s.connect((hostname, 443))
             cert = s.getpeercert()
+        
         cert_start_date = cert['notBefore']
         cert_end_date = cert['notAfter']
-        response = requests.get(url)
         
+        response = requests.get(url, timeout=5)
         if response.status_code == 200:
-            return f"【安全】 {url} 是安全的"
+            result = f"【安全】 {url} 是安全的\n"
+            text_widget.insert(tk.END, result)
         else:
-            return f"【警告】 {url} 可能有風險 (狀態碼: {response.status_code})."
-        
+            result = f"【警告】 {url} 可能有風險 (狀態碼: {response.status_code}).\n"
+            text_widget.insert(tk.END, result)
+
+    except requests.exceptions.RequestException as e:
+        result = f"【錯誤】 {url}: {str(e)}\n"
+        text_widget.insert(tk.END, result)
     except ssl.SSLError as ssl_error:
-        return f"【警告】 {url} SSL 握手失敗 ({ssl_error.strerror})"
+        result = f"【警告】 {url} SSL 握手失敗 ({ssl_error.strerror})\n"
+        text_widget.insert(tk.END, result)
+    except socket.timeout:
+        result = f"【錯誤】 {url}: 連接超時\n"
+        text_widget.insert(tk.END, result)
+    except socket.error as socket_error:
+        result = f"【錯誤】 {url}: 連接錯誤 ({str(socket_error)})\n"
+        text_widget.insert(tk.END, result)
     except Exception as e:
-        return f"【錯誤】 {url}: {str(e)}"
+        result = f"【錯誤】 {url}: {str(e)}\n"
+        text_widget.insert(tk.END, result)
     
 # 測試模型
-def predict_SMS(text):
+def predict_SMS(text, text_widget):
     input_vector = text_to_vector(text)
     input_vector = torch.tensor(input_vector, dtype=torch.float).unsqueeze(0).to(device)
     output = model(input_vector)
@@ -133,7 +153,7 @@ def predict_SMS(text):
     if urls:
         print(f"偵測網址: {urls}")
         for url in urls:
-            check_url_safety(url)
+            check_url_safety(url, text_widget)
     
     return predicted_label, predicted_probs, predicted_class, phone_numbers, urls
 
@@ -142,7 +162,7 @@ def predict_and_display():
     if user_input == "":
         messagebox.showinfo("提醒", "請輸入簡訊內容！")
     else:
-        predicted_label, predicted_probs, predicted_class, phone_numbers, urls = predict_SMS(user_input)
+        predicted_label, predicted_probs, predicted_class, phone_numbers, urls = predict_SMS(user_input, safety_text_box)
         result_label.config(text=f"預測結果: {predicted_label}")
         
         if phone_numbers:
@@ -152,14 +172,8 @@ def predict_and_display():
             
         if urls:
             url_label.config(text=f"偵測網址: {urls}")
-            safety_text = ""
-            for url in urls:
-                safety_text += check_url_safety(url) + "\n"
-            safety_text_box.delete('1.0', tk.END)
-            safety_text_box.insert(tk.END, safety_text)
         else:
             url_label.config(text="") 
-            safety_text_box.delete('1.0', tk.END)
 
 def toggle_dark_mode():
     if dark_mode_button.config('text')[-1] == '☽':
