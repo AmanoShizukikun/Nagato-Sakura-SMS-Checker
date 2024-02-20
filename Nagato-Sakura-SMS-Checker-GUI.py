@@ -178,14 +178,14 @@ def clear_input():
 
 # 建立主視窗
 root = tk.Tk()
-root.title("Nagato-Sakura-SMS-Checker-GUI-Ver.1.0.0")
+root.title("Nagato-Sakura-SMS-Checker-GUI-Ver.1.0.1")
 root.geometry("640x480")  
 
-icon_path = current_directory /"assets"/"icon"/"1.0.0.ico"
+icon_path = current_directory /"assets"/"icon"/"1.0.1.ico"
 root.iconbitmap(icon_path)
 
 # 載入圖片
-image_path = current_directory /"assets"/"4K"/"1.0.0.png" 
+image_path = current_directory /"assets"/"4K"/"1.0.1.png" 
 img = Image.open(image_path)
 img = img.resize((480, 270), Image.LANCZOS) 
 photo = ImageTk.PhotoImage(img)
