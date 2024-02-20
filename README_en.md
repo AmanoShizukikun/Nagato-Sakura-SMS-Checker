@@ -50,11 +50,12 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 
 ### File Descriptions
 - Mandatory Files
-  - main.py: Training program
-  - test.py: Testing program
+  - train.py: Training program
+  - test.py: Testing program (CMD Ver.)
+  - Nagato-Sakura-SMS-Checker-GUI:Testing program (GUI Ver.)
   - SMS_data.json: Training database
   
-- Additional Files (Generated via main.py)
+- Additional Files (Generated via train.py)
   - config.json: Model configuration file
   - labels.txt: Label file
   - SMS_model.bin: Model
@@ -73,7 +74,7 @@ cd Nagato-Sakura-SMS-Checker
 
 - Start training
 ```shell
-python main.py
+python train.py
 ```
 
 - Start testing
