@@ -50,15 +50,16 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 
 ### 檔案說明
 - 必要檔案
-  main.py:訓練程式
-  test.py:測試程式
-  SMS_data.json:訓練資料庫
+  - train.py:訓練程式
+  - test.py:測試程式 (CMD版本)
+  - Nagato-Sakura-SMS-Checker-GUI:測試程式 (GUI版本)
+  - SMS_data.json:訓練資料庫
   
-- 附加檔案(透過main.py生成)
-  config.json:模型配置文件
-  labels.txt:標籤文件
-  SMS_model.bin:模型
-  tokenizer.json:詞彙表
+- 附加檔案(透過train.py生成)
+  - config.json:模型配置文件
+  - labels.txt:標籤文件
+  - SMS_model.bin:模型
+  - tokenizer.json:詞彙表
 
 ### 安裝
 ```shell
@@ -73,7 +74,7 @@ cd Nagato-Sakura-SMS-Checker
 
 - 開始訓練
 ```shell
-python main.py
+python train.py
 ```
 
 - 開始測試
@@ -100,4 +101,3 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 - ### 疑似網址有問題的簡訊
 ![t2i](assets/samples/test_03.png)
-

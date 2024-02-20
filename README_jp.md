@@ -50,11 +50,12 @@
 
 ### ファイルの説明
 - 必須ファイル
-  - main.py：トレーニングプログラム
-  - test.py：テストプログラム
+  - train.py：トレーニングプログラム
+  - test.py：テストプログラム (CMD Ver.)
+  - Nagato-Sakura-SMS-Checker-GUI:テストプログラム (GUI Ver.)
   - SMS_data.json：トレーニングデータベース
   
-- その他のファイル（main.pyによって生成）
+- その他のファイル（train.pyによって生成）
   - config.json：モデル構成ファイル
   - labels.txt：ラベルファイル
   - SMS_model.bin：モデル
@@ -73,7 +74,7 @@ cd Nagato-Sakura-SMS-Checker
 
 - トレーニングの開始
 ```shell
-python main.py
+python train.py
 ```
 
 - テストの開始
