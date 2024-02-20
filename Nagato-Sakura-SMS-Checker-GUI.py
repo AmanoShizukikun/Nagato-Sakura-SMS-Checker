@@ -147,21 +147,34 @@ def toggle_dark_mode():
     if dark_mode_button.config('text')[-1] == '☽':
         root.config(bg='#1E1E1E')
         image_label.config(bg='#1E1E1E')
-        entry.config(bg='#1E1E1E', fg='white', insertbackground='white')  # 調整此行
+        entry.config(bg='#1F1F1F', fg='white', insertbackground='white')
+        button_frame.config(bg='#1E1E1E')
         result_label.config(bg='#1E1E1E', fg='white')
         phone_label.config(bg='#1E1E1E', fg='white')
         url_label.config(bg='#1E1E1E', fg='white')
-        safety_text_box.config(bg='#1E1E1E', fg='white')
-        dark_mode_button.config(text='☀')
+        safety_text_box.config(bg='#1F1F1F', fg='white')
+        predict_button.config(bg='#1E1E1E', fg='white')
+        clear_button.config(bg='#1E1E1E', fg='white')
+        dark_mode_button.config(bg='#1E1E1E', fg='white', text='☀')
     else:
         root.config(bg='white')
         image_label.config(bg='white')
         entry.config(bg='white', fg='black')
+        button_frame.config(bg='white')
         result_label.config(bg='white', fg='black')
         phone_label.config(bg='white', fg='black')
         url_label.config(bg='white', fg='black')
         safety_text_box.config(bg='white', fg='black')
-        dark_mode_button.config(text='☽')
+        predict_button.config(bg='white', fg='black')
+        clear_button.config(bg='white', fg='black')
+        dark_mode_button.config(bg='white', fg='black', text='☽')
+        
+def clear_input():
+    entry.delete(0, tk.END)
+    result_label.config(text="")
+    phone_label.config(text="")
+    url_label.config(text="")
+    safety_text_box.delete('1.0', tk.END)
 
 # 建立主視窗
 root = tk.Tk()
@@ -182,12 +195,16 @@ image_label = tk.Label(root, image=photo)
 image_label.pack()
 
 # 輸入框
-entry = tk.Entry(root, width=50)
+entry = tk.Entry(root, width=60)
 entry.pack()
 
-# 預測按鈕
-predict_button = tk.Button(root, text="預測", command=predict_and_display)
-predict_button.pack()
+# 預測按鈕和清除按鈕
+button_frame = tk.Frame(root)
+button_frame.pack()
+predict_button = tk.Button(button_frame, text="預測", command=predict_and_display)
+predict_button.pack(side="left", padx=5)
+clear_button = tk.Button(button_frame, text="清除", command=clear_input)
+clear_button.pack(side="left")
 
 # 顯示結果的標籤
 result_label = tk.Label(root, text="", font=("Arial", 12))
