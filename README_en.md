@@ -15,7 +15,7 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 - ### The plan to package Nagato-Sakura-SMS-Checker into a .exe file is currently suspended until a more efficient PyTorch model packaging method is found.
 
 ## Recent Changes
-### 1.0.1 (February 20, 2024)
+### 1.0.1 (February 21, 2024)
 ![t2i](assets/preview/1.0.1.png)
 ### Important Changes
 - [Adjustment] GUI adjusted the order of model loading and added threads for URL checking, significantly improving GUI responsiveness.
