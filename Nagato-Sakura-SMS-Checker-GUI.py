@@ -75,10 +75,10 @@ def load_model(model_path, vocab_path, config_path, label_path, device):
     return model, vocab, label_mapping
 
 # 設定檔案路徑
-VOCAB_PATH = current_directory /"models"/ "tokenizer.json"
-MODEL_PATH = current_directory /"models"/ "SMS_model.bin"
-CONFIG_PATH = current_directory /"models"/ "config.json"
-LABEL_PATH = current_directory /"models"/ "labels.txt"
+VOCAB_PATH = current_directory / "models" / "tokenizer.json"
+MODEL_PATH = current_directory / "models" / "SMS_model.bin"
+CONFIG_PATH = current_directory / "models" / "config.json"
+LABEL_PATH = current_directory / "models" / "labels.txt"
 
 # 加载模型、vocab和標籤映射
 model, vocab, label_mapping = load_model(MODEL_PATH, VOCAB_PATH, CONFIG_PATH, LABEL_PATH, device)
@@ -134,7 +134,7 @@ def check_url_safety(url, text_widget):
     except Exception as e:
         result = f"【錯誤】 {url}: {str(e)}\n"
         text_widget.insert(tk.END, result)
-    
+
 # 測試模型
 def predict_SMS(text, text_widget):
     input_vector = text_to_vector(text)
@@ -153,7 +153,8 @@ def predict_SMS(text, text_widget):
     if urls:
         print(f"偵測網址: {urls}")
         for url in urls:
-            check_url_safety(url, text_widget)
+            # 在新的線程中檢查網址安全性
+            threading.Thread(target=check_url_safety, args=(url, text_widget)).start()
     
     return predicted_label, predicted_probs, predicted_class, phone_numbers, urls
 
@@ -212,11 +213,11 @@ def clear_input():
 root = tk.Tk()
 root.title("Nagato-Sakura-SMS-Checker-GUI-Ver.1.0.1")
 root.geometry("640x480")  
-icon_path = current_directory /"assets"/"icon"/"1.0.1.ico"
+icon_path = current_directory / "assets" / "icon" / "1.0.1.ico"
 root.iconbitmap(icon_path)
 
 # 載入圖片
-image_path = current_directory /"assets"/"4K"/"1.0.1.png" 
+image_path = current_directory / "assets" / "4K" / "1.0.1.png" 
 img = Image.open(image_path)
 img = img.resize((480, 270), Image.LANCZOS) 
 photo = ImageTk.PhotoImage(img)
