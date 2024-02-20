@@ -83,8 +83,8 @@ python test.py
 ```
 
 
-### GUI
-- 先開啟GUI
+### GUI 介面
+- 開啟GUI
 ```shell
 python Nagato-Sakura-SMS-Checker-GUI.py
 ```
