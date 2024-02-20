@@ -153,7 +153,6 @@ def predict_SMS(text, text_widget):
     if urls:
         print(f"偵測網址: {urls}")
         for url in urls:
-            # 在新的線程中檢查網址安全性
             threading.Thread(target=check_url_safety, args=(url, text_widget)).start()
     
     return predicted_label, predicted_probs, predicted_class, phone_numbers, urls
