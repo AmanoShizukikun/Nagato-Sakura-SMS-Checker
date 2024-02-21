@@ -41,10 +41,12 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 
 ## 快速開始
  **粗體** 的是強制要求的。
- 
-### 硬體要求
-1. 作業系統：Windows
-1. **CPU** / Nvidia GPU
+### 系統需求
+- 系統需求: 64-bit Windows
+- **處理器**: 64 位元的處理器
+- **記憶體**: 2GB
+- 顯示卡: 1GB VRAM 且支援 CUDA 加速的 NVIDIA 顯示卡
+- **儲存空間**: 3GB 可用空間
 
 ### 環境設置
 - **Python 3**
