@@ -6,8 +6,9 @@ import re
 import requests
 import ssl
 import socket
+from urllib.parse import urlparse
 
-# 設備選擇如果有NVIDIA顯卡切換為CUDA
+# 檢查是否有可用的 NVIDIA 顯示卡，並設置運算裝置
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # 環境檢測
@@ -23,10 +24,10 @@ class SMSClassifier(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super(SMSClassifier, self).__init__()
         # 輸入層到第一個隱藏層
-        self.fc1 = nn.Linear(input_size, int(hidden_size * 0.66)) 
+        self.fc1 = nn.Linear(input_size, int(hidden_size * 0.66))
         self.relu1 = nn.ReLU()
         # 第一個隱藏層到第二個隱藏層
-        self.fc2 = nn.Linear(int(hidden_size * 0.66), int(hidden_size * 0.66)) 
+        self.fc2 = nn.Linear(int(hidden_size * 0.66), int(hidden_size * 0.66))
         self.relu2 = nn.ReLU()
         # 最後一個隱藏層到輸出層
         self.fc3 = nn.Linear(int(hidden_size * 0.66), output_size)
@@ -63,7 +64,7 @@ def load_model(model_path, vocab_path, config_path, label_path, device):
         for line in labels_file:
             label, index = line.strip().split(': ')
             label_mapping[label] = int(index)
-    # 初始化模型並將其移到 CUDA 上
+    # 初始化模型並將其移到 NVIDIA 顯示卡上
     model = SMSClassifier(model_config['input_size'], model_config['hidden_size'], model_config['output_size'])
     model.load_state_dict(torch.load(model_path))
     model = model.to(device)
@@ -71,44 +72,57 @@ def load_model(model_path, vocab_path, config_path, label_path, device):
     return model, vocab, label_mapping
 
 # 設定檔案路徑
-VOCAB_PATH = current_directory /"models"/ "tokenizer.json"
-MODEL_PATH = current_directory /"models"/ "SMS_model.bin"
-CONFIG_PATH = current_directory /"models"/ "config.json"
-LABEL_PATH = current_directory /"models"/ "labels.txt"
+VOCAB_PATH = current_directory / "models" / "tokenizer.json"
+MODEL_PATH = current_directory / "models" / "SMS_model.bin"
+CONFIG_PATH = current_directory / "models" / "config.json"
+LABEL_PATH = current_directory / "models" / "labels.txt"
 
 # 加载模型、vocab和標籤映射
 model, vocab, label_mapping = load_model(MODEL_PATH, VOCAB_PATH, CONFIG_PATH, LABEL_PATH, device)
 
-# 檢查網址安全性的函數
+# 檢查網址安全性
 def check_url_safety(url):
     try:
-        # 檢查網址協議是否為 HTTPS
+        # 若網址不是以 http:// 或 https:// 開頭，則加上 https://
+        if not url.startswith(("http://", "https://")):
+            url = "https://" + url
+
+        # 若網址不是以 https:// 開頭，則印出警告訊息
         if not url.startswith("https://"):
             return f"【警告】 {url} 使用不安全的協議"
-        # 檢查網址路徑是否包含可疑模式
-        suspicious_patterns = ["phishing", "malware", "hack"] 
+
+        # 檢查網址中是否含有可疑模式
+        suspicious_patterns = ["phishing", "malware", "hack"]
         if any(pattern in url.lower() for pattern in suspicious_patterns):
             return f"【警告】 {url} 的路徑包含可疑模式"
-        
-        # 建立 SSL/TLS 連線並取得證書
+
+        # 解析網址並取得主機名稱和 IP 地址
+        parsed_url = urlparse(url)
+        hostname = parsed_url.hostname
+        ip_address = socket.gethostbyname(hostname)
+        hostname_from_ip = socket.gethostbyaddr(ip_address)
+
+        # 建立 SSL 連線並取得伺服器憑證
         context = ssl.create_default_context()
         context.check_hostname = False
         with context.wrap_socket(socket.socket(), server_hostname=url) as s:
-            hostname = url.split('/')[2]  
-            s.settimeout(5) 
+            s.settimeout(5)
             s.connect((hostname, 443))
             cert = s.getpeercert()
-        
+
+        # 取得憑證的起始和結束日期
         cert_start_date = cert['notBefore']
         cert_end_date = cert['notAfter']
-        
+
+        # 發送 HTTP 請求並檢查回應狀態碼
         response = requests.get(url, timeout=5)
         if response.status_code == 200:
             return f"【安全】 {url} 是安全的"
         else:
-            return f"【警告】 {url} 可能有風險 (狀態碼: {response.status_code})"
+            return f"【警告】 {url} 可能有風險 (狀態碼: {response.status_code})."
+
     except requests.exceptions.RequestException as e:
-        return f"【錯誤】 {url}: {str(e)}"
+        return f"【錯誤】 {url}: 請求錯誤 ({str(e)})"
     except ssl.SSLError as ssl_error:
         return f"【警告】 {url} SSL 握手失敗 ({ssl_error.strerror})"
     except socket.timeout:
@@ -118,7 +132,7 @@ def check_url_safety(url):
     except Exception as e:
         return f"【錯誤】 {url}: {str(e)}"
 
-# 測試模型
+# 預測簡訊類別並顯示結果
 def predict_SMS(text):
     input_vector = text_to_vector(text, vocab)
     input_vector = torch.tensor(input_vector, dtype=torch.float).unsqueeze(0).to(device)
@@ -127,17 +141,16 @@ def predict_SMS(text):
     predicted_probs = output.squeeze().tolist()
     predicted_label = [label for label, index in label_mapping.items() if index == predicted_class][0]
     phone_numbers = re.findall(r'(\(?0\d{1,2}\)?[-\.\s]?\d{3,4}[-\.\s]?\d{3,4})', text)
-    urls = re.findall(r'\b(?:https?://|www\.)\S+\b', text)
-    result = f"簡訊內容:{text}\n"
-    result += f"預測概率: {predicted_probs}\n"
-    result += f"預測結果: {predicted_label}\n"
+    urls = re.findall(r'\b(?:https?://)?(?:www\.)?[\w\.-]+\.[a-zA-Z]{2,}\b', text)
+    result = f"【簡訊內容】:{text}\n"
+    result += f"【預測概率】: {predicted_probs}\n"
+    result += f"【預測結果】: {predicted_label}\n"
     if phone_numbers:
-        result += f"偵測電話: {phone_numbers}\n"
-        
+        result += f"【偵測電話】: {phone_numbers}\n"
+
     if urls:
-        result += "偵測到以下網址：\n"
         for url in urls:
-            result += f"{url}: {check_url_safety(url)}\n"
+            result += f"{check_url_safety(url)}\n"
     return result
 
 print("<測試開始>")

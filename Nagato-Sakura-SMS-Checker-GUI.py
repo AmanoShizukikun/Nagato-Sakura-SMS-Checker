@@ -10,7 +10,6 @@ import requests
 import ssl
 import socket
 import threading
-from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
 # 檢查是否有可用的 NVIDIA 顯示卡，並設置運算裝置
@@ -85,6 +84,7 @@ LABEL_PATH = current_directory / "models" / "labels.txt"
 # 載入模型、詞彙表和標籤映射
 model, vocab, label_mapping = load_model(MODEL_PATH, VOCAB_PATH, CONFIG_PATH, LABEL_PATH, device)
 
+# 檢查網址安全性
 def check_url_safety(url, text_widget):
     try:
         # 若網址不是以 http:// 或 https:// 開頭，則加上 https://
@@ -94,6 +94,7 @@ def check_url_safety(url, text_widget):
         # 若網址不是以 https:// 開頭，則印出警告訊息
         if not url.startswith("https://"):
             result = f"【警告】 {url} 使用不安全的協議\n"
+            print(f"【警告】 {url} 使用不安全的協議")
             text_widget.insert(tk.END, result)
             return
         
@@ -101,6 +102,7 @@ def check_url_safety(url, text_widget):
         suspicious_patterns = ["phishing", "malware", "hack"]
         if any(pattern in url.lower() for pattern in suspicious_patterns):
             result = f"【警告】 {url} 的路徑包含可疑模式\n"
+            print(f"【警告】 {url} 的路徑包含可疑模式")
             text_widget.insert(tk.END, result)
             return
         
@@ -126,34 +128,33 @@ def check_url_safety(url, text_widget):
         response = requests.get(url, timeout=5)
         if response.status_code == 200:
             result = f"【安全】 {url} 是安全的\n"
+            print(f"【安全】 {url} 是安全的")
             text_widget.insert(tk.END, result)
         else:
             result = f"【警告】 {url} 可能有風險 (狀態碼: {response.status_code}).\n"
+            print(f"【警告】 {url} 可能有風險 (狀態碼: {response.status_code}).")
             text_widget.insert(tk.END, result)
 
     except requests.exceptions.RequestException as e:
         result = f"【錯誤】 {url}: 請求錯誤 ({str(e)})\n"
+        print(f"【錯誤】 {url}: 請求錯誤 ({str(e)})")
         text_widget.insert(tk.END, result)
     except ssl.SSLError as ssl_error:
         result = f"【警告】 {url} SSL 握手失敗 ({ssl_error.strerror})\n"
+        print(f"【警告】 {url} SSL 握手失敗 ({ssl_error.strerror})")
         text_widget.insert(tk.END, result)
     except socket.timeout:
         result = f"【錯誤】 {url}: 連接超時\n"
+        print(f"【錯誤】 {url}: 連接超時")
         text_widget.insert(tk.END, result)
     except socket.error as socket_error:
         result = f"【錯誤】 {url}: 連接錯誤 ({str(socket_error)})\n"
+        print(f"【錯誤】 {url}: 連接錯誤 ({str(socket_error)})")
         text_widget.insert(tk.END, result)
     except Exception as e:
         result = f"【錯誤】 {url}: {str(e)}\n"
+        print(f"【錯誤】 {url}: {str(e)}")
         text_widget.insert(tk.END, result)
-
-# 將文字轉換成向量表示
-def text_to_vector(text):
-    vector = [0] * len(vocab)
-    for word in text:
-        if word in vocab:
-            vector[vocab.index(word)] = 1
-    return vector
 
 # 預測簡訊類別並顯示結果
 def predict_SMS(text, text_widget):
@@ -165,13 +166,13 @@ def predict_SMS(text, text_widget):
     predicted_label = [label for label, index in label_mapping.items() if index == predicted_class][0]
     phone_numbers = re.findall(r'(\(?0\d{1,2}\)?[-\.\s]?\d{3,4}[-\.\s]?\d{3,4})', text)
     urls = re.findall(r'\b(?:https?://)?(?:www\.)?[\w\.-]+\.[a-zA-Z]{2,}\b', text)
-    print(f"'{text}'  預測概率: {predicted_probs}")
-    print(f"預測結果: {predicted_label}")
+    print(f"【簡訊內容】:{text}")
+    print(f"【預測概率】: {predicted_probs}")
+    print(f"【預測結果】: {predicted_label}")
     if phone_numbers:
-        print(f"偵測電話: {phone_numbers}")
+        print(f"【偵測電話】:{phone_numbers}")
         
     if urls:
-        print(f"偵測網址: {urls}")
         for url in urls:
             threading.Thread(target=check_url_safety, args=(url, text_widget)).start()
     
