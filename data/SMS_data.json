@@ -1,6 +1,6 @@
 [
   {
-    "instruction": "繳滿三期，不看負債聯徵，免財力，三天撥款，汽車80萬月付 元機車 萬， %起，我是之前幫你簽核的車貸李經理☎️賴",
+    "instruction": "繳滿三期，不看負債聯徵，免財力，三天撥款，汽車萬月付 元機車 萬， %起，我是之前幫你簽核的車貸李經理☎️賴",
     "input": "",
     "output": "Scam SMS"
   },
@@ -35,7 +35,7 @@
     "output": "Advertise SMS"
   },
   {
-    "instruction": "Samsung65吋電視隱藏優惠賣場🤫， 台灣大好評客戶，分期額度給你花🌸",
+    "instruction": "Samsung吋電視隱藏優惠賣場🤫， 台灣大好評客戶，分期額度給你花🌸",
     "input": "",
     "output": "Advertise SMS"
   },
@@ -45,7 +45,7 @@
     "output": "Advertise SMS"
   },
   {
-    "instruction": "親愛的中華電信客戶您好：現在申辦中華電信「精采5G贈點方案」，月繳 元( 個月)即可獲贈Hami Point點數，扣除贈點後換算下來就能以超划算的價格，享有每月 GB的行動上網量，量到後也有21Mbps勁速吃到飽的超優質5G服務。另因您亦符合【專屬4G優惠續約資格】，請即刻點選下方連結上中華電信網路門市申辦。若有相關問題可至各地中華電信服務據點，或手機直撥123客服洽詢，中華電信關心您",
+    "instruction": "親愛的中華電信客戶您好：現在申辦中華電信「精采G贈點方案」，月繳 元( 個月)即可獲贈Hami Point點數，扣除贈點後換算下來就能以超划算的價格，享有每月 GB的行動上網量，量到後也有Mbps勁速吃到飽的超優質G服務。另因您亦符合【專屬G優惠續約資格】，請即刻點選下方連結上中華電信網路門市申辦。若有相關問題可至各地中華電信服務據點，或手機直撥客服洽詢，中華電信關心您",
     "input": "",
     "output": "Advertise SMS"
   },
@@ -65,7 +65,7 @@
     "output": "Advertise SMS"
   },
   {
-    "instruction": "你願意做我的主人嗎??【絢花百兵帖】全台灣自製匠心之作，立即下載獲得50連抽",
+    "instruction": "你願意做我的主人嗎??【絢花百兵帖】全台灣自製匠心之作，立即下載獲得連抽",
     "input": "",
     "output": "Advertise SMS"
   },
@@ -75,7 +75,7 @@
     "output": "Advertise SMS"
   },
   {
-    "instruction": "【iPhone 在這裡！】感謝您成為iPASS MONEY 600萬用戶之一，特別提醒您記得參加我們抽獎活動！只要下載iPASS MONEY APP並登入，年底前筆筆消費繳費均可抽，週週抽iPhone ！手刀下載＞",
+    "instruction": "【iPhone 在這裡！】感謝您成為iPASS MONEY 萬用戶之一，特別提醒您記得參加我們抽獎活動！只要下載iPASS MONEY APP並登入，年底前筆筆消費繳費均可抽，週週抽iPhone ！手刀下載＞",
     "input": "",
     "output": "Advertise SMS"
   },
@@ -100,17 +100,12 @@
     "output": "Advertise SMS"
   },
   {
-    "instruction": "【中華電信光世代 優惠倒數】5/31前於網路門市申請HiNet速在必行方案價錢超優惠、遊戲順暢網速快，享Wi-Fi6_4T4R乙台月租0元，新申請/升速客戶再送最高Hami Point 點(1點=1元，可折抵電信費)，立即申請",
+    "instruction": "【中華電信光世代 優惠倒數】/前於網路門市申請HiNet速在必行方案價錢超優惠、遊戲順暢網速快，享Wi-Fi_TR乙台月租元，新申請/升速客戶再送最高Hami Point 點(點=元，可折抵電信費)，立即申請",
     "input": "",
     "output": "Advertise SMS"
   },
   {
-    "instruction": "【中華電信光世代 飆網優惠倒數中】前，到網路門市新申請HiNet智慧生活方案100M，享安心上網資安服務3選1，防毒防駭線上打怪更安心，最高還可再享Hami Point 點 (1點=1元，可折抵電信費)，了解更多",
-    "input": "",
-    "output": "Advertise SMS"
-  },
-  {
-    "instruction": "(權益通知) 貴客戶享有 Google One 雲端空間會員福利!快啟用就可獲得更多雲端儲存空間，存放你更多的相片、影片，備份手機資料及享受編輯相片等功能 ",
+    "instruction": "【中華電信光世代 飆網優惠倒數中】前，到網路門市新申請HiNet智慧生活方案M，享安心上網資安服務選，防毒防駭線上打怪更安心，最高還可再享Hami Point 點 (點=元，可折抵電信費)，了解更多",
     "input": "",
     "output": "Advertise SMS"
   },
@@ -120,7 +115,12 @@
     "output": "Advertise SMS"
   },
   {
-    "instruction": "完成登記，立即擴充你的Google相簿空間 G以上(視方案而定)，還獨享魔術橡皮擦修圖功能，讓你美照連出，現在登記完成，中華電信限時加碼送您 GB行動上網流量券(價值540元)",
+    "instruction": "(權益通知) 貴客戶享有 Google One 雲端空間會員福利!快啟用就可獲得更多雲端儲存空間，存放你更多的相片、影片，備份手機資料及享受編輯相片等功能 ",
+    "input": "",
+    "output": "Advertise SMS"
+  },
+  {
+    "instruction": "完成登記，立即擴充你的Google相簿空間 G以上(視方案而定)，還獨享魔術橡皮擦修圖功能，讓你美照連出，現在登記完成，中華電信限時加碼送您 GB行動上網流量券(價值元)",
     "input": "",
     "output": "Advertise SMS"
   },
@@ -140,7 +140,7 @@
     "output": "Advertise SMS"
   },
   {
-    "instruction": "【邀請您答題】3秒鐘答題，即可索取醫療險資料  免費索取",
+    "instruction": "【邀請您答題】秒鐘答題，即可索取醫療險資料  免費索取",
     "input": "",
     "output": "Advertise SMS"
   },
@@ -150,7 +150,7 @@
     "output": "Advertise SMS"
   },
   {
-    "instruction": "您的驗證碼:，切勿將驗證碼洩露於他人，驗證碼15分鐘內有效",
+    "instruction": "您的驗證碼:，切勿將驗證碼洩露於他人，驗證碼分鐘內有效",
     "input": "",
     "output": "Captcha SMS"
   },
@@ -160,12 +160,7 @@
     "output": "Captcha SMS"
   },
   {
-    "instruction": "您的 4Gamers 驗證碼為 ",
-    "input": "",
-    "output": "Captcha SMS"
-  },
-  {
-    "instruction": "OPEN POINT會員您好，換機驗證碼為，如非本人操作，建議您立即更改密碼。提醒您!勿將密碼、驗證碼交付他人以防詐騙。",
+    "instruction": "您的 Gamers 驗證碼為 ",
     "input": "",
     "output": "Captcha SMS"
   },
@@ -175,17 +170,17 @@
     "output": "Captcha SMS"
   },
   {
-    "instruction": "歡迎您加入文化幣APP。手機驗證碼，手機號碼，請於5分鐘內完成驗證。",
+    "instruction": "歡迎您加入文化幣APP。手機驗證碼，手機號碼，請於分鐘內完成驗證。",
     "input": "",
     "output": "Captcha SMS"
   },
   {
-    "instruction": "威秀影城會員卡片線上開卡服務：您的手機簡訊驗證碼為 共5碼，該驗證碼將自動於 分鐘後失效。",
+    "instruction": "威秀影城會員卡片線上開卡服務：您的手機簡訊驗證碼為 共碼，該驗證碼將自動於 分鐘後失效。",
     "input": "",
     "output": "Captcha SMS"
   },
   {
-    "instruction": " 為您的手機條碼一次性密碼，請於10分鐘內於一次性密碼視窗輸入驗証，逾期失效，謝謝。",
+    "instruction": " 為您的手機條碼一次性密碼，請於分鐘內於一次性密碼視窗輸入驗証，逾期失效，謝謝。",
     "input": "",
     "output": "Captcha SMS"
   },
@@ -305,7 +300,7 @@
     "output": "Normal SMS"
   },
   {
-    "instruction": "【警政署提醒您】請勿點擊不明連結，避免遭植入或下載惡意程式，導致大量發送詐騙簡訊詐騙他人，如接獲上述不明簡訊，請踴躍至165官網檢舉。",
+    "instruction": "【警政署提醒您】請勿點擊不明連結，避免遭植入或下載惡意程式，導致大量發送詐騙簡訊詐騙他人，如接獲上述不明簡訊，請踴躍至官網檢舉。",
     "input": "",
     "output": "Normal SMS"
   },
@@ -320,7 +315,7 @@
     "output": "Normal SMS"
   },
   {
-    "instruction": "【警政署提醒您】近日詐騙集團以簡訊佯稱積分、點數到期或個人資料驗證，並提供短連結，這是典型釣魚簡訊詐騙，請勿點擊連結並向165專線檢舉。",
+    "instruction": "【警政署提醒您】近日詐騙集團以簡訊佯稱積分、點數到期或個人資料驗證，並提供短連結，這是典型釣魚簡訊詐騙，請勿點擊連結並向專線檢舉。",
     "input": "",
     "output": "Normal SMS"
   },

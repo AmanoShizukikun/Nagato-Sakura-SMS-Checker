@@ -15,6 +15,17 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 - ### The plan to package Nagato-Sakura-SMS-Checker into a .exe file is currently suspended until a more efficient PyTorch model packaging method is found.
 
 ## Recent Changes
+### 1.0.2 (February 23, 2024)
+![t2i](assets/preview/1.0.2.png)
+### Important Changes
+- [Adjustment] The GUI display has been adjusted to use scrolling text boxes uniformly, providing a more streamlined and visually appealing appearance.
+- [Adjustment] The GUI and terminal display for general testing have been modified for a neater presentation, making it easier for users to read.
+### New Features
+- [New] The ability to recognize "non-" http and www starting URLs, automatically converting abbreviated URLs to their correct full forms.
+### Known Issues
+- [Error] Only able to recognize the shortened URL part of short URL-type websites, unable to recognize the website after the shortened URL.
+- [Error] When scaling the screen, the UI of the program does not scale accordingly.
+
 ### 1.0.1 (February 21, 2024)
 ![t2i](assets/preview/1.0.1.png)
 ### Important Changes

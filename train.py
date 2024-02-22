@@ -130,7 +130,7 @@ batch_size = 32  # 根據需求設置批次大小
 train_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
 # 訓練模型
-epochs = 200
+epochs = 300
 for epoch in range(epochs):
     total_loss = 0
     start_time = time.time()
@@ -211,8 +211,10 @@ def predict_SMS(text):
 
 # 測試預設範例
 test_sentences = [
+    "本週6164華興成功獲利40趴 下週強勢飆股已選出 趕緊加賴領取：http://line.me/ti/p/~vi8c", 
+    "Hami書城的月讀包「限時下載」一年內會提供超過360本書！會員立即參與投票喜愛的書，有機會抽500元 hamibook.tw/2NQYp", 
     "OPEN POINT會員您好，驗證碼為47385，如非本人操作，建議您立即更改密碼。提醒您！勿將密碼、驗證碼交付他人以防詐騙。", 
-    "友達實習說明會，請有意願參加同學於113年3月4日前報名https://reurl.cc/V4dQvQ 勤益分機2661"
+    "2023/11/24 14:19 您有0918001824來電1通，提醒您，記得回覆重要電話喔！若已接聽或回電請忽略此則簡訊。"
     ]
 
 for sentence in test_sentences:
