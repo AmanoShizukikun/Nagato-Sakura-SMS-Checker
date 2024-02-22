@@ -218,10 +218,8 @@ def clear_input():
     entry.delete(0, tk.END)
     safety_text_box.delete('1.0', tk.END)
 
-# 版本號
-version = "1.0.2"
-
 # 建立 tkinter 的 root 視窗
+version = "1.0.2"
 root = tk.Tk()
 root.title(f"Nagato-Sakura-SMS-Checker-GUI-Ver.{version}")
 root.geometry("640x480")  
