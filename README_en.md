@@ -20,6 +20,7 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 ### Important Changes
 - [Adjustment] The GUI display has been adjusted to use scrolling text boxes uniformly, providing a more streamlined and visually appealing appearance.
 - [Adjustment] The GUI and terminal display for general testing have been modified for a neater presentation, making it easier for users to read.
+- [Adjustment] Removed unnecessary information from the model training data and fine-tuned the training parameters. The predictive accuracy has significantly improved compared to the previous version.
 ### New Features
 - [New] The ability to recognize "non-" http and www starting URLs, automatically converting abbreviated URLs to their correct full forms.
 ### Known Issues
