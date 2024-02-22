@@ -123,6 +123,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 ## GUI 實際使用範例
 ### 範例 1
 簡訊內容: 本週6164華興成功獲利40趴 下週強勢飆股已選出 趕緊加賴領取：
+
 這種簡訊是台灣常見的投資詐騙手法，誘使投資人加入Line群組再進行詐騙，讓我們一起看看長門櫻的辨識結果:
 
 ![t2i](assets/samples/scam_sms.png)
@@ -131,6 +132,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 ### 範例 2
 簡訊內容: Hami書城的月讀包「限時下載」一年內會提供超過360本書！會員立即參與投票喜愛的書，有機會抽500元 hamibook.tw/2NQYp
+
 這種簡訊是台灣常見的電信廣告，不管是中華電信、亞太電信都會收到，這個網址還是簡訊有時會有的特殊縮網址，這種高難度的問題長門櫻做得出來嗎?
 
 ![t2i](assets/samples/advertise_sms.png)
@@ -139,6 +141,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 ### 範例 3
 簡訊內容: OPEN POINT會員您好，驗證碼為47385，如非本人操作，建議您立即更改密碼。提醒您！勿將密碼、驗證碼交付他人以防詐騙。
+
 這種簡訊是常見的驗證碼簡訊，讓我們看看長門櫻會怎麼做?
 
 ![t2i](assets/samples/captcha_sms.png)
@@ -147,6 +150,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 ### 範例 4
 簡訊內容: 2023/11/24 14:19 您有0918001824來電1通，提醒您，記得回覆重要電話喔！若已接聽或回電請忽略此則簡訊。
+
 這種簡訊是每個人多少會有的未接來電訊息，長門櫻會怎麼做呢?
 
 ![t2i](assets/samples/normal_sms.png)
