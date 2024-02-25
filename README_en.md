@@ -162,3 +162,29 @@ Nagato Sakura says that what we just did is underestimating her. She wants us to
 ![t2i](assets/samples/two_sms.png)
 
 Nagato Sakura successfully identified the general message from Asia Pacific Telecom and also identified two URLs. It then performed security tests on them separately. Asia Pacific Telecom, can your website be fixed? It's either an SSL issue or a HOST NOT FOUND issue. Your engineers are really confused with the WWW.
+
+
+## To-Do List
+- [ ] **High Priority:**
+  - [x] Integrate status bar for all prompts.
+  - [x] Standardize output messages for GUI and CMD versions.
+  - [x] Detect URLs not starting with http or www.
+  - [x] User guide.
+
+- [ ] **Features:**
+  - [x] Dark mode for GUI version.
+  - [x] Detection of phone numbers and URLs.
+  - [x] Button to clear all content with one click.
+  - [ ] Scalable GUI for adjusting screen proportions.
+  - [ ] Phone number blacklist.
+
+## Acknowledgements
+Special thanks to the following projects and contributors:
+
+- [requests](https://github.com/psf/requests)
+
+## Thanks to all contributors for their efforts
+
+<a href="https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/graphs/contributors" target="_blank">
+  <img src="https://contrib.rocks/image?repo=AmanoShizukikun/Nagato-Sakura-SMS-Checker" />
+</a>
