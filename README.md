@@ -183,3 +183,12 @@ python Nagato-Sakura-SMS-Checker-GUI.py
   - [ ] 電話號碼黑名單
      
 ## 致謝
+特別感謝以下項目和貢獻者：
+
+- [requests](https://github.com/psf/requests)
+
+## 感謝所有貢獻者的努力
+
+<a href="https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/graphs/contributors" target="_blank">
+  <img src="https://contrib.rocks/image?repo=AmanoShizukikun/Nagato-Sakura-SMS-Checker" />
+</a>
