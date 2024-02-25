@@ -160,3 +160,29 @@ SMS の内容：【亜太電信請求通知】現在の請求額は349元です�
 ![t2i](assets/samples/two_sms.png)
 
 長門サクラは、亜太電信からの一般的なメッセージを正常に識別し、2つのURLも正常に識別し、それぞれにセキュリティテストを実施しました。亜太電信、あなたのウェブサイトを修正できますか？SSLの問題でもホストが見つかりませんの問題でもありません。エンジニアは本当にWWWで混乱しています。
+
+
+## タスクリスト
+- [ ] **高優先度：**
+  - [x] すべてのプロンプトのステータスバーを統合する。
+  - [x] GUIバージョンとCMDバージョンの出力メッセージを統一する。
+  - [x] httpやwwwではじまらないURLを検出する。
+  - [x] ユーザーガイド。
+
+- [ ] **機能:**
+  - [x] GUIバージョンのダークモード。
+  - [x] 電話番号とURLの検出。
+  - [x] すべてのコンテンツをクリアするボタン。
+  - [ ] リサイズ可能な画面比率のGUI。
+  - [ ] 電話番号のブラックリスト。
+
+## 謝辞
+以下のプロジェクトと貢献者に特別な感謝を表します：
+
+- [requests](https://github.com/psf/requests)
+
+## 全ての貢献者に感謝いたします
+
+<a href="https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/graphs/contributors" target="_blank">
+  <img src="https://contrib.rocks/image?repo=AmanoShizukikun/Nagato-Sakura-SMS-Checker" />
+</a>
