@@ -4,7 +4,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/AmanoShizukikun/Nagato-Sakura-SMS-Checker)](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/commits/main)
 [![GitHub release](https://img.shields.io/github/v/release/AmanoShizukikun/Nagato-Sakura-SMS-Checker)](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/releases)
 
-\[ 中文 | [English](README_en.md) | [日本語](README_jp.md) \]
+\[ 中文 | [English](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/README_en.md) | [日本語](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/README_jp.md) \]
 
 ## 介紹
 Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為了解決簡訊詐騙而自製的小型簡訊分類模型，可以分類簡訊類型、判斷簡訊中的電話及網址並且測試網址的響應狀態判斷網站是否安全。
@@ -15,7 +15,7 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 
 ## 近期變動
 ### 1.0.2（2024 年 2 月 23 日）
-![t2i](assets/preview/1.0.2.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.2.jpg)
 ### 重要變更
 - 【調整】GUI 調整了顯示的方式，統一使用滾動文字框來顯示訊息，看起來更加精簡美觀。
 - 【調整】調整了 GUI 以及一般測試程式的終端機顯示，現在終端機顯示的結果更整齊，更方便使用者讀取。
@@ -27,7 +27,7 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 - 【錯誤】畫面縮放時，程式的UI不會跟著縮放。
 
 ### 1.0.1（2024 年 2 月 21 日）
-![t2i](assets/preview/1.0.1.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.1.jpg)
 ### 重要變更
 - 【調整】GUI 調整了模型加載的順序，並且新增了線程來進行網址檢查，大幅提高了 GUI 的反應速度。
 - 【調整】改善了網址判斷的方式，現在可以建立 SSL/TLS 連線並取得證書以及檢查網址路徑是否包含可疑模式。
@@ -38,7 +38,7 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 - 【錯誤】畫面縮放時，程式的UI不會跟著縮放。
   
 ### 1.0.0（2024 年 2 月 19 日）
-![t2i](assets/preview/1.0.0.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.0.jpg)
 ### 重要變更
 - 【重大】專案正式改名為 「Nagato-Sakura-SMS-Checker」，並且移除了Project-SMS 3.0.0 (包含3.0.0) 以前的舊版本檔案。
 - 【重大】重新上傳了已經訓練好的模型檔。

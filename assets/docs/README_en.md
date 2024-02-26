@@ -5,7 +5,7 @@
 [![GitHub release](https://img.shields.io/github/v/release/AmanoShizukikun/Nagato-Sakura-SMS-Checker)](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/releases)
 
 
-\[ [中文](README.md) | English  | [日本語](README_jp.md) \]
+\[ [中文](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/README.md) | English  | [日本語](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/README_jp.md) \]
 
 ## Introduction
 Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project," created to combat SMS scams. It is a small-scale SMS classification model designed to categorize types of SMS, identify phone numbers and URLs within SMS, and test the response status of URLs to determine if a website is secure.
@@ -16,7 +16,7 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 
 ## Recent Changes
 ### 1.0.2 (February 23, 2024)
-![t2i](assets/preview/1.0.2.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.2.jpg)
 ### Important Changes
 - [Adjustment] The GUI display has been adjusted to use scrolling text boxes uniformly, providing a more streamlined and visually appealing appearance.
 - [Adjustment] The GUI and terminal display for general testing have been modified for a neater presentation, making it easier for users to read.
@@ -28,7 +28,7 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 - [Error] When scaling the screen, the UI of the program does not scale accordingly.
 
 ### 1.0.1 (February 21, 2024)
-![t2i](assets/preview/1.0.1.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.1.jpg)
 ### Important Changes
 - [Adjustment] GUI adjusted the order of model loading and added threads for URL checking, significantly improving GUI responsiveness.
 - [Adjustment] Improved the method of URL detection, now capable of establishing SSL/TLS connections, obtaining certificates, and checking for suspicious patterns in URL paths.
@@ -39,7 +39,7 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 - [Error] When scaling the screen, the UI of the program does not scale accordingly.
   
 ### 1.0.0 (February 19, 2024)
-![t2i](assets/preview/1.0.0.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.0.jpg)
 ### Important Changes
 - [Major] The project has been officially renamed to "Nagato-Sakura-SMS-Checker" and old version files before Project-SMS 3.0.0 (including 3.0.0) have been removed.
 - [Major] Re-uploaded pre-trained model files.
