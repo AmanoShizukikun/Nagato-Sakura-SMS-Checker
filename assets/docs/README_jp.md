@@ -4,7 +4,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/AmanoShizukikun/Nagato-Sakura-SMS-Checker)](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/commits/main)
 [![GitHub release](https://img.shields.io/github/v/release/AmanoShizukikun/Nagato-Sakura-SMS-Checker)](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/releases)
 
-\[ [中文](README.md) | [English](README_en.md) | 日本語 \]
+\[ [中文](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/README.md) | [English](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/README_en.md) | 日本語 \]
 
 ## 紹介
 長門桜SMSチェッカーは、「長門桜計画」の一つで、SMS詐欺対策のために作成されたものです。これは、SMSの種類を分類し、SMS内の電話番号とURLを特定し、URLの応答ステータスをテストしてウェブサイトが安全かどうかを判断する小規模なSMS分類モデルです。
@@ -15,7 +15,7 @@
 
 ## 最近の変更
 ### 1.0.2（2024年2月23日）
-![t2i](assets/preview/1.0.2.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.2.jpg)
 ### 重要な変更
 - [調整] GUIの表示方法を調整し、メッセージをスクロールするテキストボックスを一貫して使用するようにしました。これにより、よりすっきりとした見た目になりました。
 - [調整] 一般的なテストのために、GUIおよび端末の表示を調整し、結果がより整然となり、ユーザーが読み取りやすくなりました。
@@ -27,7 +27,7 @@
 - [エラー] 画面のズーム時、プログラムのUIがズームに追従しません。
 
 ### 1.0.1（2024年2月21日）
-![t2i](assets/preview/1.0.1.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.1.jpg)
 ### 重要な変更
 - [調整] GUIはモデルの読み込み順序を調整し、URLのチェックのためにスレッドを追加し、GUIの応答性を大幅に向上させました。
 - [調整] URLの検出方法を改善し、SSL/TLS接続の確立、証明書の取得、およびURLパスの可疑なパターンのチェックが可能になりました。
@@ -38,7 +38,7 @@
 - [エラー] 画面を拡大縮小すると、プログラムのUIが適切に拡大縮小されません。
 
 ### 1.0.0（2024年2月19日）
-![t2i](assets/preview/1.0.0.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.0.jpg)
 ### 重要な変更
 - [重要] プロジェクトは正式に「Nagato-Sakura-SMS-Checker」に改名され、Project-SMS 3.0.0（3.0.0を含む）以前の古いバージョンファイルが削除されました。
 - [重要] 事前にトレーニングされたモデルファイルを再アップロードしました。
