@@ -356,7 +356,7 @@ def clear_input():
     
 
 # 建立 tkinter 的 root 視窗
-version = "1.0.2"
+version = "1.0.3"
 root = tk.Tk()
 root.title(f"Nagato-Sakura-SMS-Checker-GUI-Ver.{version}")
 root.geometry("640x500")  
