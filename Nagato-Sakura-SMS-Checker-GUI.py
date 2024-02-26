@@ -213,7 +213,6 @@ def open_json_file():
     file_path = filedialog.askopenfilename(filetypes=[("JSON files", "*.json")])
 
     if file_path:
-        # 讀取文件內容
         with open(file_path, 'r', encoding='utf-8') as file:
             content = file.read()
             # 將文件內容顯示在滾動文字框中
@@ -354,7 +353,6 @@ def clear_input():
     entry.delete(0, tk.END)
     safety_text_box.delete('1.0', tk.END)
     
-
 # 建立 tkinter 的 root 視窗
 version = "1.0.3"
 root = tk.Tk()

@@ -4,7 +4,6 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/AmanoShizukikun/Nagato-Sakura-SMS-Checker)](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/commits/main)
 [![GitHub release](https://img.shields.io/github/v/release/AmanoShizukikun/Nagato-Sakura-SMS-Checker)](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/releases)
 
-
 \[ [中文](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/README.md) | English  | [日本語](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/README_jp.md) \]
 
 ## Introduction
@@ -15,43 +14,45 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 - ### The plan to package Nagato-Sakura-SMS-Checker into a .exe file is currently suspended until a more efficient PyTorch model packaging method is found.
 
 ## Recent Changes
+### 1.0.3 (February 27, 2024)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.3.jpg)
+### Major Changes
+- 【Critical】The GUI has undergone significant adjustments in display, with the addition of a menu bar.
+- 【Adjusted】The GUI now displays complete reports.
+- 【Adjusted】The dark mode button has been removed and replaced with a menu bar option.
+### New Features
+- 【Added】Open - Open a saved .json file to view SMS results.
+- 【Added】Save - Save SMS results as a .json file.
+- 【Added】Exit - Exit the GUI.
+- 【Added】Language - Switch between Traditional Chinese, English, and Japanese.
+- 【Added】Open Website - Open the program's GitHub page.
+- 【Added】Version Info - Display the current version of the program.
+- 【Fixed】Websites with shortened URLs could only be detected up to the shortened part, unable to determine the website after expanding the URL.
+### Known Issues
+- 【Error】When scaling the screen, parts of the program's UI images do not scale accordingly.
+
 ### 1.0.2 (February 23, 2024)
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.2.jpg)
-### Important Changes
-- [Adjustment] The GUI display has been adjusted to use scrolling text boxes uniformly, providing a more streamlined and visually appealing appearance.
-- [Adjustment] The GUI and terminal display for general testing have been modified for a neater presentation, making it easier for users to read.
-- [Adjustment] Removed unnecessary information from the model training data and fine-tuned the training parameters. The predictive accuracy has significantly improved compared to the previous version.
+### Major Changes
+- 【Adjusted】The GUI display has been unified to use scrolling text boxes for messages, making it more concise and visually appealing.
+- 【Adjusted】The display of GUI and general test program in the terminal has been adjusted, resulting in neater results for users.
+- 【Adjusted】Deleted redundant information from the model training data and slightly adjusted training parameters, significantly improving prediction accuracy compared to the previous version.
 ### New Features
-- [New] The ability to recognize "non-" http and www starting URLs, automatically converting abbreviated URLs to their correct full forms.
+- 【Added】Now capable of detecting websites not starting with "http" or "www" and automatically converting shortened URLs to the original correct URL.
 ### Known Issues
-- [Error] Only able to recognize the shortened URL part of short URL-type websites, unable to recognize the website after the shortened URL.
-- [Error] When scaling the screen, the UI of the program does not scale accordingly.
+- 【Error】Websites with shortened URLs could only be detected up to the shortened part, unable to determine the website after expanding the URL.
+- 【Error】When scaling the screen, the program's UI does not scale accordingly.
 
 ### 1.0.1 (February 21, 2024)
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.1.jpg)
-### Important Changes
-- [Adjustment] GUI adjusted the order of model loading and added threads for URL checking, significantly improving GUI responsiveness.
-- [Adjustment] Improved the method of URL detection, now capable of establishing SSL/TLS connections, obtaining certificates, and checking for suspicious patterns in URL paths.
-- [Adjustment] Dark mode, adjusted the color of buttons in dark mode.
+### Major Changes
+- 【Adjusted】Changed the loading order of models in the GUI and added threads for URL checking, significantly improving GUI responsiveness.
+- 【Adjusted】Improved URL detection method, now able to establish SSL/TLS connections, retrieve certificates, and check for suspicious patterns in URL paths.
+- 【Adjusted】Dark mode button color adjustments for dark mode.
 ### New Features
-- [New] Clear button, now the program can clear URLs with one click, greatly enhancing usability.
+- 【Added】Clear button, allowing users to clear URLs with one click, greatly enhancing usability.
 ### Known Issues
-- [Error] When scaling the screen, the UI of the program does not scale accordingly.
-  
-### 1.0.0 (February 19, 2024)
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.0.jpg)
-### Important Changes
-- [Major] The project has been officially renamed to "Nagato-Sakura-SMS-Checker" and old version files before Project-SMS 3.0.0 (including 3.0.0) have been removed.
-- [Major] Re-uploaded pre-trained model files.
-- [Adjustment] Adjusted training data files, removing irrelevant content that may affect SMS judgment.
-### New Features
-- [New] SMS content detection feature, capable of listing phone numbers (limited to Taiwan) and URLs from SMS.
-- [New] URL detection feature, capable of testing website response status to determine the safety of the URL.
-- [New] Status bar, avoiding issues with status codes of tested websites exceeding GUI boundaries.
-- [New] Dark mode, the program can now switch between light and dark modes.
-### Known Issues
-- [Error] When scaling the screen, the UI of the program does not scale accordingly.
-
+- 【Error】When scaling the screen, the program's UI does not scale accordingly.
 
 ## Quick Start
 **Items in bold are mandatory requirements.**
@@ -178,13 +179,13 @@ Nagato Sakura successfully identified the general message from Asia Pacific Tele
   - [ ] Scalable GUI for adjusting screen proportions.
   - [ ] Phone number blacklist.
 
-## Acknowledgements
+## Acknowledgments
 Special thanks to the following projects and contributors:
 
+### Projects
 - [requests](https://github.com/psf/requests)
 
-## Thanks to all contributors for their efforts
-
+### Contributors
 <a href="https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/graphs/contributors" target="_blank">
   <img src="https://contrib.rocks/image?repo=AmanoShizukikun/Nagato-Sakura-SMS-Checker" />
 </a>
