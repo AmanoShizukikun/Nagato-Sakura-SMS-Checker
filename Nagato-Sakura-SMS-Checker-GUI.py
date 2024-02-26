@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox, scrolledtext
+from tkinter import messagebox, scrolledtext, Menu, filedialog
 import torch
 import torch.nn as nn
 import json
@@ -11,6 +11,7 @@ import ssl
 import socket
 import threading
 from urllib.parse import urlparse
+import webbrowser
 
 # 檢查是否有可用的 NVIDIA 顯示卡，並設置運算裝置
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -165,9 +166,11 @@ def predict_SMS(text, text_widget):
     predicted_probs = output.squeeze().tolist()
     predicted_label = [label for label, index in label_mapping.items() if index == predicted_class][0]
     phone_numbers = re.findall(r'(\(?0\d{1,2}\)?[-\.\s]?\d{3,4}[-\.\s]?\d{3,4})', text)
-    urls = re.findall(r'\b(?:https?://)?(?:www\.)?[\w\.-]+\.[a-zA-Z]{2,}\b', text)
+    urls = re.findall(r'\b(?:https?://)?(?:www\.)?[\w\.-]+\.[\w\.-]+(?:/[^\s]*)?\b', text)
     print(f"【簡訊內容】:{text}")
+    text_widget.insert(tk.END, f"【簡訊內容】:{text}\n")
     print(f"【預測概率】: {predicted_probs}")
+    text_widget.insert(tk.END, f"【預測概率】: {predicted_probs}\n")
     print(f"【預測結果】: {predicted_label}")
     if phone_numbers:
         print(f"【偵測電話】:{phone_numbers}")
@@ -190,10 +193,38 @@ def predict_and_display():
         result_text = f"{result_label}\n{phone_label}\n" if phone_numbers else f"{result_label}\n"
         
         safety_text_box.insert(tk.END, result_text)
+        
+def open_github():
+    webbrowser.open("https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker")
+    
+def show_version_info():
+    messagebox.showinfo("Version Information", f"Current Version: {version}")
+    
+def save_to_json():
+    save_path = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON files", "*.json")])
+
+    if save_path:
+        with open(save_path, 'w', encoding='utf-8') as file:
+            content = safety_text_box.get('1.0', tk.END)
+            file.write(content)
+            
+def open_json_file():
+    # 提示用戶選擇要打開的文件
+    file_path = filedialog.askopenfilename(filetypes=[("JSON files", "*.json")])
+
+    if file_path:
+        # 讀取文件內容
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+            # 將文件內容顯示在滾動文字框中
+            safety_text_box.delete('1.0', tk.END)
+            safety_text_box.insert(tk.END, content)
 
 # 切換暗黑模式
 def toggle_dark_mode():
-    if dark_mode_button.config('text')[-1] == '☽':
+    global dark_mode
+    dark_mode = not dark_mode
+    if dark_mode:
         root.config(bg='#1E1E1E')
         image_label.config(bg='#1E1E1E')
         entry.config(bg='#1F1F1F', fg='white', insertbackground='white')
@@ -201,8 +232,8 @@ def toggle_dark_mode():
         safety_text_box.config(bg='#1F1F1F', fg='white')
         predict_button.config(bg='#1E1E1E', fg='white')
         clear_button.config(bg='#1E1E1E', fg='white')
-        dark_mode_button.config(bg='#1E1E1E', fg='white', text='☀')
         empty_label.config(bg='#1E1E1E')
+        menu_bar.config(bg='#1E1E1E')
     else:
         root.config(bg='white')
         image_label.config(bg='white')
@@ -211,34 +242,147 @@ def toggle_dark_mode():
         safety_text_box.config(bg='white', fg='black')
         predict_button.config(bg='white', fg='black')
         clear_button.config(bg='white', fg='black')
-        dark_mode_button.config(bg='white', fg='black', text='☽')
         empty_label.config(bg='white')
+        menu_bar.config(bg='white') 
 
+dark_mode = False
+
+# 語言選單
+def set_language(lang):
+    global version
+    global predict_button
+    global clear_button
+    global file_menu
+    global language_menu
+    global setting_menu
+    global root
+    global menu_bar
+    global help_menu
+    
+    if lang == "繁體中文":
+        predict_button.config(text="預測")
+        clear_button.config(text="清除")
+        root.config(menu=None) 
+        menu_bar = Menu(root)
+        root.config(menu=menu_bar)
+
+        file_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="檔案", menu=file_menu)
+        file_menu.add_command(label="開啟", command=open_json_file)
+        file_menu.add_command(label="儲存", command=save_to_json)
+        file_menu.add_separator()
+        file_menu.add_command(label="退出", command=root.quit)
+
+        language_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="語言", menu=language_menu)
+        language_menu.add_command(label="☑ 繁體中文", command=lambda: set_language("繁體中文"))
+        language_menu.add_command(label="☐ English", command=lambda: set_language("English"))
+        language_menu.add_command(label="☐ 日本語", command=lambda: set_language("日本語"))
+        
+        help_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="說明", menu=help_menu)
+        help_menu.add_command(label="開啟網站", command=open_github)
+        help_menu.add_separator()
+        help_menu.add_command(label="版本資訊", command=show_version_info)
+
+        setting_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="設定", menu=setting_menu)
+        setting_menu.add_command(label="開啟暗黑模式", command=toggle_dark_mode)
+        
+    elif lang == "English":
+        predict_button.config(text="Predict")
+        clear_button.config(text="Clear")
+        root.config(menu=None)
+        menu_bar = Menu(root)
+        root.config(menu=menu_bar)
+
+        file_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="File", menu=file_menu)
+        file_menu.add_command(label="Open", command=open_json_file)
+        file_menu.add_command(label="Save", command=save_to_json)
+        file_menu.add_separator()
+        file_menu.add_command(label="Exit", command=root.quit)
+
+        language_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="Language", menu=language_menu)
+        language_menu.add_command(label="☐ 繁體中文", command=lambda: set_language("繁體中文"))
+        language_menu.add_command(label="☑ English", command=lambda: set_language("English"))
+        language_menu.add_command(label="☐ 日本語", command=lambda: set_language("日本語"))
+        
+        help_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="Help", menu=help_menu)
+        help_menu.add_command(label="Open Website", command=open_github)
+        help_menu.add_separator()
+        help_menu.add_command(label="Version Information", command=show_version_info)
+
+        setting_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="Setting", menu=setting_menu)
+        setting_menu.add_command(label="Toggle Dark Mode", command=toggle_dark_mode)
+    
+    elif lang == "日本語":
+        predict_button.config(text="予測")
+        clear_button.config(text="クリア")
+        root.config(menu=None)
+        menu_bar = Menu(root)
+        root.config(menu=menu_bar)
+
+        file_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="ファイル", menu=file_menu)
+        file_menu.add_command(label="開く", command=open_json_file)
+        file_menu.add_command(label="保存", command=save_to_json)
+        file_menu.add_separator()
+        file_menu.add_command(label="出口", command=root.quit)
+
+        language_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="言語", menu=language_menu)
+        language_menu.add_command(label="☐ 繁體中文", command=lambda: set_language("繁體中文"))
+        language_menu.add_command(label="☐ English", command=lambda: set_language("English"))
+        language_menu.add_command(label="☑ 日本語", command=lambda: set_language("日本語"))
+        
+        help_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="ヘルプ", menu=help_menu)
+        help_menu.add_command(label="ウェブサイトを開く", command=open_github)
+        help_menu.add_separator()
+        help_menu.add_command(label="バージョン情報", command=show_version_info)
+
+        setting_menu = Menu(menu_bar, tearoff=0)
+        menu_bar.add_cascade(label="設定", menu=setting_menu)
+        setting_menu.add_command(label="ダークモードを切り替える", command=toggle_dark_mode)
+        
 # 清除輸入和輸出框內容        
 def clear_input():
     entry.delete(0, tk.END)
     safety_text_box.delete('1.0', tk.END)
+    
 
 # 建立 tkinter 的 root 視窗
 version = "1.0.2"
 root = tk.Tk()
 root.title(f"Nagato-Sakura-SMS-Checker-GUI-Ver.{version}")
-root.geometry("640x480")  
+root.geometry("640x500")  
 icon_path = current_directory / "assets" / "icon" / f"{version}.ico"
 root.iconbitmap(icon_path)
 
-image_path = current_directory / "assets" / "4K" / f"{version}.png"
+image_path = current_directory / "assets" / "4K" / f"{version}.jpg"
 img = Image.open(image_path)
-img = img.resize((480, 270), Image.LANCZOS) 
+
+# 計算新的圖片大小以符合視窗比例
+img_width, img_height = img.size
+window_width = 640
+new_img_width = window_width-150
+new_img_height = int(img_height * (new_img_width / img_width))
+
+# 重新調整圖片大小
+img = img.resize((new_img_width, new_img_height), Image.LANCZOS)
 photo = ImageTk.PhotoImage(img)
 
 # 顯示圖片
 image_label = tk.Label(root, image=photo)
-image_label.pack()
+image_label.pack(fill="both", expand=True, padx=30)
 
 # 輸入框
 entry = tk.Entry(root, width=60)
-entry.pack()
+entry.pack(fill="x", expand=True, padx=60)
 
 # 預測和清除按鈕
 button_frame = tk.Frame(root)
@@ -252,11 +396,13 @@ empty_label.pack()
 
 # 滾動文字框
 safety_text_box = scrolledtext.ScrolledText(root, width=50, height=6, wrap=tk.WORD, font=("Arial", 11))
-safety_text_box.pack()
+safety_text_box.pack(fill="both", expand=True, padx=20, pady=15)
 
-# 暗黑模式按鈕
-dark_mode_button = tk.Button(root, text="☽", command=toggle_dark_mode, font=("Arial", 12))
-dark_mode_button.place(relx=0.9, rely=0.9, anchor="se")
+# 建立選單列
+menu_bar = Menu(root)
+root.config(menu=menu_bar)
+
+set_language("繁體中文")
 
 # GUI 主迴圈
 root.mainloop()
