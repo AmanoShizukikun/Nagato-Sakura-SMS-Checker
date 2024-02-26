@@ -141,7 +141,7 @@ def predict_SMS(text):
     predicted_probs = output.squeeze().tolist()
     predicted_label = [label for label, index in label_mapping.items() if index == predicted_class][0]
     phone_numbers = re.findall(r'(\(?0\d{1,2}\)?[-\.\s]?\d{3,4}[-\.\s]?\d{3,4})', text)
-    urls = re.findall(r'\b(?:https?://)?(?:www\.)?[\w\.-]+\.[a-zA-Z]{2,}\b', text)
+    urls = re.findall(r'\b(?:https?://)?(?:www\.)?[\w\.-]+\.[\w\.-]+(?:/[^\s]*)?\b', text)
     result = f"【簡訊內容】:{text}\n"
     result += f"【預測概率】: {predicted_probs}\n"
     result += f"【預測結果】: {predicted_label}\n"
