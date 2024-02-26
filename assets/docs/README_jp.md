@@ -116,7 +116,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 ### GUI テーマ
 現在、GUI にはライトモードとダークモードの2つのテーマがあります。右下隅のボタンを使用して切り替えることができます。
 
-![t2i](assets/samples/two_mode.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/two_mode.png)
 
 ## GUI 使用例
 ### 例1
@@ -124,7 +124,7 @@ SMS の内容：今週、6164華興は40％の利益を上げ、来週の強力�
 
 この種のSMSは、台湾でよく見られる投資詐欺です。投資家をLINEグループに誘導して詐欺を行います。 長門サクラの認識結果を見てみましょう：
 
-![t2i](assets/samples/scam_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/scam_sms.png)
 
 長門サクラは、疑わしいメッセージを正常に識別し、SMS内のURLを検出して基本的なチェックを行いました。ここでは、URLがhttpsではなくhttpを使用しているため、長門サクラはユーザーにリンクの潜在的なリスクを警告するメッセージを発行しました。
 
@@ -133,7 +133,7 @@ SMS の内容：Hami書店の月間読書パッケージ「期間限定ダウン
 
 この種のSMSは、台湾でよく見られる電気通信会社の広告です。中華電信と亜太電信の両方が受け取ります。 このようなメッセージのURLは、時々SMS内に特別な短縮URLであることがあります。この難しいタスクを長門サクラが処理できるでしょうか？
 
-![t2i](assets/samples/advertise_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/advertise_sms.png)
 
 長門サクラは、広告メッセージを正常に識別し、httpやwwwで始まるURLを検出できなかったURLを正常に検出し、それらを正しいURLに変換し、それらをテストしました。この広告は問題なく安全であるようです。
 
@@ -142,7 +142,7 @@ SMS の内容：OPEN POINT会員の皆様、確認コードは47385です。こ�
 
 この種のSMSは一般的な確認コードのSMSです。長門サクラはこれをどのように処理するのか見てみましょう。
 
-![t2i](assets/samples/captcha_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/captcha_sms.png)
 
 長門サクラは、確認コードのSMSを正常に識別しました。ただし、バージョン1.0.2では、AppleのようにSMSから確認コードを抽出することができません。長門サクラはまだ頑張る必要があるようです。
 
@@ -151,7 +151,7 @@ SMS の内容：2023/11/24 14:19 あなたは0918001824からの未着信1通が
 
 この種のSMSは、ほとんどの人が受け取る未着信のメッセージです。長門サクラはこれをどのように処理するのでしょうか？
 
-![t2i](assets/samples/normal_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/normal_sms.png)
 
 長門サクラは、未着信のメッセージを一般的なメッセージとして分類し、メッセージから正しく電話番号を読み取りました。本当に素晴らしいです。長門サクラに拍手を送りましょう。
 
@@ -160,7 +160,7 @@ SMS の内容：【亜太電信請求通知】現在の請求額は349元です�
 
 長門サクラは、私たちがやったことは自分を過小評価していると言います。彼女に2つ以上のURLを与えてみるように私たちに頼みます。長門サクラ、無理をしないでください。
 
-![t2i](assets/samples/two_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/two_sms.png)
 
 長門サクラは、亜太電信からの一般的なメッセージを正常に識別し、2つのURLも正常に識別し、それぞれにセキュリティテストを実施しました。亜太電信、あなたのウェブサイトを修正できますか？SSLの問題でもホストが見つかりませんの問題でもありません。エンジニアは本当にWWWで混乱しています。
 

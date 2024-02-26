@@ -116,7 +116,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 ### GUI Theme
 Currently, the GUI has two themes: light mode and dark mode. You can switch between them using the button in the bottom right corner.
 
-![t2i](assets/samples/two_mode.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/two_mode.png)
 
 ## GUI Usage Examples
 ### Example 1
@@ -124,7 +124,7 @@ SMS Content: This week, 6164 Huaxing made a profit of 40%, and next week's stron
 
 This type of SMS is a common investment scam in Taiwan, enticing investors to join LINE groups for fraud. Let's take a look at Nagato Sakura's recognition results:
 
-![t2i](assets/samples/scam_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/scam_sms.png)
 
 Nagato Sakura successfully identified the suspicious message and detected the URLs in the SMS for basic checks. Here, we can see that the URL uses http instead of https, so Nagato Sakura issued a warning message to alert users to the potential risks of the link.
 
@@ -133,7 +133,7 @@ SMS Content: Hami Bookstore's monthly reading package "Limited Time Download" wi
 
 This type of SMS is a common telecom advertisement in Taiwan, received by both Chunghwa Telecom and Asia Pacific Telecom. Sometimes, the URL in such messages is a special shortened URL in the SMS. Can Nagato Sakura handle this challenging task?
 
-![t2i](assets/samples/advertise_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/advertise_sms.png)
 
 Nagato Sakura successfully identified the advertising message and managed to detect the URLs that couldn't be detected through the detection of URLs starting with http and www. It then converted them into correct URLs and tested them. It seems that this advertisement is safe without any problems.
 
@@ -142,7 +142,7 @@ SMS Content: OPEN POINT member, your verification code is 47385. If this was not
 
 This type of SMS is a common verification code SMS. Let's see how Nagato Sakura handles it.
 
-![t2i](assets/samples/captcha_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/captcha_sms.png)
 
 Nagato Sakura successfully identified the verification code SMS. However, in version 1.0.2, Nagato Sakura cannot extract the verification code from the SMS like Apple can. It seems that Nagato Sakura still needs to work harder.
 
@@ -151,7 +151,7 @@ SMS Content: 2023/11/24 14:19 You have missed call from 0918001824, reminding yo
 
 This type of SMS is a missed call message that almost everyone receives. How does Nagato Sakura handle it?
 
-![t2i](assets/samples/normal_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/normal_sms.png)
 
 Nagato Sakura categorized the missed call message as a normal message and correctly read the phone number from the message. It's really impressive. Let's give Nagato Sakura a round of applause.
 
@@ -160,7 +160,7 @@ SMS Content: [Asia Pacific Telecom Billing Notice] Your current bill amount is 3
 
 Nagato Sakura says that what we just did is underestimating her. She wants us to try giving her two or more URLs. Nagato Sakura, please don't be too hard on yourself.
 
-![t2i](assets/samples/two_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/two_sms.png)
 
 Nagato Sakura successfully identified the general message from Asia Pacific Telecom and also identified two URLs. It then performed security tests on them separately. Asia Pacific Telecom, can your website be fixed? It's either an SSL issue or a HOST NOT FOUND issue. Your engineers are really confused with the WWW.
 
