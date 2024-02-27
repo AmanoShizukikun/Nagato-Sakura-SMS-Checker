@@ -194,12 +194,17 @@ def predict_and_display():
         
         safety_text_box.insert(tk.END, result_text)
         
-def open_github():
-    webbrowser.open("https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker")
-    
-def show_version_info():
-    messagebox.showinfo("Version Information", f"Current Version: {version}")
-    
+# 開啟
+def open_json_file():
+    file_path = filedialog.askopenfilename(filetypes=[("JSON files", "*.json")])
+
+    if file_path:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+            safety_text_box.delete('1.0', tk.END)
+            safety_text_box.insert(tk.END, content)
+            
+# 儲存
 def save_to_json():
     save_path = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON files", "*.json")])
 
@@ -207,17 +212,14 @@ def save_to_json():
         with open(save_path, 'w', encoding='utf-8') as file:
             content = safety_text_box.get('1.0', tk.END)
             file.write(content)
-            
-def open_json_file():
-    # 提示用戶選擇要打開的文件
-    file_path = filedialog.askopenfilename(filetypes=[("JSON files", "*.json")])
 
-    if file_path:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            content = file.read()
-            # 將文件內容顯示在滾動文字框中
-            safety_text_box.delete('1.0', tk.END)
-            safety_text_box.insert(tk.END, content)
+# 開啟網站
+def open_github():
+    webbrowser.open("https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker")
+    
+# 版本資訊    
+def show_version_info():
+    messagebox.showinfo("Version Information", f"Current Version: {version}")
 
 # 切換暗黑模式
 def toggle_dark_mode():
@@ -243,7 +245,6 @@ def toggle_dark_mode():
         clear_button.config(bg='white', fg='black')
         empty_label.config(bg='white')
         menu_bar.config(bg='white') 
-
 dark_mode = False
 
 # 語言選單
