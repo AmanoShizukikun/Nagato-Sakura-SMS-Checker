@@ -30,6 +30,7 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 - 【修復】短網址類型的網站只能判斷到縮網址的地方，無法判斷縮網址後的網站。
 ### 已知問題
 - 【錯誤】畫面縮放時，程式的UI圖片的部分不會跟著縮放。
+- 【錯誤】變更語言後輸出的報告不會變更語言。
 
 ### 1.0.2（2024 年 2 月 23 日）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.2.jpg)
@@ -53,6 +54,8 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 - 【新增】清除鍵，現在程式可以一鍵清除網址，大幅提升了使用的方便性。
 ### 已知問題
 - 【錯誤】畫面縮放時，程式的UI不會跟著縮放。
+
+[所有變動](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/Changelog.md)
 
 ## 快速開始
  **粗體** 的是強制要求的。
@@ -120,9 +123,14 @@ python test.py
 ```shell
 python Nagato-Sakura-SMS-Checker-GUI.py
 ```
-### GUI 主題
+
+### 語言
+目前 GUI 支援繁體中文、英文、日文三種語言的切換
+
+### 深色模式
 目前 GUI 有兩種主題分別為淺色模式以及深色模式，使用右下角的按鍵即可進行淺色模式以及深色模式切換
 ![t2i](assets/samples/two_mode.png)
+
 
 ## GUI 實際使用範例
 ### 範例 1
@@ -183,8 +191,9 @@ python Nagato-Sakura-SMS-Checker-GUI.py
   - [x] 電話號碼及網址檢測。
   - [x] 一鍵清除所有內容的按鍵。
   - [ ] 可縮放的調整畫面比例的GUI。
-  - [ ] 電話號碼黑名單
+  - [ ] 電話號碼黑名單。
      
+
 ## 致謝
 特別感謝以下項目和貢獻者：
 
