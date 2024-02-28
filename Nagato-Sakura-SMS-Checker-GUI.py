@@ -167,6 +167,7 @@ def predict_SMS(text, text_widget):
     predicted_label = [label for label, index in label_mapping.items() if index == predicted_class][0]
     phone_numbers = re.findall(r'(\(?0\d{1,2}\)?[-\.\s]?\d{3,4}[-\.\s]?\d{3,4})', text)
     urls = re.findall(r'\b(?:https?://)?(?:www\.)?[\w\.-]+\.[\w\.-]+(?:/[^\s]*)?\b', text)
+    verification_codes = re.findall(r'(?<!\d)(\d{4,6})(?!\d)(?<!/)', text)
     print(f"【簡訊內容】:{text}")
     text_widget.insert(tk.END, f"【簡訊內容】:{text}\n")
     print(f"【預測概率】: {predicted_probs}")
@@ -174,12 +175,17 @@ def predict_SMS(text, text_widget):
     print(f"【預測結果】: {predicted_label}")
     if phone_numbers:
         print(f"【偵測電話】:{phone_numbers}")
-        
     if urls:
         for url in urls:
             threading.Thread(target=check_url_safety, args=(url, text_widget)).start()
+            
+    if predicted_label == 'Captcha SMS':
+        if verification_codes:
+            print(f"【驗證碼】:{verification_codes}")
+        else:
+            print("【驗證碼】:未找到驗證碼。")
     
-    return predicted_label, predicted_probs, predicted_class, phone_numbers, urls
+    return predicted_label, predicted_probs, predicted_class, phone_numbers, urls, verification_codes
 
 # 預測簡訊並顯示結果
 def predict_and_display():
@@ -187,24 +193,20 @@ def predict_and_display():
     if user_input == "":
         messagebox.showinfo("提醒", "請輸入簡訊內容！")
     else:
-        predicted_label, predicted_probs, predicted_class, phone_numbers, urls = predict_SMS(user_input, safety_text_box)
-        result_label = f"【預測結果】: {predicted_label}"
-        phone_label = f"【偵測電話】: {phone_numbers}" if phone_numbers else ""
-        result_text = f"{result_label}\n{phone_label}\n" if phone_numbers else f"{result_label}\n"
+        predicted_label, predicted_probs, predicted_class, phone_numbers, urls, verification_codes = predict_SMS(user_input, safety_text_box)
+        result_label = f"【預測結果】: {predicted_label}\n"
+        phone_label = f"【偵測電話】: {phone_numbers}\n" if phone_numbers else ""
+        verification_codes_label = f"【驗證碼】: {verification_codes}\n" if predicted_label == 'Captcha SMS' and verification_codes else ""
+        result_text = f"{result_label}{phone_label}{verification_codes_label}"
         
         safety_text_box.insert(tk.END, result_text)
         
-# 開啟
-def open_json_file():
-    file_path = filedialog.askopenfilename(filetypes=[("JSON files", "*.json")])
-
-    if file_path:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            content = file.read()
-            safety_text_box.delete('1.0', tk.END)
-            safety_text_box.insert(tk.END, content)
-            
-# 儲存
+def open_github():
+    webbrowser.open("https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker")
+    
+def show_version_info():
+    messagebox.showinfo("Version Information", f"Current Version: {version}")
+    
 def save_to_json():
     save_path = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON files", "*.json")])
 
@@ -212,14 +214,17 @@ def save_to_json():
         with open(save_path, 'w', encoding='utf-8') as file:
             content = safety_text_box.get('1.0', tk.END)
             file.write(content)
+            
+def open_json_file():
+    # 提示用戶選擇要打開的文件
+    file_path = filedialog.askopenfilename(filetypes=[("JSON files", "*.json")])
 
-# 開啟網站
-def open_github():
-    webbrowser.open("https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker")
-    
-# 版本資訊    
-def show_version_info():
-    messagebox.showinfo("Version Information", f"Current Version: {version}")
+    if file_path:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+            # 將文件內容顯示在滾動文字框中
+            safety_text_box.delete('1.0', tk.END)
+            safety_text_box.insert(tk.END, content)
 
 # 切換暗黑模式
 def toggle_dark_mode():
@@ -245,6 +250,7 @@ def toggle_dark_mode():
         clear_button.config(bg='white', fg='black')
         empty_label.config(bg='white')
         menu_bar.config(bg='white') 
+
 dark_mode = False
 
 # 語言選單
@@ -358,7 +364,7 @@ def clear_input():
 version = "1.0.3"
 root = tk.Tk()
 root.title(f"Nagato-Sakura-SMS-Checker-GUI-Ver.{version}")
-root.geometry("640x500")  
+root.geometry("660x540")  
 icon_path = current_directory / "assets" / "icon" / f"{version}.ico"
 root.iconbitmap(icon_path)
 
@@ -367,7 +373,7 @@ img = Image.open(image_path)
 
 # 計算新的圖片大小以符合視窗比例
 img_width, img_height = img.size
-window_width = 640
+window_width = 660
 new_img_width = window_width-150
 new_img_height = int(img_height * (new_img_width / img_width))
 
@@ -394,7 +400,7 @@ empty_label = tk.Label(root, text="")
 empty_label.pack()
 
 # 滾動文字框
-safety_text_box = scrolledtext.ScrolledText(root, width=50, height=6, wrap=tk.WORD, font=("Arial", 11))
+safety_text_box = scrolledtext.ScrolledText(root, wrap=tk.WORD, font=("Arial", 11))
 safety_text_box.pack(fill="both", expand=True, padx=20, pady=15)
 
 # 建立選單列

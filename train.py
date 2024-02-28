@@ -130,7 +130,7 @@ batch_size = 32  # 根據需求設置批次大小
 train_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
 # 訓練模型
-epochs = 300
+epochs = 350
 for epoch in range(epochs):
     total_loss = 0
     start_time = time.time()
@@ -168,9 +168,9 @@ print("訓練完成")
 print("<生成模型配置文件>")
 # 定義模型配置
 model_config = {
-    "_name_or_path": "Project SMS",
-    "model_type": "Project SMS",
-    "architectures": ["Project SMS Model"],
+    "_name_or_path": "Nagato-Sakura-SMS-Checker-Model-v1.0.4",
+    "model_type": "Nagato-Sakura-SMS-Checker-Model-v1.0.4",
+    "architectures": ["Nagato-Sakura-SMS-Checker-Model-v1.0.4"],
     "input_size": input_size,
     "hidden_size": hidden_size,
     "output_size": output_size,
