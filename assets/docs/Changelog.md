@@ -1,3 +1,14 @@
+### 1.0.4（即將推出）
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.4.jpg)
+### 重要變更
+### 新增功能
+- 【新增】現在能判斷出驗證碼簡訊後將驗證碼輸出。
+- 【更新】模型訓練資料及模型版本更新。
+- 【修復】修復了將有小數點的訊息誤認成網址的錯誤。
+### 已知問題
+- 【錯誤】畫面縮放時，程式的UI圖片的部分不會跟著縮放。
+- 【錯誤】變更語言後輸出的報告不會變更語言。
+
 ### 1.0.3（2024 年 2 月 27 日）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.3.jpg)
 ### 重要變更
@@ -14,6 +25,8 @@
 - 【修復】短網址類型的網站只能判斷到縮網址的地方，無法判斷縮網址後的網站。
 ### 已知問題
 - 【錯誤】畫面縮放時，程式的UI圖片的部分不會跟著縮放。
+- 【錯誤】變更語言後輸出的報告不會變更語言。
+- 【錯誤】有機率將有小數點的訊息誤認成網址。
 
 ### 1.0.2（2024 年 2 月 23 日）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.2.jpg)
