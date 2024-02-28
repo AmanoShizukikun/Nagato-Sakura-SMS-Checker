@@ -10,10 +10,20 @@
 Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為了解決簡訊詐騙而自製的小型簡訊分類模型，可以分類簡訊類型、判斷簡訊中的電話及網址並且測試網址的響應狀態判斷網站是否安全。
 
 ## 公告
-- ### Project-SMS 正式改名為 「Nagato-Sakura-SMS-Checker」，並且併入「長門櫻計畫」，Project-SMS (3.0.0以前)的舊檔案將完全移除， Nagato-Sakura-SMS-Checker 版本從 1.0.0 重新開始
 - ### 目前中止 Nagato-Sakura-SMS-Checker 的打包 .exe 計畫，直到找到更有效率的的 Pytorch 模型打包方法。
 
 ## 近期變動
+### 1.0.4（即將推出）
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.4.jpg)
+### 重要變更
+### 新增功能
+- 【新增】現在能判斷出驗證碼簡訊後將驗證碼輸出。
+- 【更新】模型訓練資料及模型版本更新。
+- 【修復】修復了將有小數點的訊息誤認成網址的錯誤。
+### 已知問題
+- 【錯誤】畫面縮放時，程式的UI圖片的部分不會跟著縮放。
+- 【錯誤】變更語言後輸出的報告不會變更語言。
+
 ### 1.0.3（2024 年 2 月 27 日）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.3.jpg)
 ### 重要變更
@@ -31,6 +41,7 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 ### 已知問題
 - 【錯誤】畫面縮放時，程式的UI圖片的部分不會跟著縮放。
 - 【錯誤】變更語言後輸出的報告不會變更語言。
+- 【錯誤】有機率將有小數點的訊息誤認成網址。
 
 ### 1.0.2（2024 年 2 月 23 日）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.2.jpg)
@@ -42,17 +53,6 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 - 【新增】現在能判斷「非」 http 及 www 開頭的網站，並且能自動轉換縮寫網址為原本正確的完整網址。
 ### 已知問題
 - 【錯誤】短網址類型的網站只能判斷到縮網址的地方，無法判斷縮網址後的網站。
-- 【錯誤】畫面縮放時，程式的UI不會跟著縮放。
-
-### 1.0.1（2024 年 2 月 21 日）
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.1.jpg)
-### 重要變更
-- 【調整】GUI 調整了模型加載的順序，並且新增了線程來進行網址檢查，大幅提高了 GUI 的反應速度。
-- 【調整】改善了網址判斷的方式，現在可以建立 SSL/TLS 連線並取得證書以及檢查網址路徑是否包含可疑模式。
-- 【調整】深色模式，調整了深色模式的按鈕的顏色。
-### 新增功能
-- 【新增】清除鍵，現在程式可以一鍵清除網址，大幅提升了使用的方便性。
-### 已知問題
 - 【錯誤】畫面縮放時，程式的UI不會跟著縮放。
 
 [所有變動](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/Changelog.md)
