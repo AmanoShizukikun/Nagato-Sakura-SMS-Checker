@@ -13,7 +13,7 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 - ### 目前中止 Nagato-Sakura-SMS-Checker 的打包 .exe 計畫，直到找到更有效率的的 Pytorch 模型打包方法。
 
 ## 近期變動
-### 1.0.4（即將於2024 年 3 月 1 日推出）
+### 1.0.4 PRE（正式版將於2024 年 3 月 1 日推出）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.4.jpg)
 ### 重要變更
 ### 新增功能
