@@ -1,4 +1,4 @@
-### 1.0.4（即將推出）
+### 1.0.4（即將於2024 年 3 月 1 日推出）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.4.jpg)
 ### 重要變更
 ### 新增功能
