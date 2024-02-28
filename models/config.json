@@ -1,10 +1,10 @@
 {
-    "_name_or_path": "Project SMS",
-    "model_type": "Project SMS",
+    "_name_or_path": "Nagato-Sakura-SMS-Checker-Model-v1.0.4",
+    "model_type": "Nagato-Sakura-SMS-Checker-Model-v1.0.4",
     "architectures": [
-        "Project SMS Model"
+        "Nagato-Sakura-SMS-Checker-Model-v1.0.4"
     ],
-    "input_size": 713,
+    "input_size": 753,
     "hidden_size": 4096,
     "output_size": 4,
     "learning_rate": 0.05

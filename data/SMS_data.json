@@ -30,6 +30,11 @@
     "output": "Scam SMS"
   },
   {
+    "instruction": "[遠傳總經理井琪致遠傳用戶的一封信]親愛的用戶，您好！遠傳亞太將於   年  月  日合併。「新遠傳」將成為「頻譜三冠王」，網路也將逐步整併，讓您享受「加碼加量不加價」的網路升級體驗。完整信件詳見  ",
+    "input": "",
+    "output": "Advertise SMS"
+  },
+  {
     "instruction": "【勤益課務組通知】本學期期末教學反應意見調查，填答期限僅至本週日()止，填答所有科目且為有效問卷者，即有機會抽中禮券 元唷!",
     "input": "",
     "output": "Advertise SMS"
@@ -56,6 +61,11 @@
   },
   {
     "instruction": "台積電實習說明會，請有意願參加同學於 月 日前報名 勤益分機 ",
+    "input": "",
+    "output": "Advertise SMS"
+  },
+  {
+    "instruction": "遠傳易付卡，一個門號享有一次「首次儲值」重要權益別錯過：遠傳易付卡首次儲值 天上網吃到飽，直接送 天上網，快趁歲末領取這超值的實用回饋！並推薦到官網、心生活APP儲值，有金融帳戶、超商付現等多元支付，隨時隨地都能儲",
     "input": "",
     "output": "Advertise SMS"
   },
@@ -150,6 +160,36 @@
     "output": "Advertise SMS"
   },
   {
+    "instruction": "【新遠傳 迎龍年】愛瑪為您解憂讓您安心過好年~ 看好片 享折扣 還有多重好禮限時申辦通通送給你，快來點網址 歡喜過龍年()",
+    "input": "",
+    "output": "Advertise SMS"
+  },
+  {
+    "instruction": "【momo】新客專屬半價麥當勞，多款餐券、商品專屬新客價！限首次消費會員購買，點擊立即搶",
+    "input": "",
+    "output": "Advertise SMS"
+  },
+  {
+    "instruction": "<WeChat > 微信小程序手机号验证码： ， 分钟内有效。为保护账号安全，请勿泄漏。",
+    "input": "",
+    "output": "Captcha SMS"
+  },
+  {
+    "instruction": "【全聯行動會員】驗證碼： ，有效時間為 分鐘，請勿將此驗證碼洩漏給他人。",
+    "input": "",
+    "output": "Captcha SMS"
+  },
+  {
+    "instruction": "【momo購物網】裝置綁定認證碼： ，請於 分鐘內回填完成認證，為確保您的帳戶安全，此認證碼請勿提供給他人!",
+    "input": "",
+    "output": "Captcha SMS"
+  },
+  {
+    "instruction": "【momo購物網】登入驗證認證碼： ，請於 分鐘內回填完成認證，為確保您的帳戶安全，此認證碼請勿提供給他人!",
+    "input": "",
+    "output": "Captcha SMS"
+  },
+  {
     "instruction": "您的驗證碼:，切勿將驗證碼洩露於他人，驗證碼分鐘內有效",
     "input": "",
     "output": "Captcha SMS"
@@ -238,6 +278,16 @@
     "instruction": "歡迎加入街口，您的驗證碼為：，請於 分鐘內輸入此驗證碼以確認您的會員身分，謝謝。",
     "input": "",
     "output": "Captcha SMS"
+  },
+  {
+    "instruction": "【蝦皮購物】輸入   以登入新裝置，  分鐘內有效。請不要將驗證碼分享給任何人，包括蝦皮員工。",
+    "input": "",
+    "output": "Captcha SMS"
+  },
+  {
+    "instruction": "台灣大哥大 年 月帳單(原台灣之星) 計費期間：  本期應繳： 元 繳款期限：無需繳款 本期用量：網內 分，網外 分，市話 分，網內簡訊 則，網外簡訊 則，上網 MB:",
+    "input": "",
+    "output": "Normal SMS"
   },
   {
     "instruction": "先生為了你牙齒的健康,請於近期內回診所接受醫師的牙結石清除治療康齡牙醫診所預約電話:",
