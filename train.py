@@ -8,74 +8,14 @@ import json
 from tqdm import tqdm
 import time
 
-# 檢測設備是否有 NVIDIA 顯卡，選擇使用 CUDA 還是 CPU
+# 檢查是否有可用的 NVIDIA 顯示卡並設置為運算裝置、檢測環境
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-# 環境檢測
 print("<環境檢測>")
 print(f"PyTorch版本 : {torch.__version__}")
 print(f"訓練設備 : {device}")
 
-# 生成詞彙表
-print("<詞彙表生成>")
-# 獲取當前運行程序的文件夾路徑
+# 定義全域變量
 current_directory = os.path.dirname(os.path.abspath(__file__))
-# 載入訓練數據
-json_model_path = os.path.join(current_directory, './data/SMS_data.json')
-with open(json_model_path, 'r', encoding='utf-8') as json_file:
-    model_data = json.load(json_file)
-# 提取訓練數據
-instructions = [item["instruction"] for item in model_data]
-outputs = [item["output"] for item in model_data]
-
-# 提取詞彙表文字
-vocab_text = []
-for value in model_data:
-    if 'weight' in value:
-        vocab_text.extend(value)
-        
-# 確保models資料夾存在，如果不存在就創建它
-models_folder = os.path.join(current_directory, 'models')
-if not os.path.exists(models_folder):
-    os.makedirs(models_folder)
-        
-# 自動生成標籤編號
-print("<類別標籤生成>")
-label_mapping = {}
-label_count = 0
-for label in outputs:
-    if label not in label_mapping:
-        label_mapping[label] = label_count
-        label_count += 1
-
-# 將標籤儲存為 labels.txt
-labels_path = os.path.join(current_directory, './models/labels.txt')
-with open(labels_path, 'w') as labels_file:
-    for label, index in label_mapping.items():
-        labels_file.write(f"{label}: {index}\n")
-print(f"標籤已儲存於 {labels_path}")
-print(f"類別標籤生成完成 Lables 儲存為 .txt 於 {labels_path}")
-
-# 創建詞彙表 vocab
-vocab = list(set(''.join([text for text in instructions])))
-# 將 vocab 保存為 tokenizer.json
-tokenizer_path = os.path.join(current_directory, './models/tokenizer.json')
-with open(tokenizer_path, 'w') as json_file:
-    json.dump(vocab, json_file, indent=2)
-print(f"詞彙表生成完成 Tokenizer 儲存為 .json 於 {tokenizer_path}")
-
-# 將文本轉換為向量
-def text_to_vector(text):
-    vector = [0] * len(vocab)
-    for word in text:
-        if word in vocab:
-            vector[vocab.index(word)] = 1
-    return vector
-
-# 將數據轉換為模型可用的格式
-train_data = [(text_to_vector(text), label_mapping[label]) for text, label in zip(instructions, outputs)]
-
-print("<訓練開始>")
 
 # 定義神經網路模型
 class SMSClassifier(nn.Module):
@@ -103,6 +43,57 @@ class SMSClassifier(nn.Module):
         x = self.softmax(x)
         return x
     
+# 生成詞彙表
+print("<詞彙表生成>")
+json_model_path = os.path.join(current_directory, './data/SMS_data.json')
+with open(json_model_path, 'r', encoding='utf-8') as json_file:
+    model_data = json.load(json_file)
+instructions = [item["instruction"] for item in model_data]
+outputs = [item["output"] for item in model_data]
+vocab_text = []
+for value in model_data:
+    if 'weight' in value:
+        vocab_text.extend(value)
+        
+# 確保models資料夾存在，如果不存在就創建它
+models_folder = os.path.join(current_directory, 'models')
+if not os.path.exists(models_folder):
+    os.makedirs(models_folder)
+        
+# 生成標籤編號將標籤儲存為 labels.txt
+print("<類別標籤生成>")
+label_mapping = {}
+label_count = 0
+for label in outputs:
+    if label not in label_mapping:
+        label_mapping[label] = label_count
+        label_count += 1
+labels_path = os.path.join(current_directory, './models/labels.txt')
+with open(labels_path, 'w') as labels_file:
+    for label, index in label_mapping.items():
+        labels_file.write(f"{label}: {index}\n")
+print(f"標籤已儲存於 {labels_path}")
+print(f"類別標籤生成完成 Lables 儲存為 .txt 於 {labels_path}")
+
+# 創建詞彙表 vocab 保存為 tokenizer.json
+vocab = list(set(''.join([text for text in instructions])))
+tokenizer_path = os.path.join(current_directory, './models/tokenizer.json')
+with open(tokenizer_path, 'w') as json_file:
+    json.dump(vocab, json_file, indent=2)
+print(f"詞彙表生成完成 Tokenizer 儲存為 .json 於 {tokenizer_path}")
+
+# 將文本轉換為向量
+def text_to_vector(text):
+    vector = [0] * len(vocab)
+    for word in text:
+        if word in vocab:
+            vector[vocab.index(word)] = 1
+    return vector
+
+# 將數據轉換為模型可用的格式
+train_data = [(text_to_vector(text), label_mapping[label]) for text, label in zip(instructions, outputs)]
+
+print("<訓練開始>")
 # 設置模型參數
 input_size = len(vocab)
 hidden_size = 4096
@@ -110,9 +101,9 @@ output_size = len(label_mapping)
 
 # 初始化模型、損失函數和優化器
 model = SMSClassifier(input_size, hidden_size, output_size)
-model = model.to(device)  # 將模型移動到 GPU
-criterion = nn.CrossEntropyLoss()  # 使用 CrossEntropyLoss 作為損失函數
-criterion = criterion.to(device)  # 將損失函數移動到 GPU
+model = model.to(device)
+criterion = nn.CrossEntropyLoss()
+criterion = criterion.to(device)
 optimizer = optim.SGD(model.parameters(), lr=5e-2)
 
 # 記錄開始訓練時間
@@ -126,7 +117,7 @@ tensor_y = torch.tensor(labels, dtype=torch.long)
 dataset = TensorDataset(tensor_x, tensor_y)
 
 # 創建 DataLoader 來加載批次數據
-batch_size = 32  # 根據需求設置批次大小
+batch_size = 32 
 train_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
 # 訓練模型
@@ -147,26 +138,22 @@ for epoch in range(epochs):
     # 輸出每個 epoch 的平均損失
     average_loss = total_loss / len(train_loader)
     # 計算運行時間
-    
     elapsed_time = time.time() - start_time
     # 計算預計完成時間
     eta = (epochs - epoch - 1) * elapsed_time
     # 計算總訓練時間
     total_training_time = time.time() - training_start_time
     
-     # 動態計算空格填充數量
+    # 計算空格填充數量
     progress = epoch + 1
     percentage = progress / epochs * 100
     fill_length = int(50 * progress / epochs)
     space_length = 50 - fill_length
     print(f"Processing: {percentage:3.0f}%|{'█' * fill_length}{' ' * space_length}| {progress}/{epochs} [{total_training_time:.2f}<{eta:.2f}, {1 / elapsed_time:.2f}it/s, Loss: {average_loss:.4f}] ")
 
-    
-# 訓練結束 
-print("訓練完成")
+print("<訓練完成>")
 
 print("<生成模型配置文件>")
-# 定義模型配置
 model_config = {
     "_name_or_path": "Nagato-Sakura-SMS-Checker-Model-v1.0.4",
     "model_type": "Nagato-Sakura-SMS-Checker-Model-v1.0.4",
@@ -176,8 +163,6 @@ model_config = {
     "output_size": output_size,
     "learning_rate": optimizer.param_groups[0]['lr'],
 }
-
-# 儲存模型配置為 config.json
 config_path = os.path.join(current_directory, './models/config.json')
 with open(config_path, 'w') as json_file:
     json.dump(model_config, json_file, indent=4)
@@ -189,12 +174,9 @@ torch.save(model.state_dict(), model_path)
 print(f"保存模型完成 模型保存於 {model_path}")
 
 print("<載入測試模式>")
-# 在載入模型權重之前定義 model_path
 model_path = os.path.join(current_directory, './models/SMS_model.bin')
-# 載入模型並將其移到 CUDA 上
 model = SMSClassifier(input_size, hidden_size, output_size)
 model = model.to(device)
-# 加載模型權重
 model.load_state_dict(torch.load(model_path))
 
 # 測試模型
