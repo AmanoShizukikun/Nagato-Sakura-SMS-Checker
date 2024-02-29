@@ -8,10 +8,8 @@ import ssl
 import socket
 from urllib.parse import urlparse
 
-# 檢查是否有可用的 NVIDIA 顯示卡，並設置運算裝置
+# 檢查是否有可用的 NVIDIA 顯示卡並設置為運算裝置、檢測環境
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-# 環境檢測
 print("<環境檢測>")
 print(torch.__version__)
 print(device)
@@ -23,13 +21,10 @@ current_directory = Path(__file__).resolve().parent
 class SMSClassifier(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super(SMSClassifier, self).__init__()
-        # 輸入層到第一個隱藏層
         self.fc1 = nn.Linear(input_size, int(hidden_size * 0.66))
         self.relu1 = nn.ReLU()
-        # 第一個隱藏層到第二個隱藏層
         self.fc2 = nn.Linear(int(hidden_size * 0.66), int(hidden_size * 0.66))
         self.relu2 = nn.ReLU()
-        # 最後一個隱藏層到輸出層
         self.fc3 = nn.Linear(int(hidden_size * 0.66), output_size)
         self.softmax = nn.Softmax(dim=-1)
 
@@ -42,23 +37,12 @@ class SMSClassifier(nn.Module):
         x = self.softmax(x)
         return x
 
-# 將文本轉換為向量
-def text_to_vector(text, vocab):
-    vector = [0] * len(vocab)
-    for word in text:
-        if word in vocab:
-            vector[vocab.index(word)] = 1
-    return vector
-
 # 加載模型和 vocab
 def load_model(model_path, vocab_path, config_path, label_path, device):
-    # 讀取 vocab
     with open(vocab_path, 'r') as json_file:
         vocab = json.load(json_file)
-    # 讀取模型配置
     with open(config_path, 'r') as json_file:
         model_config = json.load(json_file)
-    # 讀取標籤映射
     with open(label_path, 'r') as labels_file:
         label_mapping = {}
         for line in labels_file:
@@ -71,14 +55,44 @@ def load_model(model_path, vocab_path, config_path, label_path, device):
     model.eval()
     return model, vocab, label_mapping
 
-# 設定檔案路徑
+# 設定檔案路徑並載入模型、詞彙表和標籤映射到裝置
 VOCAB_PATH = current_directory / "models" / "tokenizer.json"
 MODEL_PATH = current_directory / "models" / "SMS_model.bin"
 CONFIG_PATH = current_directory / "models" / "config.json"
 LABEL_PATH = current_directory / "models" / "labels.txt"
-
-# 加载模型、vocab和標籤映射
 model, vocab, label_mapping = load_model(MODEL_PATH, VOCAB_PATH, CONFIG_PATH, LABEL_PATH, device)
+
+# 將文本轉換為向量
+def text_to_vector(text, vocab):
+    vector = [0] * len(vocab)
+    for word in text:
+        if word in vocab:
+            vector[vocab.index(word)] = 1
+    return vector
+
+# 預測簡訊類別並顯示結果
+def predict_SMS(text):
+    input_vector = text_to_vector(text, vocab)
+    input_vector = torch.tensor(input_vector, dtype=torch.float).unsqueeze(0).to(device)
+    output = model(input_vector)
+    predicted_class = torch.argmax(output).item()
+    predicted_probs = output.squeeze().tolist()
+    predicted_label = [label for label, index in label_mapping.items() if index == predicted_class][0]
+    phone_numbers = re.findall(r'(\(?0\d{1,2}\)?[-\.\s]?\d{3,4}[-\.\s]?\d{3,4})', text)
+    urls = re.findall(r'\b(?:https?://)?(?:www\.)?[\w\.-]+\.[a-zA-Z]{2,}(?:/[^\s]*)?(?![\w\.-])\b', text)
+    verification_codes = re.findall(r'(?<!\d)(\d{4,6})(?!\d)(?<!/)', text)
+    result = f"【簡訊內容】:{text}\n"
+    result += f"【預測概率】: {predicted_probs}\n"
+    result += f"【預測結果】: {predicted_label}\n"
+    if phone_numbers:
+        result += f"【偵測電話】: {phone_numbers}\n"
+    if urls:
+        for url in urls:
+            result += f"{check_url_safety(url)}\n"
+    if predicted_label == 'Captcha SMS':
+            if verification_codes:
+                result += f"【驗證碼】:{verification_codes}\n"
+    return result
 
 # 檢查網址安全性
 def check_url_safety(url):
@@ -132,27 +146,7 @@ def check_url_safety(url):
     except Exception as e:
         return f"【錯誤】 {url}: {str(e)}"
 
-# 預測簡訊類別並顯示結果
-def predict_SMS(text):
-    input_vector = text_to_vector(text, vocab)
-    input_vector = torch.tensor(input_vector, dtype=torch.float).unsqueeze(0).to(device)
-    output = model(input_vector)
-    predicted_class = torch.argmax(output).item()
-    predicted_probs = output.squeeze().tolist()
-    predicted_label = [label for label, index in label_mapping.items() if index == predicted_class][0]
-    phone_numbers = re.findall(r'(\(?0\d{1,2}\)?[-\.\s]?\d{3,4}[-\.\s]?\d{3,4})', text)
-    urls = re.findall(r'\b(?:https?://)?(?:www\.)?[\w\.-]+\.[\w\.-]+(?:/[^\s]*)?\b', text)
-    result = f"【簡訊內容】:{text}\n"
-    result += f"【預測概率】: {predicted_probs}\n"
-    result += f"【預測結果】: {predicted_label}\n"
-    if phone_numbers:
-        result += f"【偵測電話】: {phone_numbers}\n"
-
-    if urls:
-        for url in urls:
-            result += f"{check_url_safety(url)}\n"
-    return result
-
+# 主迴圈 按下 Enter 結束程式或判斷簡訊
 print("<測試開始>")
 while True:
     user_input = input("請輸入簡訊內容（按下 Enter 結束程式）：")
