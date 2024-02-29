@@ -1,3 +1,5 @@
+# Nagato-Sakura-SMS-Checker
+## 所有發行版本
 ### 1.0.4（2024 年 3 月 1 日）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.4.jpg)
 ### 重要變更
