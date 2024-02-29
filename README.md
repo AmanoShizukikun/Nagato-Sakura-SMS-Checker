@@ -129,11 +129,12 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 ```
 
 ### 語言
-目前 GUI 支援繁體中文、英文、日文三種語言的切換
+目前 GUI 支援繁體中文、英文、日文三種語言的快速切換，使用上方 選單欄/語言 即可進行切換。
+![t2i](assets/samples/language.png)
 
-### 深色模式
-目前 GUI 有兩種主題分別為淺色模式以及深色模式，使用右下角的按鍵即可進行淺色模式以及深色模式切換
-![t2i](assets/samples/two_mode.png)
+### 主題
+目前 GUI 有七種主題分別為現代淺色、現代深色、緋紅之翼、青色陰影、暗度藏青、可愛次元及次元重生，使用上方 選單欄/主題 進行切換。
+![t2i](assets/samples/Light_Mode.png)
 
 
 ## GUI 實際使用範例
@@ -144,7 +145,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 ![t2i](assets/samples/scam_sms.png)
 
-長門櫻成功識別出了疑似詐騙的訊息，並且偵測出簡訊中的網址並進行基礎的檢查，這裡我們可以看到網址使用的是http而非https所以長門櫻發出了警告訊息提示使用者該連結有一定的風險。
+長門櫻成功識別出了詐騙訊息，並且偵測出簡訊中的網址並進行基礎的檢查，這裡我們可以看到網址使用的是http而非https，所以長門櫻發出了警告訊息提示使用者該連結有一定的風險。
 
 ### 範例 2
 簡訊內容: Hami書城的月讀包「限時下載」一年內會提供超過360本書！會員立即參與投票喜愛的書，有機會抽500元 hamibook.tw/2NQYp
