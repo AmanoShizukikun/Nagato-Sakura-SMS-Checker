@@ -10,7 +10,6 @@
 長門桜SMSチェッカーは、「長門桜計画」の一つで、SMS詐欺対策のために作成されたものです。これは、SMSの種類を分類し、SMS内の電話番号とURLを特定し、URLの応答ステータスをテストしてウェブサイトが安全かどうかを判断する小規模なSMS分類モデルです。
 
 ## お知らせ
-- ### 長門桜SMSチェッカーを.exeファイルにパッケージ化する計画は、より効率的なPyTorchモデルのパッケージ化方法が見つかるまで一時停止しています。
 
 ## 最近の変更
 ### 1.0.4（2024年3月1日）
@@ -59,7 +58,7 @@
 - [エラー] 短縮URLのウェブサイトは、短縮部分までしか識別されず、短縮後のウェブサイトを特定できません。
 - [エラー] 画面のズーム時に、UIがズームされません。
 
-[すべての変更](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/Changelog.md)
+[すべてのリリース](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/Changelog.md)
 
 ## クイックスタート
 **太字の項目は必須の要件です。**

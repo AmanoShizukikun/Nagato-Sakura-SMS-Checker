@@ -10,7 +10,6 @@
 Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project," created to combat SMS scams. It is a small-scale SMS classification model designed to categorize types of SMS, identify phone numbers and URLs within SMS, and test the response status of URLs to determine if a website is secure.
 
 ## Announcements
-- ### The plan to package Nagato-Sakura-SMS-Checker into a .exe file is currently suspended until a more efficient PyTorch model packaging method is found.
 
 ## Recent Changes
 ### 1.0.4 (March 1, 2024)
@@ -59,7 +58,7 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 - [Error] Shortened URL websites only identified up to the shortened part, unable to determine the website after the shortened part.
 - [Error] UI does not scale with screen zoom.
 
-[All changes](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/Changelog.md)
+[All Releases](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/Changelog.md)
 
 ## Quick Start
 **Items in bold are mandatory requirements.**

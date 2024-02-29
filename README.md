@@ -10,7 +10,6 @@
 Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為了解決簡訊詐騙而自製的小型簡訊分類模型，可以分類簡訊類型、判斷簡訊中的電話及網址並且測試網址的響應狀態判斷網站是否安全。
 
 ## 公告
-- ### （2024 年 2 月 19 日）目前中止 Nagato-Sakura-SMS-Checker 的打包計畫，直到有效率的的 Pytorch 模型打包方法。
 
 ## 近期變動
 ### 1.0.4（2024 年 3 月 1 日）
@@ -59,7 +58,7 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 - 【錯誤】短網址類型的網站只能判斷到縮網址的地方，無法判斷縮網址後的網站。
 - 【錯誤】畫面縮放時，程式的UI不會跟著縮放。
 
-[所有變動](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/Changelog.md)
+[所有發行版本](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/Changelog.md)
 
 ## 快速開始
  **粗體** 的是強制要求的。
