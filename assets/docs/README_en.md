@@ -10,49 +10,56 @@
 Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project," created to combat SMS scams. It is a small-scale SMS classification model designed to categorize types of SMS, identify phone numbers and URLs within SMS, and test the response status of URLs to determine if a website is secure.
 
 ## Announcements
-- ### Project-SMS has officially been renamed to "Nagato-Sakura-SMS-Checker" and merged into the "Nagato Sakura Project." Old files from Project-SMS (prior to version 3.0.0) will be completely removed. Nagato-Sakura-SMS-Checker starts fresh from version 1.0.0.
 - ### The plan to package Nagato-Sakura-SMS-Checker into a .exe file is currently suspended until a more efficient PyTorch model packaging method is found.
 
 ## Recent Changes
+### 1.0.4 (March 1, 2024)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.4.jpg)
+### Important Changes
+- [Critical] Adjusted model configuration file's model information.
+- [Critical] Added more data related to telecom fraud to the dataset (current total: 124).
+- [Critical] Removed dark mode and replaced it with a theme.
+### New Features
+- [New] Now capable of identifying verification code SMS and outputting the code.
+- [Update] Upgraded the model version significantly improving telecom fraud detection capability.
+- [Update] Version information now displays GUI version and model version, and updates with language changes.
+- [Fix] Corrected issue where reports weren't changing language after language switch.
+- [Fix] Rectified error where messages with decimals were mistakenly identified as URLs.
+### Known Issues
+- [Error] UI images of the program do not scale with screen zoom.
+
 ### 1.0.3 (February 27, 2024)
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.3.jpg)
-### Major Changes
-- 【Critical】The GUI has undergone significant adjustments in display, with the addition of a menu bar.
-- 【Adjusted】The GUI now displays complete reports.
-- 【Adjusted】The dark mode button has been removed and replaced with a menu bar option.
+### Important Changes
+- [Critical] GUI significantly redesigned with added menu bar.
+- [Adjustment] GUI now displays complete reports.
+- [Adjustment] Removed dark mode button, replaced with menu bar toggle.
 ### New Features
-- 【Added】Open - Open a saved .json file to view SMS results.
-- 【Added】Save - Save SMS results as a .json file.
-- 【Added】Exit - Exit the GUI.
-- 【Added】Language - Switch between Traditional Chinese, English, and Japanese.
-- 【Added】Open Website - Open the program's GitHub page.
-- 【Added】Version Info - Display the current version of the program.
-- 【Fixed】Websites with shortened URLs could only be detected up to the shortened part, unable to determine the website after expanding the URL.
+- [New] Open - Open saved .json file to view SMS results.
+- [New] Save - Save SMS results as .json file.
+- [New] Quit - Exit GUI.
+- [New] Language - Toggle between Traditional Chinese, English, and Japanese.
+- [New] Open Website - Open program's GitHub page.
+- [New] Version Info - Display current program version.
+- [Fix] Shortened URL websites now correctly identified.
 ### Known Issues
-- 【Error】When scaling the screen, parts of the program's UI images do not scale accordingly.
+- [Error] UI images of the program do not scale with screen zoom.
+- [Error] Reports do not change language after language switch.
+- [Error] Chance of messages with decimals being mistaken for URLs.
 
 ### 1.0.2 (February 23, 2024)
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.2.jpg)
-### Major Changes
-- 【Adjusted】The GUI display has been unified to use scrolling text boxes for messages, making it more concise and visually appealing.
-- 【Adjusted】The display of GUI and general test program in the terminal has been adjusted, resulting in neater results for users.
-- 【Adjusted】Deleted redundant information from the model training data and slightly adjusted training parameters, significantly improving prediction accuracy compared to the previous version.
+### Important Changes
+- [Adjustment] GUI display redesigned with unified use of scrolling text box for messages, providing a cleaner and more aesthetic appearance.
+- [Adjustment] GUI and terminal display for general testing now show results more neatly, facilitating easier user readability.
+- [Adjustment] Training data for the model cleared of irrelevant portions and training parameters slightly adjusted, resulting in a significant improvement in prediction accuracy compared to the old version.
 ### New Features
-- 【Added】Now capable of detecting websites not starting with "http" or "www" and automatically converting shortened URLs to the original correct URL.
+- [New] Now capable of identifying "non" http and www starting websites, and automatically converting abbreviated URLs to the correct full URLs.
 ### Known Issues
-- 【Error】Websites with shortened URLs could only be detected up to the shortened part, unable to determine the website after expanding the URL.
-- 【Error】When scaling the screen, the program's UI does not scale accordingly.
+- [Error] Shortened URL websites only identified up to the shortened part, unable to determine the website after the shortened part.
+- [Error] UI does not scale with screen zoom.
 
-### 1.0.1 (February 21, 2024)
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.1.jpg)
-### Major Changes
-- 【Adjusted】Changed the loading order of models in the GUI and added threads for URL checking, significantly improving GUI responsiveness.
-- 【Adjusted】Improved URL detection method, now able to establish SSL/TLS connections, retrieve certificates, and check for suspicious patterns in URL paths.
-- 【Adjusted】Dark mode button color adjustments for dark mode.
-### New Features
-- 【Added】Clear button, allowing users to clear URLs with one click, greatly enhancing usability.
-### Known Issues
-- 【Error】When scaling the screen, the program's UI does not scale accordingly.
+[All changes](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/Changelog.md)
 
 ## Quick Start
 **Items in bold are mandatory requirements.**
@@ -113,20 +120,22 @@ python test.py
 python Nagato-Sakura-SMS-Checker-GUI.py
 ```
 
-### GUI Theme
-Currently, the GUI has two themes: light mode and dark mode. You can switch between them using the button in the bottom right corner.
+### Language
+Currently, the GUI supports quick switching between Traditional Chinese, English, and Japanese. Simply use the top menu bar/Language to switch.
 
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/two_mode.png)
+### Themes
+Currently, the GUI offers seven themes: Modern Light, Modern Dark, Crimson Wing, Blue Shade, Dark Indigo, Cute Dimension, and Dimension Rebirth. Switch between them using the top menu bar/Themes.
+![t2i](assets/samples/Light_Mode.png)
 
-## GUI Usage Examples
+## GUI Practical Usage Example
 ### Example 1
-SMS Content: This week, 6164 Huaxing made a profit of 40%, and next week's strong stock has been selected. Hurry up and add LINE to claim:
+SMS Content: Myfone Reminder: As of February 29, you have 19,985 points remaining in your number. Expires today. Click the link to redeem your prize!
 
-This type of SMS is a common investment scam in Taiwan, enticing investors to join LINE groups for fraud. Let's take a look at Nagato Sakura's recognition results:
+This type of SMS is a popular scam SMS in Taiwan. Not only is the message deceptive, but the scam website is also very convincing. Let's take a look at Nagato Sakura's identification result:
 
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/scam_sms.png)
+![t2i](assets/samples/scam_sms.png)
 
-Nagato Sakura successfully identified the suspicious message and detected the URLs in the SMS for basic checks. Here, we can see that the URL uses http instead of https, so Nagato Sakura issued a warning message to alert users to the potential risks of the link.
+Nagato Sakura successfully identifies the scam message and detects the URL in the SMS for basic inspection. Here, we can see that the URL uses HTTP instead of HTTPS, so Nagato Sakura issues a warning message to alert the user of potential risks.
 
 ### Example 2
 SMS Content: Hami Bookstore's monthly reading package "Limited Time Download" will provide over 360 books in a year! Members can immediately participate in voting for their favorite books, with a chance to win 500 yuan at hamibook.tw/2NQYp.

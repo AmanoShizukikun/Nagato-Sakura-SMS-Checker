@@ -17,7 +17,7 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.4.jpg)
 ### 重要變更
 - 【重大】調整模型配置文件的模型資訊。
-- 【重大】添加了更多電信詐騙的相關資料進數據集(當前總資料個數:107)。
+- 【重大】添加了更多電信詐騙的相關資料進數據集(當前總資料個數:124)。
 - 【重大】移除黑暗模式改為主題。
 ### 新增功能
 - 【新增】現在能判斷出驗證碼簡訊後將驗證碼輸出。
@@ -130,7 +130,6 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 ### 語言
 目前 GUI 支援繁體中文、英文、日文三種語言的快速切換，使用上方 選單欄/語言 即可進行切換。
-![t2i](assets/samples/language.png)
 
 ### 主題
 目前 GUI 有七種主題分別為現代淺色、現代深色、緋紅之翼、青色陰影、暗度藏青、可愛次元及次元重生，使用上方 選單欄/主題 進行切換。
