@@ -466,7 +466,7 @@ def toggle_dark_mode():
 dark_mode = False
     
 # 建立 tkinter 視窗
-version = "1.0.3"
+version = "1.0.4"
 root = tk.Tk()
 root.title(f"Nagato-Sakura-SMS-Checker-GUI-Ver.{version}")
 root.geometry("660x540")  
