@@ -138,9 +138,9 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 ## GUI 實際使用範例
 ### 範例 1
-簡訊內容: 本週6164華興成功獲利40趴 下週強勢飆股已選出 趕緊加賴領取：
+簡訊內容: Myfone提醒您：截止2月29號，您門號尚餘19,985點積分,於今日到期，點擊連結立即兌換獎品！
 
-這種簡訊是台灣常見的投資詐騙手法，誘使投資人加入Line群組再進行詐騙，讓我們一起看看長門櫻的辨識結果:
+這種簡訊是台灣現在流行的詐騙簡訊，不但訊息以假亂真他的詐騙網站也做得十分逼真，讓我們一起看看長門櫻的辨識結果:
 
 ![t2i](assets/samples/scam_sms.png)
 
@@ -178,7 +178,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 長門櫻表示剛剛我們做的事實在是太小看她了，要我們試試一次給她兩個或以上的網址，長門櫻啊千萬別逞強啊。
 
-![t2i](assets/samples/two_sms.png)
+![t2i](assets/samples/two_url_sms.png)
 
 長門櫻成功識別出了亞太電信傳的一般訊息，也成功識別出了兩個網址，並且分別進行安全性測試，亞太電信你網站能弄好嗎? 不是 SSL 問題就是 HOST NOT FOUND 工程師實在是太混了 WWW 。
 
@@ -195,7 +195,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
   - [x] 電話號碼及網址檢測。
   - [x] 一鍵清除所有內容的按鍵。
   - [ ] 可縮放的調整畫面比例的GUI。
-  - [ ] 電話號碼黑名單。
+  - [ ] 黑名單。
      
 
 ## 致謝
