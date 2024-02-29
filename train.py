@@ -155,9 +155,10 @@ print("<訓練完成>")
 
 print("<生成模型配置文件>")
 model_config = {
-    "_name_or_path": "Nagato-Sakura-SMS-Checker-Model-v1.0.4",
-    "model_type": "Nagato-Sakura-SMS-Checker-Model-v1.0.4",
-    "architectures": ["Nagato-Sakura-SMS-Checker-Model-v1.0.4"],
+    "_name_or_path": "AmanoShizukikun/Nagato-Sakura-SMS-Checker",
+    "model_type": "Nagato-Sakura-SMS-Checker",
+    "architectures": ["NagatoSakuraSMSCheckerModel"],
+    "version": "1.0.4",
     "input_size": input_size,
     "hidden_size": hidden_size,
     "output_size": output_size,
