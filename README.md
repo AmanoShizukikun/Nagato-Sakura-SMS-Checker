@@ -122,7 +122,8 @@ python test.py
 
 
 ## GUI 介面
-- 開啟GUI
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/GUI.png)
+### 開啟GUI
 ```shell
 python Nagato-Sakura-SMS-Checker-GUI.py
 ```
@@ -132,7 +133,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 ### 主題
 目前 GUI 有七種主題分別為現代淺色、現代深色、緋紅之翼、青色陰影、暗度藏青、可愛次元及次元重生，使用上方 選單欄/主題 進行切換。
-![t2i](assets/samples/Light_Mode.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/themes/Cute_Dimension.png)
 
 
 ## GUI 實際使用範例
@@ -141,7 +142,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 這種簡訊是台灣現在流行的詐騙簡訊，不但訊息以假亂真他的詐騙網站也做得十分逼真，讓我們一起看看長門櫻的辨識結果:
 
-![t2i](assets/samples/scam_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/scam_sms.png)
 
 長門櫻成功識別出了詐騙訊息，並且偵測出簡訊中的網址並進行基礎的檢查，這裡我們可以看到網址使用的是http而非https，所以長門櫻發出了警告訊息提示使用者該連結有一定的風險。
 
@@ -150,7 +151,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 這種簡訊是台灣常見的電信廣告，不管是中華電信、亞太電信都會收到，這個網址還是簡訊有時會有的特殊縮網址，這種高難度的問題長門櫻做得出來嗎?
 
-![t2i](assets/samples/advertise_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/advertise_sms.png)
 
 長門櫻成功識別出了廣告訊息，並且將原本無法透過偵測http及www開頭的網址成功偵測出來，並且轉換成正確的網址並測試網址，看來這個廣告是安全的沒有任何問題。
 
@@ -159,7 +160,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 這種簡訊是常見的驗證碼簡訊，讓我們看看長門櫻會怎麼做?
 
-![t2i](assets/samples/captcha_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/captcha_sms.png)
 
 長門櫻成功識別出了驗證碼簡訊，但是目前1.0.2版本的長門櫻還無法像 apple 公司那麼厲害可以將簡訊內的驗證碼提取出來，看來長門櫻還需要加油啊。
 
@@ -168,7 +169,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 這種簡訊是每個人多少會有的未接來電訊息，長門櫻會怎麼做呢?
 
-![t2i](assets/samples/normal_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/normal_sms.png)
 
 長門櫻將未接來電訊息分類到了一般訊息，並且正確的讀取到了訊息中的電話號碼，實在是太厲害了讓我們一起為長門櫻鼓掌。
 
@@ -177,7 +178,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 長門櫻表示剛剛我們做的事實在是太小看她了，要我們試試一次給她兩個或以上的網址，長門櫻啊千萬別逞強啊。
 
-![t2i](assets/samples/two_url_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/two_url_sms.png)
 
 長門櫻成功識別出了亞太電信傳的一般訊息，也成功識別出了兩個網址，並且分別進行安全性測試，亞太電信你網站能弄好嗎? 不是 SSL 問題就是 HOST NOT FOUND 工程師實在是太混了 WWW 。
 
