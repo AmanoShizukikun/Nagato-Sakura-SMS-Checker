@@ -16,7 +16,7 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.4.jpg)
 ### Important Changes
 - [Critical] Adjusted model configuration file's model information.
-- [Critical] Added more data related to telecom fraud to the dataset (current total: 124).
+- [Critical] Added more data related to telecom fraud to the dataset.
 - [Critical] Removed dark mode and replaced it with a theme.
 ### New Features
 - [New] Now capable of identifying verification code SMS and outputting the code.

@@ -4,7 +4,7 @@
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.4.jpg)
 ### 重要變更
 - 【重大】調整模型配置文件的模型資訊。
-- 【重大】添加了更多電信詐騙的相關資料進數據集(當前總資料個數:124)。
+- 【重大】添加了更多電信詐騙的相關資料進數據集。
 - 【重大】移除黑暗模式改為主題。
 ### 新增功能
 - 【新增】現在能判斷出驗證碼簡訊後將驗證碼輸出。
