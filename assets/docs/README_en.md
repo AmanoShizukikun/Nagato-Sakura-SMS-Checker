@@ -62,10 +62,12 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 
 ## Quick Start
 **Items in bold are mandatory requirements.**
-
-### Hardware Requirements
-1. Operating System: Windows
-2. **CPU** / Nvidia GPU
+### System Requirements
+- System Requirements: 64-bit Windows
+- **Processor**: 64-bit processor
+- **Memory**: 2GB
+- Graphics Card: NVIDIA graphics card with 1GB VRAM and CUDA acceleration support
+- **Storage**: 3GB available space
 
 ### Environment Setup
 - **Python 3**
@@ -78,6 +80,11 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 - Download: [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit)
 - NVIDIA cuDNN
 - Download: [cuDNN](https://developer.nvidia.com/cudnn)
+- Python
+```shell
+pip install Pillow
+pip install requests
+```
 
 ### File Descriptions
 - Mandatory Files
@@ -113,7 +120,9 @@ python train.py
 python test.py
 ```
 
-### GUI
+
+## GUI
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/GUI.png)
 - Launch the GUI
 ```shell
 python Nagato-Sakura-SMS-Checker-GUI.py
@@ -124,7 +133,8 @@ Currently, the GUI supports quick switching between Traditional Chinese, English
 
 ### Themes
 Currently, the GUI offers seven themes: Modern Light, Modern Dark, Crimson Wing, Blue Shade, Dark Indigo, Cute Dimension, and Dimension Rebirth. Switch between them using the top menu bar/Themes.
-![t2i](assets/samples/Light_Mode.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/themes/Cute_Dimension.png)
+
 
 ## GUI Practical Usage Example
 ### Example 1
@@ -132,7 +142,7 @@ SMS Content: Myfone Reminder: As of February 29, you have 19,985 points remainin
 
 This type of SMS is a popular scam SMS in Taiwan. Not only is the message deceptive, but the scam website is also very convincing. Let's take a look at Nagato Sakura's identification result:
 
-![t2i](assets/samples/scam_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/scam_sms.png)
 
 Nagato Sakura successfully identifies the scam message and detects the URL in the SMS for basic inspection. Here, we can see that the URL uses HTTP instead of HTTPS, so Nagato Sakura issues a warning message to alert the user of potential risks.
 
@@ -141,7 +151,7 @@ SMS Content: Hami Bookstore's monthly reading package "Limited Time Download" wi
 
 This type of SMS is a common telecom advertisement in Taiwan, received by both Chunghwa Telecom and Asia Pacific Telecom. Sometimes, the URL in such messages is a special shortened URL in the SMS. Can Nagato Sakura handle this challenging task?
 
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/advertise_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/advertise_sms.png)
 
 Nagato Sakura successfully identified the advertising message and managed to detect the URLs that couldn't be detected through the detection of URLs starting with http and www. It then converted them into correct URLs and tested them. It seems that this advertisement is safe without any problems.
 
@@ -150,7 +160,7 @@ SMS Content: OPEN POINT member, your verification code is 47385. If this was not
 
 This type of SMS is a common verification code SMS. Let's see how Nagato Sakura handles it.
 
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/captcha_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/captcha_sms.png)
 
 Nagato Sakura successfully identified the verification code SMS. However, in version 1.0.2, Nagato Sakura cannot extract the verification code from the SMS like Apple can. It seems that Nagato Sakura still needs to work harder.
 
@@ -159,7 +169,7 @@ SMS Content: 2023/11/24 14:19 You have missed call from 0918001824, reminding yo
 
 This type of SMS is a missed call message that almost everyone receives. How does Nagato Sakura handle it?
 
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/normal_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/normal_sms.png)
 
 Nagato Sakura categorized the missed call message as a normal message and correctly read the phone number from the message. It's really impressive. Let's give Nagato Sakura a round of applause.
 
@@ -168,7 +178,7 @@ SMS Content: [Asia Pacific Telecom Billing Notice] Your current bill amount is 3
 
 Nagato Sakura says that what we just did is underestimating her. She wants us to try giving her two or more URLs. Nagato Sakura, please don't be too hard on yourself.
 
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/two_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/two_url_sms.png)
 
 Nagato Sakura successfully identified the general message from Asia Pacific Telecom and also identified two URLs. It then performed security tests on them separately. Asia Pacific Telecom, can your website be fixed? It's either an SSL issue or a HOST NOT FOUND issue. Your engineers are really confused with the WWW.
 
@@ -186,6 +196,7 @@ Nagato Sakura successfully identified the general message from Asia Pacific Tele
   - [x] Button to clear all content with one click.
   - [ ] Scalable GUI for adjusting screen proportions.
   - [ ] Phone number blacklist.
+
 
 ## Acknowledgments
 Special thanks to the following projects and contributors:

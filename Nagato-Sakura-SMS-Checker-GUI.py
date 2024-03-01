@@ -379,6 +379,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ 暗度藏青", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ 可愛次元", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ 次元重生", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ 賽博朋克", command=lambda: set_theme("賽博朋克"))
         elif theme == "現代深色":
             setting_menu.add_command(label="☐ 現代淺色", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☑ 現代深色", command=lambda: set_theme("現代深色"))
@@ -387,6 +388,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ 暗度藏青", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ 可愛次元", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ 次元重生", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ 賽博朋克", command=lambda: set_theme("賽博朋克"))
         elif theme == "緋紅之翼":
             setting_menu.add_command(label="☐ 現代淺色", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ 現代深色", command=lambda: set_theme("現代深色"))
@@ -395,6 +397,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ 暗度藏青", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ 可愛次元", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ 次元重生", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ 賽博朋克", command=lambda: set_theme("賽博朋克"))
         elif theme == "青色陰影":
             setting_menu.add_command(label="☐ 現代淺色", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ 現代深色", command=lambda: set_theme("現代深色"))
@@ -403,6 +406,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ 暗度藏青", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ 可愛次元", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ 次元重生", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ 賽博朋克", command=lambda: set_theme("賽博朋克"))
         elif theme == "暗度藏青":
             setting_menu.add_command(label="☐ 現代淺色", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ 現代深色", command=lambda: set_theme("現代深色"))
@@ -411,6 +415,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☑ 暗度藏青", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ 可愛次元", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ 次元重生", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ 賽博朋克", command=lambda: set_theme("賽博朋克"))
         elif theme == "可愛次元":
             setting_menu.add_command(label="☐ 現代淺色", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ 現代深色", command=lambda: set_theme("現代深色"))
@@ -419,6 +424,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ 暗度藏青", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☑ 可愛次元", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ 次元重生", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ 賽博朋克", command=lambda: set_theme("賽博朋克"))
         elif theme == "次元重生":
             setting_menu.add_command(label="☐ 現代淺色", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ 現代深色", command=lambda: set_theme("現代深色"))
@@ -427,6 +433,16 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ 暗度藏青", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ 可愛次元", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☑ 次元重生", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ 賽博朋克", command=lambda: set_theme("賽博朋克"))
+        elif theme == "賽博朋克":
+            setting_menu.add_command(label="☐ 現代淺色", command=lambda: set_theme("現代淺色"))
+            setting_menu.add_command(label="☐ 現代深色", command=lambda: set_theme("現代深色"))
+            setting_menu.add_command(label="☐ 緋紅之翼", command=lambda: set_theme("緋紅之翼"))
+            setting_menu.add_command(label="☐ 青色陰影", command=lambda: set_theme("青色陰影"))
+            setting_menu.add_command(label="☐ 暗度藏青", command=lambda: set_theme("暗度藏青"))
+            setting_menu.add_command(label="☐ 可愛次元", command=lambda: set_theme("可愛次元"))
+            setting_menu.add_command(label="☐ 次元重生", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☑ 賽博朋克", command=lambda: set_theme("賽博朋克"))
         
     elif language == "English":
         predict_button.config(text="Predict")
@@ -464,6 +480,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ Midnight Indigo", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ Cute Dimension", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ Dimension Rebirth", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ Cyberpunk", command=lambda: set_theme("賽博朋克"))
         elif theme == "現代深色":
             setting_menu.add_command(label="☐ Light Mode", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☑ Dark Mode", command=lambda: set_theme("現代深色"))
@@ -472,6 +489,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ Midnight Indigo", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ Cute Dimension", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ Dimension Rebirth", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ Cyberpunk", command=lambda: set_theme("賽博朋克"))
         elif theme == "緋紅之翼":
             setting_menu.add_command(label="☐ Light Mode", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ Dark Mode", command=lambda: set_theme("現代深色"))
@@ -480,6 +498,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ Midnight Indigo", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ Cute Dimension", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ Dimension Rebirth", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ Cyberpunk", command=lambda: set_theme("賽博朋克"))
         elif theme == "青色陰影":
             setting_menu.add_command(label="☐ Light Mode", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ Dark Mode", command=lambda: set_theme("現代深色"))
@@ -488,6 +507,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ Midnight Indigo", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ Cute Dimension", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ Dimension Rebirth", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ Cyberpunk", command=lambda: set_theme("賽博朋克"))
         elif theme == "暗度藏青":
             setting_menu.add_command(label="☐ Light Mode", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ Dark Mode", command=lambda: set_theme("現代深色"))
@@ -496,6 +516,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☑ Midnight Indigo", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ Cute Dimension", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ Dimension Rebirth", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ Cyberpunk", command=lambda: set_theme("賽博朋克"))
         elif theme == "可愛次元":
             setting_menu.add_command(label="☐ Light Mode", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ Dark Mode", command=lambda: set_theme("現代深色"))
@@ -504,6 +525,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ Midnight Indigo", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☑ Cute Dimension", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ Dimension Rebirth", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ Cyberpunk", command=lambda: set_theme("賽博朋克"))
         elif theme == "次元重生":
             setting_menu.add_command(label="☐ Light Mode", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ Dark Mode", command=lambda: set_theme("現代深色"))
@@ -512,6 +534,16 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ Midnight Indigo", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ Cute Dimension", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☑ Dimension Rebirth", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ Cyberpunk", command=lambda: set_theme("賽博朋克"))
+        elif theme == "賽博朋克":
+            setting_menu.add_command(label="☐ Light Mode", command=lambda: set_theme("現代淺色"))
+            setting_menu.add_command(label="☐ Dark Mode", command=lambda: set_theme("現代深色"))
+            setting_menu.add_command(label="☐ Crimson Wings", command=lambda: set_theme("緋紅之翼"))
+            setting_menu.add_command(label="☐ Azure Shadow", command=lambda: set_theme("青色陰影"))
+            setting_menu.add_command(label="☐ Midnight Indigo", command=lambda: set_theme("暗度藏青"))
+            setting_menu.add_command(label="☐ Cute Dimension", command=lambda: set_theme("可愛次元"))
+            setting_menu.add_command(label="☐ Dimension Rebirth", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☑ Cyberpunk", command=lambda: set_theme("賽博朋克"))
     
     elif language == "日本語":
         predict_button.config(text="予測")
@@ -549,6 +581,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ 真夜中の藍", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ キュートディメンション", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ ディメンションリバース", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ サイバーパンク", command=lambda: set_theme("賽博朋克"))
         elif theme == "現代深色":
             setting_menu.add_command(label="☐ ライトモード", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☑ ダークモード", command=lambda: set_theme("現代深色"))
@@ -557,6 +590,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ 真夜中の藍", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ キュートディメンション", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ ディメンションリバース", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ サイバーパンク", command=lambda: set_theme("賽博朋克"))
         elif theme == "緋紅之翼":
             setting_menu.add_command(label="☐ ライトモード", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ ダークモード", command=lambda: set_theme("現代深色"))
@@ -565,6 +599,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ 真夜中の藍", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ キュートディメンション", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ ディメンションリバース", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ サイバーパンク", command=lambda: set_theme("賽博朋克"))
         elif theme == "青色陰影":
             setting_menu.add_command(label="☐ ライトモード", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ ダークモード", command=lambda: set_theme("現代深色"))
@@ -573,6 +608,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ 真夜中の藍", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ キュートディメンション", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ ディメンションリバース", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ サイバーパンク", command=lambda: set_theme("賽博朋克"))
         elif theme == "暗度藏青":
             setting_menu.add_command(label="☐ ライトモード", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ ダークモード", command=lambda: set_theme("現代深色"))
@@ -581,6 +617,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☑ 真夜中の藍", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ キュートディメンション", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ ディメンションリバース", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ サイバーパンク", command=lambda: set_theme("賽博朋克"))
         elif theme == "可愛次元":
             setting_menu.add_command(label="☐ ライトモード", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ ダークモード", command=lambda: set_theme("現代深色"))
@@ -589,6 +626,7 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ 真夜中の藍", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☑ キュートディメンション", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☐ ディメンションリバース", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ サイバーパンク", command=lambda: set_theme("賽博朋克"))
         elif theme == "次元重生":
             setting_menu.add_command(label="☐ ライトモード", command=lambda: set_theme("現代淺色"))
             setting_menu.add_command(label="☐ ダークモード", command=lambda: set_theme("現代深色"))
@@ -597,6 +635,16 @@ def set_language(language, theme):
             setting_menu.add_command(label="☐ 真夜中の藍", command=lambda: set_theme("暗度藏青"))
             setting_menu.add_command(label="☐ キュートディメンション", command=lambda: set_theme("可愛次元"))
             setting_menu.add_command(label="☑ ディメンションリバース", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☐ サイバーパンク", command=lambda: set_theme("賽博朋克"))
+        elif theme == "賽博朋克":
+            setting_menu.add_command(label="☐ ライトモード", command=lambda: set_theme("現代淺色"))
+            setting_menu.add_command(label="☐ ダークモード", command=lambda: set_theme("現代深色"))
+            setting_menu.add_command(label="☐ 緋紅の翼", command=lambda: set_theme("緋紅之翼"))
+            setting_menu.add_command(label="☐ 蒼影", command=lambda: set_theme("青色陰影"))
+            setting_menu.add_command(label="☐ 真夜中の藍", command=lambda: set_theme("暗度藏青"))
+            setting_menu.add_command(label="☐ キュートディメンション", command=lambda: set_theme("可愛次元"))
+            setting_menu.add_command(label="☐ ディメンションリバース", command=lambda: set_theme("次元重生"))
+            setting_menu.add_command(label="☑ サイバーパンク", command=lambda: set_theme("賽博朋克"))
 
 # 開啟網站
 def open_github():
@@ -613,11 +661,11 @@ def show_version_info():
     language = current_language
     model_version = load_model_version(CONFIG_PATH)
     if language == "繁體中文":
-        messagebox.showinfo("版本資訊", f"GUI 版本: {version}\n模型版本: {model_version}")
+        messagebox.showinfo("版本資訊", f"運行模式: {device}\nGUI 版本: {version}\n模型版本: {model_version}")
     elif language == "English":
-        messagebox.showinfo("Version Information", f"GUI Version: {version}\nModel Version: {model_version}")
+        messagebox.showinfo("Version Information", f"Operating Mode: {device}\nGUI Version: {version}\nModel Version: {model_version}")
     elif language == "日本語":
-        messagebox.showinfo("バージョン情報", f"GUI バージョン: {version}\nモデルバージョン: {model_version}")
+        messagebox.showinfo("バージョン情報", f"動作モード: {device}\nGUI バージョン: {version}\nモデルバージョン: {model_version}")
         
 # 主題
 def set_theme(theme):
@@ -674,6 +722,16 @@ def set_theme(theme):
         empty_label.config(bg='#001C40')
         menu_bar.config(bg='#001C40')
     elif theme == "可愛次元":
+        root.config(bg='#FCC2FD')
+        image_label.config(bg='#FCC2FD')
+        entry.config(bg='#FCCFFE', fg='black', insertbackground='black')
+        button_frame.config(bg='#FCC2FD')
+        safety_text_box.config(bg='#FCCFFE', fg='black')
+        predict_button.config(bg='#FCC2FD', fg='black')
+        clear_button.config(bg='#FCC2FD', fg='black')
+        empty_label.config(bg='#FCC2FD')
+        menu_bar.config(bg='#FCC2FD')
+    elif theme == "次元重生":
         root.config(bg='#B5EDEF')
         image_label.config(bg='#B5EDEF')
         entry.config(bg='#FDE5FA', fg='black', insertbackground='black')
@@ -683,16 +741,16 @@ def set_theme(theme):
         clear_button.config(bg='#B5EDEF', fg='black')
         empty_label.config(bg='#B5EDEF')
         menu_bar.config(bg='#B5EDEF')
-    elif theme == "次元重生":
-        root.config(bg='#FDE5FA')
-        image_label.config(bg='#FDE5FA')
-        entry.config(bg='#B5EDEF', fg='black', insertbackground='black')
-        button_frame.config(bg='#FDE5FA')
-        safety_text_box.config(bg='#B5EDEF', fg='black')
-        predict_button.config(bg='#FDE5FA', fg='black')
-        clear_button.config(bg='#FDE5FA', fg='black')
-        empty_label.config(bg='#FDE5FA')
-        menu_bar.config(bg='#FDE5FA')
+    elif theme == "賽博朋克":
+        root.config(bg='#F2EA65')
+        image_label.config(bg='#F2EA65')
+        entry.config(bg='#65D0FC', fg='black', insertbackground='black')
+        button_frame.config(bg='#F2EA65')
+        safety_text_box.config(bg='#65D0FC', fg='black')
+        predict_button.config(bg='#F2EA65', fg='black')
+        clear_button.config(bg='#F2EA65', fg='black')
+        empty_label.config(bg='#F2EA65')
+        menu_bar.config(bg='#F2EA65')
         
     set_language(current_language, current_theme)
     

@@ -62,10 +62,12 @@
 
 ## クイックスタート
 **太字の項目は必須の要件です。**
-
-### ハードウェア要件
-1. オペレーティングシステム：Windows
-2. **CPU** / Nvidia GPU
+### システム要件
+- システム要件: 64ビットWindows
+- **プロセッサ**: 64ビットプロセッサ
+- **メモリ**: 2GB
+- グラフィックスカード: 1GBのVRAMを搭載し、CUDAアクセラレーションをサポートするNVIDIAグラフィックスカード
+- **ストレージ**: 利用可能なスペース3GB
 
 ### 環境の設定
 - **Python 3**
@@ -78,6 +80,11 @@
 - ダウンロード：[CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit)
 - NVIDIA cuDNN
 - ダウンロード：[cuDNN](https://developer.nvidia.com/cudnn)
+- Python
+```shell
+pip install Pillow
+pip install requests
+```
 
 ### ファイルの説明
 - 必須ファイル
@@ -113,8 +120,10 @@ python train.py
 python test.py
 ```
 
-### GUI
-- GUIを起動
+
+## GUI
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/GUI.png)
+### GUIを起動
 ```shell
 python Nagato-Sakura-SMS-Checker-GUI.py
 ```
@@ -124,7 +133,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 ### テーマ
 現在、GUIには現代的な明るいテーマ、現代的な暗いテーマ、紅の翼、青い影、ダークインディゴ、かわいいディメンション、そしてディメンションの再生の7つのテーマがあります。上部のメニューバー/テーマを使用して切り替えてください。
-![t2i](assets/samples/Light_Mode.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/themes/Cute_Dimension.png)
 
 
 ## GUIの実用例
@@ -133,7 +142,7 @@ SMSの内容：Myfoneリマインダー：2月29日時点で、あなたの番�
 
 この種のSMSは台湾で人気のある詐欺SMSです。メッセージだけでなく、詐欺のウェブサイトも非常に説得力があります。長門さくらの識別結果を見てみましょう：
 
-![t2i](assets/samples/scam_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/scam_sms.png)
 
 長門さくらは詐欺メッセージを正常に識別し、SMS内のURLを基本的に検査します。ここでは、URLがHTTPSではなくHTTPを使用しているため、長門さくらはユーザーに潜在的なリスクを警告するメッセージを発行します。
 
@@ -143,7 +152,7 @@ SMS の内容：Hami書店の月間読書パッケージ「期間限定ダウン
 
 この種のSMSは、台湾でよく見られる電気通信会社の広告です。中華電信と亜太電信の両方が受け取ります。 このようなメッセージのURLは、時々SMS内に特別な短縮URLであることがあります。この難しいタスクを長門サクラが処理できるでしょうか？
 
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/advertise_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/advertise_sms.png)
 
 長門サクラは、広告メッセージを正常に識別し、httpやwwwで始まるURLを検出できなかったURLを正常に検出し、それらを正しいURLに変換し、それらをテストしました。この広告は問題なく安全であるようです。
 
@@ -152,7 +161,7 @@ SMS の内容：OPEN POINT会員の皆様、確認コードは47385です。こ�
 
 この種のSMSは一般的な確認コードのSMSです。長門サクラはこれをどのように処理するのか見てみましょう。
 
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/captcha_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/captcha_sms.png)
 
 長門サクラは、確認コードのSMSを正常に識別しました。ただし、バージョン1.0.2では、AppleのようにSMSから確認コードを抽出することができません。長門サクラはまだ頑張る必要があるようです。
 
@@ -161,7 +170,7 @@ SMS の内容：2023/11/24 14:19 あなたは0918001824からの未着信1通が
 
 この種のSMSは、ほとんどの人が受け取る未着信のメッセージです。長門サクラはこれをどのように処理するのでしょうか？
 
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/normal_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/normal_sms.png)
 
 長門サクラは、未着信のメッセージを一般的なメッセージとして分類し、メッセージから正しく電話番号を読み取りました。本当に素晴らしいです。長門サクラに拍手を送りましょう。
 
@@ -170,7 +179,7 @@ SMS の内容：【亜太電信請求通知】現在の請求額は349元です�
 
 長門サクラは、私たちがやったことは自分を過小評価していると言います。彼女に2つ以上のURLを与えてみるように私たちに頼みます。長門サクラ、無理をしないでください。
 
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/two_sms.png)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/two_url_sms.png)
 
 長門サクラは、亜太電信からの一般的なメッセージを正常に識別し、2つのURLも正常に識別し、それぞれにセキュリティテストを実施しました。亜太電信、あなたのウェブサイトを修正できますか？SSLの問題でもホストが見つかりませんの問題でもありません。エンジニアは本当にWWWで混乱しています。
 
