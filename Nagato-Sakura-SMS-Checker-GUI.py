@@ -841,6 +841,9 @@ def enable_cert(show_cert):
     global current_cert
     current_cert = show_cert
     set_language(current_language, current_theme, current_blacklist, current_cert)
+    
+def paste_text():
+    entry.event_generate("<<Paste>>")
 
 # 建立 tkinter 視窗
 version = "1.0.4"
@@ -865,6 +868,14 @@ image_label.pack(fill="both", expand=True, padx=30)
 # 輸入框
 entry = tk.Entry(root, width=60)
 entry.pack(fill="x", expand=True, padx=60)
+
+# 右鍵選單
+right_click_menu = tk.Menu(root, tearoff=0)
+right_click_menu.add_command(label="貼上", command=paste_text)
+
+def on_right_click(event):
+    right_click_menu.post(event.x_root, event.y_root)
+entry.bind("<Button-3>", on_right_click)
 
 # 預測和清除按鈕
 button_frame = tk.Frame(root)
