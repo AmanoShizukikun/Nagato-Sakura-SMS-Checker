@@ -1,6 +1,15 @@
-# Nagato-Sakura-SMS-Checker
-## 所有發行版本
-### 1.0.4（2024 年 3 月 1 日）
+# Nagato-Sakura-SMS-Checker 所有發行版本
+## 1.0.5 PRE（即將推出）
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.5.jpg)
+### 重要變更
+- 【重大】新增黑名單網址數據 data/blacklist.txt
+### 新增功能
+- 【新增】網址黑名單功能，會比對黑名單網址數據如果網址相符會警告使用者。
+- 【新增】顯示憑證日期，可以顯示憑證的起始和結束日期，此功能預設關閉可去設定開啟。
+### 已知問題
+- 【錯誤】畫面縮放時，程式的UI圖片的部分不會跟著縮放。
+
+## 1.0.4（2024 年 3 月 1 日）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.4.jpg)
 ### 重要變更
 - 【重大】調整模型配置文件的模型資訊。
@@ -15,7 +24,7 @@
 ### 已知問題
 - 【錯誤】畫面縮放時，程式的UI圖片的部分不會跟著縮放。
 
-### 1.0.3（2024 年 2 月 27 日）
+## 1.0.3（2024 年 2 月 27 日）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.3.jpg)
 ### 重要變更
 - 【重大】GUI 大幅度調整了顯示的方式，新增了選單欄。
@@ -34,7 +43,7 @@
 - 【錯誤】變更語言後輸出的報告不會變更語言。
 - 【錯誤】有機率將有小數點的訊息誤認成網址。
 
-### 1.0.2（2024 年 2 月 23 日）
+## 1.0.2（2024 年 2 月 23 日）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.2.jpg)
 ### 重要變更
 - 【調整】GUI 調整了顯示的方式，統一使用滾動文字框來顯示訊息，看起來更加精簡美觀。
@@ -46,7 +55,7 @@
 - 【錯誤】短網址類型的網站只能判斷到縮網址的地方，無法判斷縮網址後的網站。
 - 【錯誤】畫面縮放時，程式的UI不會跟著縮放。
 
-### 1.0.1（2024 年 2 月 21 日）
+## 1.0.1（2024 年 2 月 21 日）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.1.jpg)
 ### 重要變更
 - 【調整】GUI 調整了模型加載的順序，並且新增了線程來進行網址檢查，大幅提高了 GUI 的反應速度。
@@ -57,7 +66,7 @@
 ### 已知問題
 - 【錯誤】畫面縮放時，程式的UI不會跟著縮放。
   
-### 1.0.0（2024 年 2 月 19 日）
+## 1.0.0（2024 年 2 月 19 日）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.0.jpg)
 ### 重要變更
 - 【重大】專案正式改名為 「Nagato-Sakura-SMS-Checker」，並且移除了Project-SMS 3.0.0 (包含3.0.0) 以前的舊版本檔案。
