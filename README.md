@@ -12,6 +12,16 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 ## 公告
 
 ## 近期變動
+### 1.0.5 PRE（即將推出）
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.5.jpg)
+### 重要變更
+- 【重大】新增黑名單網址數據 data/blacklist.txt
+### 新增功能
+- 【新增】網址黑名單功能，會比對黑名單網址數據如果網址相符會警告使用者。
+- 【新增】顯示憑證日期，可以顯示憑證的起始和結束日期，此功能預設關閉可去設定開啟。
+### 已知問題
+- 【錯誤】畫面縮放時，程式的UI圖片的部分不會跟著縮放。
+
 ### 1.0.4（2024 年 3 月 1 日）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.4.jpg)
 ### 重要變更
@@ -203,6 +213,7 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 ### 項目
 - [requests](https://github.com/psf/requests)
+- [165反詐騙諮詢專線_假投資(博弈)網站](https://data.gov.tw/dataset/160055)
 
 ### 貢獻者
 <a href="https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/graphs/contributors" target="_blank">
