@@ -191,6 +191,7 @@ def predict_SMS(text, text_widget):
 # 檢查網址安全性
 def check_url_safety(url, text_widget):
     language = current_language
+    show_hostname = current_hostname
     show_cert = current_cert
     try:
         # 若網址不是以 http:// 或 https:// 開頭，則加上 https://
@@ -209,7 +210,6 @@ def check_url_safety(url, text_widget):
                 result = f"【警告】Unknown language: {language}\n"
             print(result)
             text_widget.insert(tk.END, result)
-            return
         
         # 檢查網址中是否含有可疑模式
         suspicious_patterns = ["phishing", "malware", "hack", "top"]
@@ -224,14 +224,35 @@ def check_url_safety(url, text_widget):
                 result = f"【警告】Unknown language: {language}\n"
             print(result)
             text_widget.insert(tk.END, result)
-            return
         
         # 解析網址並取得主機名稱和 IP 地址
         parsed_url = urlparse(url)
         hostname = parsed_url.hostname
         ip_address = socket.gethostbyname(hostname)
         hostname_from_ip = socket.gethostbyaddr(ip_address)
-        
+        if show_hostname == "開啟":
+            if language == "繁體中文":
+                print(f"【主機名稱】{hostname}")
+                text_widget.insert(tk.END, f"【主機名稱】{hostname}\n")
+                print(f"【IP 位址】{ip_address}")
+                text_widget.insert(tk.END, f"【IP 位址】{ip_address}\n")
+                print(f"【從 IP 位址取得的主機名稱】{hostname_from_ip}")
+                text_widget.insert(tk.END, f"【從 IP 位址取得的主機名稱】{hostname_from_ip}\n")
+            elif language == "English":
+                print(f"【Hostname】: {hostname}")
+                text_widget.insert(tk.END, f"【Hostname】: {hostname}\n")
+                print(f"【IP Address】: {ip_address}")
+                text_widget.insert(tk.END, f"【IP Address】: {ip_address}\n")
+                print(f"【Hostname from IP Address】: {hostname_from_ip}")
+                text_widget.insert(tk.END, f"【Hostname from IP Address】: {hostname_from_ip}\n")
+            elif language == "日本語":
+                print(f"【ホスト名】: {hostname}")
+                text_widget.insert(tk.END, f"【ホスト名】: {hostname}\n")
+                print(f"【IPアドレス】: {ip_address}")
+                text_widget.insert(tk.END, f"【IPアドレス】: {ip_address}\n")
+                print(f"【IPアドレスからのホスト名】: {hostname_from_ip}")
+                text_widget.insert(tk.END, f"【IPアドレスからのホスト名】: {hostname_from_ip}\n")
+                
         # 建立 SSL 連線並取得伺服器憑證
         context = ssl.create_default_context()
         context.check_hostname = False
@@ -239,8 +260,6 @@ def check_url_safety(url, text_widget):
             s.settimeout(5)
             s.connect((hostname, 443))
             cert = s.getpeercert()
-        
-        # 取得憑證的起始和結束日期
         cert_start_date = cert['notBefore']
         cert_end_date = cert['notAfter']
         if show_cert == "開啟":
@@ -368,13 +387,15 @@ def save_to_json():
             file.write(content)
 
 # 語言選單
-def set_language(language, theme, blacklist, show_cert):
+def set_language(language, theme, blacklist, show_hostname, show_cert):
     global current_language
     current_language = language
     global current_theme
     current_theme = theme
     global current_blacklist
     current_blacklist = blacklist
+    global current_hostname
+    current_hostname = show_hostname
     global current_cert
     current_cert = show_cert
     global version
@@ -403,9 +424,9 @@ def set_language(language, theme, blacklist, show_cert):
 
         language_menu = Menu(menu_bar, tearoff=0)
         menu_bar.add_cascade(label="語言", menu=language_menu)
-        language_menu.add_command(label="☑ 繁體中文", command=lambda: set_language("繁體中文", current_theme, current_blacklist, current_cert))
-        language_menu.add_command(label="☐ English", command=lambda: set_language("English", current_theme, current_blacklist, current_cert))
-        language_menu.add_command(label="☐ 日本語", command=lambda: set_language("日本語", current_theme, current_blacklist, current_cert))
+        language_menu.add_command(label="☑ 繁體中文", command=lambda: set_language("繁體中文", current_theme, current_blacklist, current_hostname, current_cert))
+        language_menu.add_command(label="☐ English", command=lambda: set_language("English", current_theme, current_blacklist, current_hostname, current_cert))
+        language_menu.add_command(label="☐ 日本語", command=lambda: set_language("日本語", current_theme, current_blacklist, current_hostname, current_cert))
         
         help_menu = Menu(menu_bar, tearoff=0)
         menu_bar.add_cascade(label="說明", menu=help_menu)
@@ -494,6 +515,10 @@ def set_language(language, theme, blacklist, show_cert):
             setting_menu.add_command(label="☑ 黑名單", command=lambda: enable_blacklist("關閉"))
         elif blacklist == "關閉":
             setting_menu.add_command(label="☐ 黑名單", command=lambda: enable_blacklist("開啟"))
+        if show_hostname == "開啟":
+            setting_menu.add_command(label="☑ 顯示主機名稱及IP", command=lambda: enable_hostname("關閉"))
+        elif show_hostname == "關閉":
+            setting_menu.add_command(label="☐ 顯示主機名稱及IP", command=lambda: enable_hostname("開啟"))
         if show_cert == "開啟":
             setting_menu.add_command(label="☑ 顯示憑證日期", command=lambda: enable_cert("關閉"))
         elif show_cert == "關閉":
@@ -515,9 +540,9 @@ def set_language(language, theme, blacklist, show_cert):
 
         language_menu = Menu(menu_bar, tearoff=0)
         menu_bar.add_cascade(label="Language", menu=language_menu)
-        language_menu.add_command(label="☐ 繁體中文", command=lambda: set_language("繁體中文", current_theme, current_blacklist, current_cert))
-        language_menu.add_command(label="☑ English", command=lambda: set_language("English", current_theme, current_blacklist, current_cert))
-        language_menu.add_command(label="☐ 日本語", command=lambda: set_language("日本語", current_theme, current_blacklist, current_cert))
+        language_menu.add_command(label="☐ 繁體中文", command=lambda: set_language("繁體中文", current_theme, current_blacklist, current_hostname, current_cert))
+        language_menu.add_command(label="☑ English", command=lambda: set_language("English", current_theme, current_blacklist, current_hostname, current_cert))
+        language_menu.add_command(label="☐ 日本語", command=lambda: set_language("日本語", current_theme, current_blacklist, current_hostname, current_cert))
         
         help_menu = Menu(menu_bar, tearoff=0)
         menu_bar.add_cascade(label="Help", menu=help_menu)
@@ -606,6 +631,10 @@ def set_language(language, theme, blacklist, show_cert):
             setting_menu.add_command(label="☑ Blacklist", command=lambda: enable_blacklist("關閉"))
         elif blacklist == "關閉":
             setting_menu.add_command(label="☐ Blacklist", command=lambda: enable_blacklist("開啟"))
+        if show_hostname == "開啟":
+            setting_menu.add_command(label="☑ Show Hostname and IP", command=lambda: enable_hostname("關閉"))
+        elif show_hostname == "關閉":
+            setting_menu.add_command(label="☐ Show Hostname and IP", command=lambda: enable_hostname("開啟"))
         if show_cert == "開啟":
             setting_menu.add_command(label="☑ Show Certificate Dates", command=lambda: enable_cert("關閉"))
         elif show_cert == "關閉":
@@ -627,9 +656,9 @@ def set_language(language, theme, blacklist, show_cert):
 
         language_menu = Menu(menu_bar, tearoff=0)
         menu_bar.add_cascade(label="言語", menu=language_menu)
-        language_menu.add_command(label="☐ 繁體中文", command=lambda: set_language("繁體中文", current_theme, current_blacklist, current_cert),)
-        language_menu.add_command(label="☐ English", command=lambda: set_language("English", current_theme, current_blacklist, current_cert))
-        language_menu.add_command(label="☑ 日本語", command=lambda: set_language("日本語", current_theme, current_blacklist, current_cert))
+        language_menu.add_command(label="☐ 繁體中文", command=lambda: set_language("繁體中文", current_theme, current_blacklist, current_hostname, current_cert),)
+        language_menu.add_command(label="☐ English", command=lambda: set_language("English", current_theme, current_blacklist, current_hostname, current_cert))
+        language_menu.add_command(label="☑ 日本語", command=lambda: set_language("日本語", current_theme, current_blacklist, current_hostname, current_cert))
         
         help_menu = Menu(menu_bar, tearoff=0)
         menu_bar.add_cascade(label="ヘルプ", menu=help_menu)
@@ -718,6 +747,10 @@ def set_language(language, theme, blacklist, show_cert):
             setting_menu.add_command(label="☑ ブラックリスト", command=lambda: enable_blacklist("關閉"))
         elif blacklist == "關閉":
             setting_menu.add_command(label="☐ ブラックリスト", command=lambda: enable_blacklist("開啟"))
+        if show_hostname == "開啟":
+            setting_menu.add_command(label="☑ ホスト名とIPを表示", command=lambda: enable_hostname("關閉"))
+        elif show_hostname == "關閉":
+            setting_menu.add_command(label="☐ ホスト名とIPを表示", command=lambda: enable_hostname("開啟"))
         if show_cert == "開啟":
             setting_menu.add_command(label="☑ 証明書の日付を表示", command=lambda: enable_cert("關閉"))
         elif show_cert == "關閉":
@@ -828,19 +861,25 @@ def set_theme(theme):
         clear_button.config(bg='#F2EA65', fg='black')
         empty_label.config(bg='#F2EA65')
         menu_bar.config(bg='#F2EA65')
-    set_language(current_language, current_theme, current_blacklist, current_cert)
+    set_language(current_language, current_theme, current_blacklist, current_hostname, current_cert)
     
 # 黑名單 
 def enable_blacklist(blacklist):
     global current_blacklist
     current_blacklist = blacklist
-    set_language(current_language, current_theme, current_blacklist, current_cert)
+    set_language(current_language, current_theme, current_blacklist, current_hostname, current_cert)
+    
+# 顯示憑證日期
+def enable_hostname(show_hostname):
+    global current_hostname
+    current_hostname = show_hostname
+    set_language(current_language, current_theme, current_blacklist, current_hostname, current_cert)
     
 # 顯示憑證日期
 def enable_cert(show_cert):
     global current_cert
     current_cert = show_cert
-    set_language(current_language, current_theme, current_blacklist, current_cert)
+    set_language(current_language, current_theme, current_blacklist, current_hostname, current_cert)
     
 def paste_text():
     entry.event_generate("<<Paste>>")
@@ -849,7 +888,7 @@ def paste_text():
 version = "1.0.4"
 root = tk.Tk()
 root.title(f"Nagato-Sakura-SMS-Checker-GUI-Ver.{version}")
-root.geometry("660x540")  
+root.geometry("820x580")  
 icon_path = current_directory / "assets" / "icon" / f"{version}.ico"
 root.iconbitmap(icon_path)
 
@@ -857,8 +896,8 @@ root.iconbitmap(icon_path)
 image_path = current_directory / "assets" / "4K" / f"{version}.jpg"
 img = Image.open(image_path)
 img_width, img_height = img.size
-window_width = 660
-new_img_width = window_width-150
+window_width = 700
+new_img_width = window_width-100
 new_img_height = int(img_height * (new_img_width / img_width))
 img = img.resize((new_img_width, new_img_height), Image.LANCZOS)
 photo = ImageTk.PhotoImage(img)
@@ -894,7 +933,7 @@ safety_text_box.pack(fill="both", expand=True, padx=20, pady=15)
 # 選單列
 menu_bar = Menu(root)
 root.config(menu=menu_bar)
-set_language("繁體中文","現代淺色","開啟","關閉")
+set_language("繁體中文","現代淺色","開啟","關閉","關閉")
 
 # GUI 迴圈
 root.mainloop()
