@@ -144,7 +144,14 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 ### 主題
 目前 GUI 有七種主題分別為現代淺色、現代深色、緋紅之翼、青色陰影、暗度藏青、可愛次元及次元重生，使用上方 選單欄/主題 進行切換。
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/themes/Cute_Dimension.png)
+### 黑名單
+目前 GUI 預設開啟黑名單，當檢測到網址時會自動比對黑名單資料庫，如果不想要顯示或比對黑名單可以在上方 選單欄/設定 選擇開啟或關閉。
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/example/blacklist.png)
 
+### 主機名稱及IP
+目前 GUI 預設關閉主機名稱及IP，如果想要顯示主機名稱及IP可以在上方 選單欄/設定 選擇開啟或關閉。
+### 憑證日期
+目前 GUI 預設關閉憑證日期，如果想要顯示憑證日期可以在上方 選單欄/設定 選擇開啟或關閉。
 
 ## GUI 實際使用範例
 ### 範例 1
@@ -206,10 +213,6 @@ python Nagato-Sakura-SMS-Checker-GUI.py
   - [x] 黑名單。
   - [ ] 可縮放的調整畫面比例的GUI。
 
-
-## 延伸專案
-### - [Nagato-Sakura-Discord-Bot-py](https://github.com/AmanoShizukikun/Nagato-Sakura-Discord-Bot-py)
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-Discord-Bot-py/blob/main/assets/preview/1.6.2.jpg)
 
 ## 致謝
 特別感謝以下項目和貢獻者：
