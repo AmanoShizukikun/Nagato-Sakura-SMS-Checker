@@ -21,16 +21,10 @@ current_directory = os.path.dirname(os.path.abspath(__file__))
 class SMSClassifier(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super(SMSClassifier, self).__init__()
-
-        # 輸入層到第一個隱藏層
         self.fc1 = nn.Linear(input_size, int(hidden_size * 0.66)) 
         self.relu1 = nn.ReLU()
-
-        # 第一個隱藏層到第二個隱藏層
         self.fc2 = nn.Linear(int(hidden_size * 0.66), int(hidden_size * 0.66)) 
         self.relu2 = nn.ReLU()
-
-        # 最後一個隱藏層到輸出層
         self.fc3 = nn.Linear(int(hidden_size * 0.66), output_size)
         self.softmax = nn.Softmax(dim=-1)
 
