@@ -139,10 +139,8 @@ python test.py
 ```shell
 python Nagato-Sakura-SMS-Checker-GUI.py
 ```
-
 ### 語言
 目前 GUI 支援繁體中文、英文、日文三種語言的快速切換，使用上方 選單欄/語言 即可進行切換。
-
 ### 主題
 目前 GUI 有七種主題分別為現代淺色、現代深色、緋紅之翼、青色陰影、暗度藏青、可愛次元及次元重生，使用上方 選單欄/主題 進行切換。
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/samples/themes/Cute_Dimension.png)
@@ -201,7 +199,6 @@ python Nagato-Sakura-SMS-Checker-GUI.py
   - [x] 統一GUI版本和CMD版本的輸出訊息。
   - [x] 判斷非 http 及 www 開頭的網址。
   - [x] 用户指南。
-
 - [ ] **功能:**
   - [x] GUI版本的深色模式。
   - [x] 電話號碼及網址檢測。
@@ -209,15 +206,17 @@ python Nagato-Sakura-SMS-Checker-GUI.py
   - [x] 黑名單。
   - [ ] 可縮放的調整畫面比例的GUI。
 
-     
+
+## 延伸專案
+- Nagato-Sakura-Discord-Bot-py
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-Discord-Bot-py)
+
 
 ## 致謝
 特別感謝以下項目和貢獻者：
-
 ### 項目
 - [requests](https://github.com/psf/requests)
 - [165反詐騙諮詢專線_假投資(博弈)網站](https://data.gov.tw/dataset/160055)
-
 ### 貢獻者
 <a href="https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/graphs/contributors" target="_blank">
   <img src="https://contrib.rocks/image?repo=AmanoShizukikun/Nagato-Sakura-SMS-Checker" />
