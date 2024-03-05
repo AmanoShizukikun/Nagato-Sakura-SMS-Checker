@@ -208,9 +208,8 @@ python Nagato-Sakura-SMS-Checker-GUI.py
 
 
 ## 延伸專案
-- Nagato-Sakura-Discord-Bot-py
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-Discord-Bot-py)
-
+### - [Nagato-Sakura-Discord-Bot-py](https://github.com/AmanoShizukikun/Nagato-Sakura-Discord-Bot-py)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-Discord-Bot-py/blob/main/assets/preview/1.6.2.jpg)
 
 ## 致謝
 特別感謝以下項目和貢獻者：
