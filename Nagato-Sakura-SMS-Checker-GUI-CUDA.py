@@ -13,14 +13,12 @@ import threading
 from urllib.parse import urlparse
 import webbrowser
 
-# 檢查是否有可用的 NVIDIA 顯示卡並設置為運算裝置、檢測環境
+# 設置運算裝置、檢測環境
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print("<環境檢測>")
-print(torch.__version__)
-print(device)
-
-# 定義全域變量
 current_directory = Path(__file__).resolve().parent
+print("<環境檢測>")
+print(f"PyTorch 版本: {torch.__version__}")
+print(f"運行模式: {device}")
 
 # 定義神經網路模型
 class SMSClassifier(nn.Module):
@@ -42,7 +40,7 @@ class SMSClassifier(nn.Module):
         x = self.softmax(x)
         return x
 
-# 加載模型和 vocab
+# 加載模型和詞彙表
 def load_model(model_path, vocab_path, config_path, label_path, device):
     with open(vocab_path, 'r') as json_file:
         vocab = json.load(json_file)
@@ -59,7 +57,7 @@ def load_model(model_path, vocab_path, config_path, label_path, device):
     model.eval()
     return model, vocab, label_mapping
 
-# 設定檔案路徑並載入模型、詞彙表和標籤映射到裝置
+# 設定路徑並將模型、詞彙表和標籤映射到裝置
 VOCAB_PATH = current_directory / "models" / "tokenizer.json"
 MODEL_PATH = current_directory / "models" / "SMS_model.bin"
 CONFIG_PATH = current_directory / "models" / "config.json"
@@ -102,15 +100,15 @@ def predict_SMS(text, text_widget):
     urls = re.findall(r'\b(?:https?://)?(?:www\.)?[\w\.-]+\.[a-zA-Z]{2,}(?:/[^\s]*)?(?![\w\.-])\b', text)
     verification_codes = re.findall(r'(?<!\d)(\d{4,6})(?!\d)(?<!/)', text)
     if language == "繁體中文":
-        print(f"【簡訊內容】:{text}")
-        text_widget.insert(tk.END, f"【簡訊內容】:{text}\n")
+        print(f"【簡訊內容】: {text}")
+        text_widget.insert(tk.END, f"【簡訊內容】: {text}\n")
         print(f"【預測概率】: {predicted_probs}")
         text_widget.insert(tk.END, f"【預測概率】: {predicted_probs}\n")
         print(f"【預測結果】: {predicted_label}")
         text_widget.insert(tk.END, f"【預測結果】: {predicted_label}\n")
         if phone_numbers:
-            print(f"【偵測電話】:{phone_numbers}")
-            text_widget.insert(tk.END, f"【偵測電話】:{phone_numbers}\n")
+            print(f"【偵測電話】: {phone_numbers}")
+            text_widget.insert(tk.END, f"【偵測電話】: {phone_numbers}\n")
         if urls:
             for url in urls:
                 if current_blacklist == "開啟":
@@ -118,27 +116,27 @@ def predict_SMS(text, text_widget):
                         blacklist = set(line.strip() for line in file)
                     for blacklisted_url in blacklist:
                         if blacklisted_url in urls:
-                            print(f"【黑名單】 {urls} 在黑名單中")
-                            text_widget.insert(tk.END, f"【黑名單】 {urls} 在黑名單中\n")
+                            print(f"【黑名單】: {urls} 在黑名單中")
+                            text_widget.insert(tk.END, f"【黑名單】: {urls} 在黑名單中\n")
                             break  
                 threading.Thread(target=check_url_safety, args=(url, text_widget)).start()
         if predicted_label == 'Captcha SMS':
             if verification_codes:
-                print(f"【驗證碼】:{verification_codes}")
-                text_widget.insert(tk.END, f"【驗證碼】:{verification_codes}\n")
+                print(f"【驗證碼】: {verification_codes}")
+                text_widget.insert(tk.END, f"【驗證碼】: {verification_codes}\n")
             else:
-                print("【驗證碼】:未找到驗證碼。")
-                text_widget.insert(tk.END, "【驗證碼】:未找到驗證碼。\n")
+                print("【驗證碼】: 未找到驗證碼。")
+                text_widget.insert(tk.END, "【驗證碼】: 未找到驗證碼\n")
     elif language == "English":
-        print(f"【SMS Content】:{text}")
-        text_widget.insert(tk.END, f"【SMS Content】:{text}\n")
+        print(f"【SMS Content】: {text}")
+        text_widget.insert(tk.END, f"【SMS Content】: {text}\n")
         print(f"【Prediction Probabilities】: {predicted_probs}")
         text_widget.insert(tk.END, f"【Prediction Probabilities】: {predicted_probs}\n")
         print(f"【Prediction Result】: {predicted_label}")
         text_widget.insert(tk.END, f"【Prediction Result】: {predicted_label}\n")
         if phone_numbers:
-            print(f"【Detected Phone Numbers】:{phone_numbers}")
-            text_widget.insert(tk.END, f"【Detected Phone Numbers】:{phone_numbers}\n")
+            print(f"【Detected Phone Numbers】: {phone_numbers}")
+            text_widget.insert(tk.END, f"【Detected Phone Numbers】: {phone_numbers}\n")
         if urls:
             for url in urls:
                 if current_blacklist == "開啟":
@@ -146,27 +144,27 @@ def predict_SMS(text, text_widget):
                         blacklist = set(line.strip() for line in file)
                     for blacklisted_url in blacklist:
                         if blacklisted_url in urls:
-                            print(f"【Blacklist】 {urls} is in the blacklist\n")
-                            text_widget.insert(tk.END, f"【Blacklist】 {urls} is in the blacklist\n")
+                            print(f"【Blacklist】: {urls} is in the blacklist\n")
+                            text_widget.insert(tk.END, f"【Blacklist】: {urls} is in the blacklist\n")
                             break  
                 threading.Thread(target=check_url_safety, args=(url, text_widget)).start()
         if predicted_label == 'Captcha SMS':
             if verification_codes:
-                print(f"【Verification Codes】:{verification_codes}")
-                text_widget.insert(tk.END, f"【Verification Codes】:{verification_codes}\n")
+                print(f"【Verification Codes】: {verification_codes}")
+                text_widget.insert(tk.END, f"【Verification Codes】: {verification_codes}\n")
             else:
-                print("【Verification Codes】:No verification code found.")
-                text_widget.insert(tk.END, "【Verification Codes】:No verification code found.\n")
+                print("【Verification Codes】: No verification code found.")
+                text_widget.insert(tk.END, "【Verification Codes】: No verification code found.\n")
     elif language == "日本語":
-        print(f"【SMS コンテンツ】:{text}")
-        text_widget.insert(tk.END, f"【SMS コンテンツ】:{text}\n")
+        print(f"【SMS コンテンツ】: {text}")
+        text_widget.insert(tk.END, f"【SMS コンテンツ】: {text}\n")
         print(f"【予測確率】: {predicted_probs}")
         text_widget.insert(tk.END, f"【予測確率】: {predicted_probs}\n")
         print(f"【予測結果】: {predicted_label}")
         text_widget.insert(tk.END, f"【予測結果】: {predicted_label}\n")
         if phone_numbers:
-            print(f"【検出電話】:{phone_numbers}")
-            text_widget.insert(tk.END, f"【検出電話】:{phone_numbers}\n")
+            print(f"【検出電話】: {phone_numbers}")
+            text_widget.insert(tk.END, f"【検出電話】: {phone_numbers}\n")
         if urls:
             for url in urls:
                 if current_blacklist == "開啟":
@@ -174,17 +172,17 @@ def predict_SMS(text, text_widget):
                         blacklist = set(line.strip() for line in file)
                     for blacklisted_url in blacklist:
                         if blacklisted_url in urls:
-                            print(f"【ブラックリスト】 {urls} はブラックリストにあります\n")
-                            text_widget.insert(tk.END, f"【ブラックリスト】 {urls} はブラックリストにあります\n")
+                            print(f"【ブラックリスト】: {urls} はブラックリストにあります\n")
+                            text_widget.insert(tk.END, f"【ブラックリスト】: {urls} はブラックリストにあります\n")
                             break  
                 threading.Thread(target=check_url_safety, args=(url, text_widget)).start()
         if predicted_label == 'Captcha SMS':
             if verification_codes:
-                print(f"【確認コード】:{verification_codes}")
-                text_widget.insert(tk.END, f"【確認コード】:{verification_codes}\n")
+                print(f"【確認コード】: {verification_codes}")
+                text_widget.insert(tk.END, f"【確認コード】: {verification_codes}\n")
             else:
-                print("【確認コード】:確認コードが見つかりませんでした。")
-                text_widget.insert(tk.END, "【確認コード】:確認コードが見つかりませんでした。\n")
+                print("【確認コード】: 確認コードが見つかりませんでした。")
+                text_widget.insert(tk.END, "【確認コード】: 確認コードが見つかりませんでした。\n")
 
     return predicted_label, predicted_probs, predicted_class, phone_numbers, urls, verification_codes
 
@@ -201,168 +199,211 @@ def check_url_safety(url, text_widget):
         # 若網址不是以 https:// 開頭，則印出警告訊息
         if not url.startswith("https://"):
             if language == "繁體中文":
-                result = f"【警告】 {url} 使用不安全的協議\n"
+                print(f"【警告】: {url} 使用不安全的協議")
+                result = f"【警告】: {url} 使用不安全的協議\n"
             elif language == "English":
-                result = f"【Warning】 {url} is using an insecure protocol\n"
+                print(f"【Warning】: {url} is using an insecure protocol")
+                result = f"【Warning】: {url} is using an insecure protocol\n"
             elif language == "日本語":
-                result = f"【警告】 {url} は安全でないプロトコルを使用しています\n"
+                print(f"【警告】: {url} は安全でないプロトコルを使用しています")
+                result = f"【警告】: {url} は安全でないプロトコルを使用しています\n"
             else:
-                result = f"【警告】Unknown language: {language}\n"
-            print(result)
+                print(f"【警告】: Unknown language: {language}")
+                result = f"【警告】: Unknown language: {language}\n"
             text_widget.insert(tk.END, result)
         
-        # 檢查網址中是否含有可疑模式
+        # 檢查網址中是否有可疑模式
         suspicious_patterns = ["phishing", "malware", "hack", "top"]
         if any(pattern in url.lower() for pattern in suspicious_patterns):
             if language == "繁體中文":
-                result = f"【警告】 {url} 的路徑包含可疑模式\n"
+                print(f"【警告】: {url} 的路徑包含可疑模式")
+                result = f"【警告】: {url} 的路徑包含可疑模式\n"
             elif language == "English":
-                result = f"【Warning】 The path of {url} contains suspicious patterns\n"
+                print(f"【Warning】: The path of {url} contains suspicious patterns")
+                result = f"【Warning】: The path of {url} contains suspicious patterns\n"
             elif language == "日本語":
-                result = f"【警告】 {url} のパスには疑わしいパターンが含まれています\n"
+                print(f"【警告】: {url} のパスには疑わしいパターンが含まれています")
+                result = f"【警告】: {url} のパスには疑わしいパターンが含まれています\n"
             else:
-                result = f"【警告】Unknown language: {language}\n"
-            print(result)
+                print(f"【警告】: Unknown language: {language}")
+                result = f"【警告】: Unknown language: {language}\n"
             text_widget.insert(tk.END, result)
         
-        # 解析網址並取得主機名稱和 IP 地址
-        parsed_url = urlparse(url)
-        hostname = parsed_url.hostname
-        ip_address = socket.gethostbyname(hostname)
-        hostname_from_ip = socket.gethostbyaddr(ip_address)
-        if show_hostname == "開啟":
-            if language == "繁體中文":
-                print(f"【主機名稱】{hostname}")
-                text_widget.insert(tk.END, f"【主機名稱】{hostname}\n")
-                print(f"【IP 位址】{ip_address}")
-                text_widget.insert(tk.END, f"【IP 位址】{ip_address}\n")
-                print(f"【從 IP 位址取得的主機名稱】{hostname_from_ip}")
-                text_widget.insert(tk.END, f"【從 IP 位址取得的主機名稱】{hostname_from_ip}\n")
-            elif language == "English":
-                print(f"【Hostname】: {hostname}")
-                text_widget.insert(tk.END, f"【Hostname】: {hostname}\n")
-                print(f"【IP Address】: {ip_address}")
-                text_widget.insert(tk.END, f"【IP Address】: {ip_address}\n")
-                print(f"【Hostname from IP Address】: {hostname_from_ip}")
-                text_widget.insert(tk.END, f"【Hostname from IP Address】: {hostname_from_ip}\n")
-            elif language == "日本語":
-                print(f"【ホスト名】: {hostname}")
-                text_widget.insert(tk.END, f"【ホスト名】: {hostname}\n")
-                print(f"【IPアドレス】: {ip_address}")
-                text_widget.insert(tk.END, f"【IPアドレス】: {ip_address}\n")
-                print(f"【IPアドレスからのホスト名】: {hostname_from_ip}")
-                text_widget.insert(tk.END, f"【IPアドレスからのホスト名】: {hostname_from_ip}\n")
-                
-        # 建立 SSL 連線並取得伺服器憑證
-        context = ssl.create_default_context()
-        context.check_hostname = False
-        with context.wrap_socket(socket.socket(), server_hostname=url) as s:
-            s.settimeout(5)
-            s.connect((hostname, 443))
-            cert = s.getpeercert()
-        cert_start_date = cert['notBefore']
-        cert_end_date = cert['notAfter']
-        if show_cert == "開啟":
-            if language == "繁體中文":
-                print(f"【憑證起始日期】：{cert_start_date}")
-                text_widget.insert(tk.END, f"【憑證起始日期】：{cert_start_date}\n")
-                print(f"【憑證結束日期】：{cert_end_date}")
-                text_widget.insert(tk.END, f"【憑證結束日期】：{cert_end_date}\n")
-            elif language == "English":
-                print(f"【Certificate Start Date】：{cert_start_date}")
-                text_widget.insert(tk.END, f"【Certificate Start Date】：{cert_start_date}\n")
-                print(f"【Certificate End Date】：{cert_end_date}")
-                text_widget.insert(tk.END, f"【Certificate End Date】：{cert_end_date}\n")
-            elif language == "日本語":
-                print(f"【証明書開始日】：{cert_start_date}")
-                text_widget.insert(tk.END, f"【証明書開始日】：{cert_start_date}\n")
-                print(f"【証明書終了日】：{cert_end_date}")
-                text_widget.insert(tk.END, f"【証明書終了日】：{cert_end_date}\n")
-        
         # 發送 HTTP 請求並檢查回應狀態碼
-        response = requests.get(url, timeout=5)
+        response = requests.get(url, timeout=3)
         if response.status_code == 200:
             if language == "繁體中文":
-                result = f"【安全】 {url} 是安全的\n"
+                print(f"【安全】: {url} 伺服器已處理請求並正常響應")
+                result = f"【安全】: {url} 伺服器已處理請求並正常響應\n"
             elif language == "English":
-                result = f"【Safe】 {url} is safe\n"
+                print(f"【Safe】: {url} The server has successfully processed the request and responded normally")
+                result = f"【Safe】: {url} The server has successfully processed the request and responded normally\n"
             elif language == "日本語":
-                result = f"【安全】 {url} は安全です\n"
+                print(f"【安全】: {url} サーバーはリクエストを正常に処理し、正常に応答しました")
+                result = f"【安全】: {url} サーバーはリクエストを正常に処理し、正常に応答しました\n"
             else:
-                result = f"【安全】Unknown language\: {language}\n"
-            print(result)
+                result = f"【安全】: Unknown language\: {language}\n"
             text_widget.insert(tk.END, result)
         else:
             if language == "繁體中文":
-                result = f"【警告】 {url} 可能有風險 (狀態碼: {response.status_code}).\n"
+                print(f"【警告】: {url} 可能有風險 (狀態碼: {response.status_code}).")
+                result = f"【警告】: {url} 可能有風險 (狀態碼: {response.status_code}).\n"
             elif language == "English":
-                result = f"【Warning】 {url} may be at risk (status code: {response.status_code}).\n"
+                print(f"【Warning】: {url} may be at risk (status code: {response.status_code}).")
+                result = f"【Warning】: {url} may be at risk (status code: {response.status_code}).\n"
             elif language == "日本語":
-                result = f"【警告】 {url} はリスクがある可能性があります（ステータスコード: {response.status_code}）。\n"
+                print(f"【警告】: {url} はリスクがある可能性があります（ステータスコード: {response.status_code}）.")
+                result = f"【警告】: {url} はリスクがある可能性があります（ステータスコード: {response.status_code}）.\n"
             else:
-                result = f"【警告】Unknown language: {language}\n"
-            print(result)
+                print(f"【警告】: Unknown language: {language}")
+                result = f"【警告】: Unknown language: {language}\n"
             text_widget.insert(tk.END, result)
 
     except requests.exceptions.RequestException as e:
         if language == "繁體中文":
-            result = f"【錯誤】 {url}: 請求錯誤 ({str(e)})\n"
+            print(f"【錯誤】: {url} 請求錯誤 ({str(e)})")
+            result = f"【錯誤】: {url} 請求錯誤 ({str(e)})\n"
         elif language == "English":
-            result = f"【Error】 {url}: Request error ({str(e)})\n"
+            print(f"【Error】: {url} Request error ({str(e)})")
+            result = f"【Error】: {url} Request error ({str(e)})\n"
         elif language == "日本語":
-            result = f"【エラー】 {url}: リクエストエラー ({str(e)})\n"
+            print(f"【エラー】: {url} リクエストエラー ({str(e)})")
+            result = f"【エラー】: {url} リクエストエラー ({str(e)})\n"
         else:
-            result = f"【Error】Unknown language: {language}\n"
-        print(result)
+            print(f"【Error】: Unknown language: {language}")
+            result = f"【Error】: Unknown language: {language}\n"
         text_widget.insert(tk.END, result)
         
     except ssl.SSLError as ssl_error:
         if language == "繁體中文":
-            result = f"【警告】 {url} SSL 握手失敗 ({ssl_error.strerror})\n"
+            print(f"【警告】: {url} SSL 握手失敗 ({ssl_error.strerror})")
+            result = f"【警告】: {url} SSL 握手失敗 ({ssl_error.strerror})\n"
         elif language == "English":
-            result = f"【Warning】 {url} SSL handshake failed ({ssl_error.strerror})\n"
+            print(f"【Warning】: {url} SSL handshake failed ({ssl_error.strerror})")
+            result = f"【Warning】: {url} SSL handshake failed ({ssl_error.strerror})\n"
         elif language == "日本語":
-            result = f"【警告】 {url} SSL ハンドシェイクに失敗しました ({ssl_error.strerror})\n"
+            print(f"【警告】: {url} SSL ハンドシェイクに失敗しました ({ssl_error.strerror})")
+            result = f"【警告】: {url} SSL ハンドシェイクに失敗しました ({ssl_error.strerror})\n"
         else:
-            result = f"【警告】Unknown language: {language}\n"
-        print(result)
+            print(f"【警告】: Unknown language: {language}")
+            result = f"【警告】: Unknown language: {language}\n"
         text_widget.insert(tk.END, result)
         
     except socket.timeout:
         if language == "繁體中文":
-            result = f"【錯誤】 {url}: 連接超時\n"
+            print(f"【錯誤】: {url} 連接超時")
+            result = f"【錯誤】: {url} 連接超時\n"
         elif language == "English":
-            result = f"【Error】 {url}: Connection timeout\n"
+            print(f"【Error】: {url} Connection timeout")
+            result = f"【Error】: {url} Connection timeout\n"
         elif language == "日本語":
-            result = f"【エラー】 {url}: 接続がタイムアウトしました\n"
+            print(f"【エラー】: {url} 接続がタイムアウトしました")
+            result = f"【エラー】: {url} 接続がタイムアウトしました\n"
         else:
-            result = f"【Error】Unknown language: {language}\n"
-        print(result)
+            print(f"【Error】: Unknown language: {language}")
+            result = f"【Error】: Unknown language: {language}\n"
         text_widget.insert(tk.END, result)
         
     except socket.error as socket_error:
         if language == "繁體中文":
-            result = f"【錯誤】 {url}: 連接錯誤 ({str(socket_error)})\n"
+            print(f"【錯誤】: {url} 連接錯誤 ({str(socket_error)})")
+            result = f"【錯誤】: {url} 連接錯誤 ({str(socket_error)})\n"
         elif language == "English":
-            result = f"【Error】 {url}: Connection error ({str(socket_error)})\n"
+            print(f"【Error】: {url} Connection error ({str(socket_error)})")
+            result = f"【Error】: {url} Connection error ({str(socket_error)})\n"
         elif language == "日本語":
-            result = f"【エラー】 {url}: 接続エラー ({str(socket_error)})\n"
+            print(f"【エラー】: {url} 接続エラー ({str(socket_error)})")
+            result = f"【エラー】: {url} 接続エラー ({str(socket_error)})\n"
         else:
-            result = f"【Error】Unknown language: {language}\n"
-        print(result)
+            print(f"【Error】: Unknown language: {language}")
+            result = f"【Error】: Unknown language: {language}\n"
         text_widget.insert(tk.END, result)
         
-    except Exception as e:
+    except Exception as request_error:
         if language == "繁體中文":
-            result = f"【錯誤】 {url}: {str(e)}\n"
+            print(f"【錯誤】: {url} {str(request_error)}")
+            result = f"【錯誤】: {url} {str(request_error)}\n"
         elif language == "English":
-            result = f"【Error】 {url}: {str(e)}\n"
+            print(f"【Error】: {url} {str(request_error)}")
+            result = f"【Error】: {url} {str(request_error)}\n"
         elif language == "日本語":
-            result = f"【エラー】 {url}: {str(e)}\n"
+            print(f"【エラー】: {url} {str(request_error)}")
+            result = f"【エラー】: {url} {str(request_error)}\n"
         else:
-            result = f"【Error】Unknown language: {language}\n"
-        print(result)
+            print(f"【Error】: Unknown language: {language}")
+            result = f"【Error】: Unknown language: {language}\n"
         text_widget.insert(tk.END, result)
+    
+    finally:
+        try:
+            # 解析網址並取得主機名稱和 IP 地址
+            parsed_url = urlparse(url)
+            hostname = parsed_url.hostname
+            ip_address = socket.gethostbyname(hostname)
+            hostname_from_ip = socket.gethostbyaddr(ip_address)
+            if show_hostname == "開啟":
+                if language == "繁體中文":
+                    print(f"【主機名稱】: {hostname}")
+                    text_widget.insert(tk.END, f"【主機名稱】: {hostname}\n")
+                    print(f"【IP 位址】: {ip_address}")
+                    text_widget.insert(tk.END, f"【IP 位址】: {ip_address}\n")
+                    print(f"【從 IP 位址取得的主機名稱】: {hostname_from_ip}")
+                    text_widget.insert(tk.END, f"【從 IP 位址取得的主機名稱】: {hostname_from_ip}\n")
+                elif language == "English":
+                    print(f"【Hostname】: {hostname}")
+                    text_widget.insert(tk.END, f"【Hostname】: {hostname}\n")
+                    print(f"【IP Address】: {ip_address}")
+                    text_widget.insert(tk.END, f"【IP Address】: {ip_address}\n")
+                    print(f"【Hostname from IP Address】: {hostname_from_ip}")
+                    text_widget.insert(tk.END, f"【Hostname from IP Address】: {hostname_from_ip}\n")
+                elif language == "日本語":
+                    print(f"【ホスト名】: {hostname}")
+                    text_widget.insert(tk.END, f"【ホスト名】: {hostname}\n")
+                    print(f"【IPアドレス】: {ip_address}")
+                    text_widget.insert(tk.END, f"【IPアドレス】: {ip_address}\n")
+                    print(f"【IPアドレスからのホスト名】: {hostname_from_ip}")
+                    text_widget.insert(tk.END, f"【IPアドレスからのホスト名】: {hostname_from_ip}\n")
+                    
+            # 建立 SSL 連線並取得伺服器憑證
+            context = ssl.create_default_context()
+            context.check_hostname = False
+            with context.wrap_socket(socket.socket(), server_hostname=url) as s:
+                s.settimeout(5)
+                s.connect((hostname, 443))
+                cert = s.getpeercert()
+            cert_start_date = cert['notBefore']
+            cert_end_date = cert['notAfter']
+            if show_cert == "開啟":
+                if language == "繁體中文":
+                    print(f"【憑證起始日期】: {cert_start_date}")
+                    text_widget.insert(tk.END, f"【憑證起始日期】: {cert_start_date}\n")
+                    print(f"【憑證結束日期】: {cert_end_date}")
+                    text_widget.insert(tk.END, f"【憑證結束日期】: {cert_end_date}\n")
+                elif language == "English":
+                    print(f"【Certificate Start Date】: {cert_start_date}")
+                    text_widget.insert(tk.END, f"【Certificate Start Date】: {cert_start_date}\n")
+                    print(f"【Certificate End Date】: {cert_end_date}")
+                    text_widget.insert(tk.END, f"【Certificate End Date】: {cert_end_date}\n")
+                elif language == "日本語":
+                    print(f"【証明書開始日】: {cert_start_date}")
+                    text_widget.insert(tk.END, f"【証明書開始日】: {cert_start_date}\n")
+                    print(f"【証明書終了日】: {cert_end_date}")
+                    text_widget.insert(tk.END, f"【証明書終了日】: {cert_end_date}\n")
+                    
+        except Exception as e:
+            if language == "繁體中文":
+                print(f"【錯誤】: {url} {str(e)}")
+                result = f"【錯誤】: {url} {str(e)}\n"
+            elif language == "English":
+                print(f"【Error】: {url} {str(e)}")
+                result = f"【Error】: {url} {str(e)}\n"
+            elif language == "日本語":
+                print(f"【エラー】: {url} {str(e)}")
+                result = f"【エラー】: {url} {str(e)}\n"
+            else:
+                print(f"【Error】: Unknown language: {language}")
+                result = f"【Error】: Unknown language: {language}\n"
+            text_widget.insert(tk.END, result)
         
 # 清除鍵        
 def clear_input():
@@ -880,7 +921,8 @@ def enable_cert(show_cert):
     global current_cert
     current_cert = show_cert
     set_language(current_language, current_theme, current_blacklist, current_hostname, current_cert)
-    
+
+# 貼上功能  
 def paste_text():
     entry.event_generate("<<Paste>>")
 
@@ -935,5 +977,5 @@ menu_bar = Menu(root)
 root.config(menu=menu_bar)
 set_language("繁體中文","現代淺色","開啟","關閉","關閉")
 
-# GUI 迴圈
+# GUI 主迴圈
 root.mainloop()
