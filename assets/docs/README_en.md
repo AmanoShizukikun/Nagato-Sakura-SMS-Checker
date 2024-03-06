@@ -16,7 +16,7 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.5.jpg)
 ### Major Changes
 - [Critical] Added blacklist URL data data/blacklist.txt.
-- [Critical] Renamed test.py to Nagato-Sakura-SMS-Checker-CLI.py and updated to support all features of the GUI version. (All features are now enabled by default)
+- [Critical] Renamed test.py to Nagato-Sakura-SMS-Checker-CLI.py and updated to support all features of the GUI version. 
 - [Critical] Separated CUDA version and CPU version, so users without NVIDIA graphics cards no longer need to modify torch.device themselves.
 ### New Features
 - [New] Added blacklist URL functionality, which warns users if the URL matches the blacklist data.
@@ -26,7 +26,7 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 - [Update] Version information now displays the current program's running mode.
 - [Update] Adjusted the output results for enabling the display of hostname and IP, and enabling the display of certificate dates, making the output results neater.
 - [Update] Adjusted response status check replies, making it clearer what is being detected.
-- [Update] Adjusted the output order, now the output order of URLs does not get messed up when enabling display of hostname and enabling display of certificate dates. (Only guaranteed for URLs 1~2)
+- [Update] Adjusted the output order, now the output order of URLs does not get messed up when enabling display of hostname and enabling display of certificate dates.
 - [Fix] Fixed GUI version background CMD output results, now the output results no longer have strange line breaks.
 ### Known Issues
 - [Error] When scaling the screen, the UI images of the program do not scale accordingly.
