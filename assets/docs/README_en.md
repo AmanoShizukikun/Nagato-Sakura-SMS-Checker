@@ -12,51 +12,59 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 ## Announcements
 
 ## Recent Changes
+### 1.0.5 (March 7, 2024)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.5.jpg)
+### Major Changes
+- [Critical] Added blacklist URL data data/blacklist.txt.
+- [Critical] Renamed test.py to Nagato-Sakura-SMS-Checker-CLI.py and updated to support all features of the GUI version. (All features are now enabled by default)
+- [Critical] Separated CUDA version and CPU version, so users without NVIDIA graphics cards no longer need to modify torch.device themselves.
+### New Features
+- [New] Added blacklist URL functionality, which warns users if the URL matches the blacklist data.
+- [New] Display hostname and IP, showing hostname, IP address, and hostname obtained from the IP address.
+- [New] Display certificate dates, showing the start and end dates of the certificate. This feature is disabled by default and can be enabled in settings.
+- [New] Input box right-click menu, enabling right-click paste in the SMS input box.
+- [Update] Version information now displays the current program's running mode.
+- [Update] Adjusted the output results for enabling the display of hostname and IP, and enabling the display of certificate dates, making the output results neater.
+- [Update] Adjusted response status check replies, making it clearer what is being detected.
+- [Update] Adjusted the output order, now the output order of URLs does not get messed up when enabling display of hostname and enabling display of certificate dates. (Only guaranteed for URLs 1~2)
+- [Fix] Fixed GUI version background CMD output results, now the output results no longer have strange line breaks.
+### Known Issues
+- [Error] When scaling the screen, the UI images of the program do not scale accordingly.
+
 ### 1.0.4 (March 1, 2024)
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.4.jpg)
-### Important Changes
-- [Critical] Adjusted model configuration file's model information.
-- [Critical] Added more data related to telecom fraud to the dataset.
-- [Critical] Removed dark mode and replaced it with a theme.
+### Major Changes
+- [Critical] Adjusted model configuration file model information.
+- [Critical] Added more data related to telecommunications fraud to the dataset.
+- [Critical] Removed dark mode and switched to themes.
 ### New Features
-- [New] Now capable of identifying verification code SMS and outputting the code.
-- [Update] Upgraded the model version significantly improving telecom fraud detection capability.
-- [Update] Version information now displays GUI version and model version, and updates with language changes.
-- [Fix] Corrected issue where reports weren't changing language after language switch.
-- [Fix] Rectified error where messages with decimals were mistakenly identified as URLs.
+- [New] Now able to detect verification code SMS and output the verification code.
+- [Update] Updated the model version significantly improving the ability to detect telecommunications fraud.
+- [Update] Version information can now display GUI version and model version, and will change with language switching.
+- [Fix] Fixed the issue where the language of the output report did not change after changing the language.
+- [Fix] Fixed the issue of mistakenly recognizing messages with decimals as URLs.
 ### Known Issues
-- [Error] UI images of the program do not scale with screen zoom.
+- [Error] When scaling the screen, the UI images of the program do not scale accordingly.
+- [Error] Strange line breaks appear in CMD output results of the GUI version background.
 
 ### 1.0.3 (February 27, 2024)
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.3.jpg)
-### Important Changes
-- [Critical] GUI significantly redesigned with added menu bar.
+### Major Changes
+- [Critical] GUI significantly adjusted display, adding a menu bar.
 - [Adjustment] GUI now displays complete reports.
-- [Adjustment] Removed dark mode button, replaced with menu bar toggle.
+- [Adjustment] Removed dark mode button, replaced with a menu bar.
 ### New Features
 - [New] Open - Open saved .json file to view SMS results.
 - [New] Save - Save SMS results as .json file.
-- [New] Quit - Exit GUI.
-- [New] Language - Toggle between Traditional Chinese, English, and Japanese.
+- [New] Exit - Exit GUI.
+- [New] Language - Switch between Traditional Chinese, English, and Japanese.
 - [New] Open Website - Open program's GitHub page.
-- [New] Version Info - Display current program version.
-- [Fix] Shortened URL websites now correctly identified.
+- [New] Version Information - Display program's current version.
+- [Fix] Fixed issue where URL shortener type websites could only be identified up to the shortened URL and could not identify the website after shortening.
 ### Known Issues
-- [Error] UI images of the program do not scale with screen zoom.
-- [Error] Reports do not change language after language switch.
-- [Error] Chance of messages with decimals being mistaken for URLs.
-
-### 1.0.2 (February 23, 2024)
-![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.2.jpg)
-### Important Changes
-- [Adjustment] GUI display redesigned with unified use of scrolling text box for messages, providing a cleaner and more aesthetic appearance.
-- [Adjustment] GUI and terminal display for general testing now show results more neatly, facilitating easier user readability.
-- [Adjustment] Training data for the model cleared of irrelevant portions and training parameters slightly adjusted, resulting in a significant improvement in prediction accuracy compared to the old version.
-### New Features
-- [New] Now capable of identifying "non" http and www starting websites, and automatically converting abbreviated URLs to the correct full URLs.
-### Known Issues
-- [Error] Shortened URL websites only identified up to the shortened part, unable to determine the website after the shortened part.
-- [Error] UI does not scale with screen zoom.
+- [Error] When scaling the screen, the UI images of the program do not scale accordingly.
+- [Error] Output report does not change language after changing language.
+- [Error] There is a chance of mistakenly recognizing messages with decimals as URLs.
 
 [All Releases](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/docs/Changelog.md)
 
@@ -84,6 +92,7 @@ Nagato-Sakura-SMS-Checker is one of the branches of the "Nagato Sakura Project,"
 ```shell
 pip install Pillow
 pip install requests
+pip install numpy
 ```
 
 ### File Descriptions
