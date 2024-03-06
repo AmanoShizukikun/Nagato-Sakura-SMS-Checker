@@ -15,7 +15,8 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 ### 1.0.5 PRE（即將推出）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.5.jpg)
 ### 重要變更
-- 【重大】新增黑名單網址數據 data/blacklist.txt
+- 【重大】新增黑名單網址數據 data/blacklist.txt。
+- 【重大】將 CUDA 版本和 CPU 版本分離，讓沒有 NVIDIA 顯卡的使用者不用再自己去修改torch.device。
 ### 新增功能
 - 【新增】網址黑名單功能，會比對黑名單網址數據如果網址相符會警告使用者。
 - 【新增】顯示主機名稱及IP，可以顯示主機名稱、IP 位址、從 IP 位址取得的主機名稱。
@@ -96,6 +97,7 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 ```shell
 pip install Pillow
 pip install requests
+pip install numpy
 ```
 
 ### 檔案說明
