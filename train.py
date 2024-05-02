@@ -115,7 +115,7 @@ batch_size = 32
 train_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
 # 訓練模型
-epochs = 300
+epochs = 500
 for epoch in range(epochs):
     total_loss = 0
     start_time = time.time()
@@ -152,7 +152,7 @@ model_config = {
     "_name_or_path": "AmanoShizukikun/Nagato-Sakura-SMS-Checker",
     "model_type": "Nagato-Sakura-SMS-Checker",
     "architectures": ["NagatoSakuraSMSCheckerModel"],
-    "version": "NagatoSakuraSMSCheckerModel-124",
+    "version": "NagatoSakuraSMSCheckerModel-150",
     "input_size": input_size,
     "hidden_size": hidden_size,
     "output_size": output_size,

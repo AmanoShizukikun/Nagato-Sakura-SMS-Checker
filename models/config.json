@@ -4,8 +4,8 @@
     "architectures": [
         "NagatoSakuraSMSCheckerModel"
     ],
-    "version": "NagatoSakuraSMSCheckerModel-124",
-    "input_size": 965,
+    "version": "NagatoSakuraSMSCheckerModel-150",
+    "input_size": 1063,
     "hidden_size": 4096,
     "output_size": 4,
     "learning_rate": 0.05
