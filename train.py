@@ -152,7 +152,7 @@ model_config = {
     "_name_or_path": "AmanoShizukikun/Nagato-Sakura-SMS-Checker",
     "model_type": "Nagato-Sakura-SMS-Checker",
     "architectures": ["NagatoSakuraSMSCheckerModel"],
-    "version": "NagatoSakuraSMSCheckerModel-150",
+    "version": f"NagatoSakuraSMSCheckerModel-{len(train_data)}",
     "input_size": input_size,
     "hidden_size": hidden_size,
     "output_size": output_size,
