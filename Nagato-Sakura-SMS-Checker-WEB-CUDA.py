@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import json
+import os
 import re
 import requests
 import ssl
@@ -171,7 +172,7 @@ custom_css = """
 """
 
 # Gradio 界面設定
-with gr.Blocks(analytics_enabled=False, css=custom_css) as demo:
+with gr.Blocks(title=f"Nagato-Sakura-SMS-Checker-GUI-Ver.{version}", analytics_enabled=False, css=custom_css) as demo:
     cid = gr.State("")
     token = gr.State(value=None)
     
@@ -211,11 +212,11 @@ with gr.Blocks(analytics_enabled=False, css=custom_css) as demo:
             return history, history
 
         def clear_all():
-            return [], ""
+            return [], "", []
 
         user_message.submit(process_message, inputs=[user_message, history], outputs=[chatbot, history])
         submit_button.click(process_message, inputs=[user_message, history], outputs=[chatbot, history])
-        clear_button.click(clear_all, outputs=[chatbot, user_message])
+        clear_button.click(clear_all, outputs=[chatbot, user_message, history])
 
         with gr.Row():
             gr.Examples(
@@ -228,6 +229,8 @@ with gr.Blocks(analytics_enabled=False, css=custom_css) as demo:
 
 if __name__ == "__main__":
     try:
-        demo.queue(api_open=True, max_size=40).launch(show_api=True)
+        gradio_share = os.environ.get("GRADIO_SHARE", "0").lower() in ["true", "1"]
+        server_name = os.environ.get("GRADIO_SERVER_NAME", "0.0.0.0")
+        demo.queue(api_open=True, max_size=40).launch(show_api=True, share=gradio_share, server_name=server_name, inbrowser=True)
     except Exception as e:
         print(f"Error: {e}")

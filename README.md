@@ -13,6 +13,13 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 - ### 有鑑於用戶反饋 1.0.X 的介面不適合給一般人理解程式偵測的結果，故將開始進行 1.1.0 版本的開發以提供更友善的 GUI 介面。
 
 ## 近期變動
+### 1.0.6 (即將推出)
+![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.6.jpg)
+### 重要變更
+- 【重大】添加 WEBUI 版本
+### 新增功能
+### 已知問題
+
 ### 1.0.5（2024 年 3 月 7 日）
 ![t2i](https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker/blob/main/assets/preview/1.0.5.jpg)
 ### 重要變更
@@ -89,12 +96,6 @@ Nagato-Sakura-SMS-Checker 是「長門櫻計畫」的其中一個分支，是為
 - 下載: https://developer.nvidia.com/cuda-toolkit
 - NVIDIA cuDNN
 - 下載: https://developer.nvidia.com/cudnn
-- Python庫
-```shell
-pip install Pillow
-pip install requests
-pip install numpy
-```
 
 ### 檔案說明
 - 必要檔案
@@ -113,6 +114,7 @@ pip install numpy
 ```shell
 git clone https://github.com/AmanoShizukikun/Nagato-Sakura-SMS-Checker.git
 cd Nagato-Sakura-SMS-Checker
+pip install -r requirements.txt
 ```
 
 - 修改訓練資料庫
