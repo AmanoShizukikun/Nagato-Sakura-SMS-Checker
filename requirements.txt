@@ -1,0 +1,5 @@
+torch
+Pillow
+requests
+numpy
+gradio

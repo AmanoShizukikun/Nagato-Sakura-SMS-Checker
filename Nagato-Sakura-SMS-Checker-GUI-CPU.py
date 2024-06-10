@@ -927,7 +927,7 @@ def paste_text():
     entry.event_generate("<<Paste>>")
 
 # 建立 tkinter 視窗
-version = "1.0.5"
+version = "1.0.6"
 root = tk.Tk()
 root.title(f"Nagato-Sakura-SMS-Checker-GUI-Ver.{version}")
 root.geometry("820x580")  

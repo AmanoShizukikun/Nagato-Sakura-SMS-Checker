@@ -152,7 +152,7 @@ def check_url_safety(url):
     return f"{safety_message}\n【主機名稱】: {hostname}\n【IP 位址】: {ip_address}\n【從 IP 位址取得的主機名稱】: {hostname_from_ip}\n{cert_details}"
 
 
-version = "1.0.5"
+version = "1.0.6"
 image_path = current_directory / "assets" / "4K" / f"{version}.jpg"
 
 examples = [
@@ -204,14 +204,18 @@ with gr.Blocks(analytics_enabled=False, css=custom_css) as demo:
             clear_button = gr.Button("清除")
 
         history = gr.State([])
+
         def process_message(user_message, history):
             prediction = predict_SMS(user_message)
             history = history + [(user_message, prediction)]
             return history, history
 
+        def clear_all():
+            return [], ""
+
         user_message.submit(process_message, inputs=[user_message, history], outputs=[chatbot, history])
         submit_button.click(process_message, inputs=[user_message, history], outputs=[chatbot, history])
-        clear_button.click(lambda: [], None, chatbot)
+        clear_button.click(clear_all, outputs=[chatbot, user_message])
 
         with gr.Row():
             gr.Examples(
@@ -227,4 +231,3 @@ if __name__ == "__main__":
         demo.queue(api_open=True, max_size=40).launch(show_api=True)
     except Exception as e:
         print(f"Error: {e}")
-
