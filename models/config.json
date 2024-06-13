@@ -1,0 +1,12 @@
+{
+    "_name_or_path": "AmanoShizukikun/Nagato-Sakura-SMS-Checker",
+    "model_type": "Nagato-Sakura-SMS-Checker",
+    "architectures": [
+        "NagatoSakuraSMSCheckerModel"
+    ],
+    "version": "NagatoSakuraSMSCheckerModel-150",
+    "input_size": 1063,
+    "hidden_size": 4096,
+    "output_size": 4,
+    "learning_rate": 0.05
+}
